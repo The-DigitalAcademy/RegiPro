@@ -1,10 +1,19 @@
-# stage 1
-FROM node:latest as node
-WORKDIR /app
-COPY . .
-RUN yarn install
-RUN yarn run build --prod
+FROM node:18-alpine as build
 
-# stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/frontend /usr/share/nginx/html
+WORKDIR /app
+
+COPY package.json .
+
+RUN yarn install
+
+COPY . .
+
+RUN apk add gettext
+
+RUN yarn build --base-href
+
+FROM nginx:latest
+
+COPY --from=build /app/dist/frontend /usr/share/nginx/html
+
+EXPOSE 80
