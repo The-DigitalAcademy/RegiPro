@@ -9,7 +9,7 @@ const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080
 
 console.log(process.env.NODE_ENV)
 
