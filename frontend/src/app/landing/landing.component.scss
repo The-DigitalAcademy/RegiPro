@@ -16,7 +16,8 @@ section{
 }
 .img-responsive{
     width: 100%;
-    padding: 30px;
+    padding: 60px;
+    color: #10B981;
 }
 section h4{
     margin: 30px;
@@ -30,12 +31,12 @@ section p{
 }
 
 section button{
-    width: 150px;
-    margin: 100px;
-    height: 50px;
+    width: 180px;
+    margin: 80px;
+    height: 30px;
     background-color: #10B981;
     border: 1px solid #10B981 ;
-    color: black;
+    color: white;
     outline: none;
     transition: .6s ease;
     border-radius: 25px;
@@ -44,7 +45,7 @@ section button{
 section button:hover{
     cursor: pointer;
     background-color: #10B981;
-    color: black;
+    color: white;
     box-shadow: 0 0 5px#10B981, 0 0 10px rgb(153, 227, 179), 0 0 15px rgb(113, 208, 140);
     font-weight: bold;
 }
