@@ -4,4 +4,6 @@ export interface User {
     email: string;
     password: string;
     id?: string;
+    success?:boolean;
+    message?:string;
   }

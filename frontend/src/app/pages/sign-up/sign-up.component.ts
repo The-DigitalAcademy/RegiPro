@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit{
   email: string = "";
   password: string = "";
 
-  constructor(private api : ApiService, private formBuilder: FormBuilder)
+  constructor(private authService : ApiService, private formBuilder: FormBuilder)
   {}
 
   //Add user form actions
@@ -35,7 +35,18 @@ export class SignUpComponent implements OnInit{
     //True if all the fields are filled
     if(this.submitted)
     {
-      alert("Great!!");
+      this.authService.signUp(this.signupForm).subscribe(res =>{
+
+        if(res.success){
+          console.log(res);
+          alert(res.message);
+          // alert("User registered successfuly");
+        }else{
+          alert(res.message)
+        }
+              
+      })
+      // alert("Great!!");
     }
    
   }
@@ -50,18 +61,18 @@ export class SignUpComponent implements OnInit{
       });
   }
 
-  signUp()
-  {
-    let bodyData = {
-      fullname: this.fullname,
-      lastname: this.lastname,
-      email: this.email,
-      password: this.password
-    };
-    this.api.signUp(bodyData).subscribe(res =>{
-      console.log(res);
-      alert("User registered successfuly")      
-    })
-  }
+  // signUp()
+  // {
+  //   let bodyData = {
+  //     fullname: this.fullname,
+  //     lastname: this.lastname,
+  //     email: this.email,
+  //     password: this.password
+  //   };
+  //   this.api.signUp(bodyData).subscribe(res =>{
+  //     console.log(res);
+  //     alert("User registered successfuly")      
+  //   })
+  // }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
+import { User } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,13 +14,13 @@ export class SignInComponent implements OnInit{
   //Form variables
   signinForm:any = FormGroup;
   submitted = false;
-
+  userDetails! : User;
   email: string = "";
   password: string = "";
 
   errMessage: string = "";
 
-  constructor(private api : ApiService, private router : Router, private formBuilder: FormBuilder)
+  constructor(private authService : ApiService, private router : Router, private formBuilder: FormBuilder)
   {}
 
   //Add user form actions
@@ -35,7 +36,18 @@ export class SignInComponent implements OnInit{
     //True if all the fields are filled
     if(this.submitted)
     {
-      alert("Great!!");
+      this.authService.signIn(this.signinForm).subscribe(res =>{
+
+        if(res.success){
+          console.log(res);
+          alert(res.message);
+          sessionStorage.setItem('user Details', JSON.stringify(res));
+        }else{
+          alert(res.message);
+        }
+        
+      })
+      // alert("Great!!");
     }
    
   }
@@ -49,16 +61,16 @@ export class SignInComponent implements OnInit{
     
   }
 
-  signIn()
-  {
-    let bodyData = {
-      email: this.email,
-      password: this.password
-    };
-    this.api.signUp(bodyData).subscribe(res =>{
-      console.log(res);
+  // signIn()
+  // {
+  //   let bodyData = {
+  //     email: this.email,
+  //     password: this.password
+  //   };
+  //   this.authService.signIn(bodyData).subscribe(res =>{
+  //     console.log(res);
       
-    })
-  }
+  //   })
+  // }
 
 }
