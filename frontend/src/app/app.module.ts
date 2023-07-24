@@ -20,8 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPage
-    LandingComponent
+    LandingComponent,
 
     SignInComponent,
     SignUpComponent,
