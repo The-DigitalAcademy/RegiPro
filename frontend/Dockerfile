@@ -1,19 +1,11 @@
-FROM node:18-alpine as build
-
+FROM node:18.10.0-alpine as builder
 WORKDIR /app
-
-COPY package.json .
-
+COPY ./package.json ./
 RUN yarn install
-
 COPY . .
+RUN yarn build
 
-RUN apk add gettext
-
-RUN yarn build --base-href
-
-FROM nginx:latest
-
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
-
-EXPOSE 80
+FROM nginx
+EXPOSE 4200
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist/frontend /usr/share/nginx/html

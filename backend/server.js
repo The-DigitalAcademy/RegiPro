@@ -1,42 +1,31 @@
 
-require('dotenv').config()
+//importing modules
 const express = require('express')
+const sequelize = require('sequelize')
+const dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser')
+const db = require('./Models')
+const userRoutes = require('../backend/routes/userroutes')
+ 
 
+//setting up your port
+const PORT = process.env.PORT || 8080
+
+//assigning the variable app to express
 const app = express()
-const path = require('path')
-const { logger, logEvents } = require('./middleware/logger')
-const errorHandler = require('./middleware/errorHandler')
-const cors = require('cors')
-const corsOptions = require('./config/corsOptions')
 
-const PORT = process.env.PORT;
-
-console.log(process.env.NODE_ENV)
-
-app.use(logger)
-
-
-app.use(cors(corsOptions))
-
+//middleware
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
-app.use('/', express.static(path.join(__dirname, 'public')))
-
-app.use('/', require('./routes/root'))
-
-app.all('*', (req, res) => {
-    res.status(404)
-    if (req.accepts('html')) {
-        res.sendFile(path.join(__dirname, 'views', '404.html'))
-    } else if (req.accepts('json')) {
-        res.json({ message: '404 Not Found' })
-    } else {
-        res.type('txt').send('404 Not Found')
-    }
+//synchronizing the database and forcing it to false so we dont lose data
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("db has been re sync")
 })
 
-app.use(errorHandler)
+//routes for the user API
+app.use('/api/users', userRoutes)
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+//listening to server connection
+app.listen(PORT, () => console.log(`Server is connected on ${PORT}`))
