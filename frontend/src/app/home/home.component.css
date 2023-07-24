@@ -11,6 +11,7 @@
 .container {
     background-color: #ECFDF5;
     height: 100vh;
+    width: 100wh;
 }
 
 .svg-container {
@@ -20,3 +21,13 @@
     width: 50px;
     height: 50px;
 }
+
+.svg-about{
+    position: relative;
+    right: 0.5rem;
+}
+
+.svg-logout{
+    position: relative;
+    right: 0.4rem;
+} 

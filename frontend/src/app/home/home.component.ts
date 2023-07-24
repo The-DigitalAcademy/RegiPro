@@ -33,4 +33,9 @@ if(currentTime >= 0 && currentTime <= 11) {
     return ''
 }
     }
+
+    logout(){
+      localStorage.removeItem
+    }
 }
+

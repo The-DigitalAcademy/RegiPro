@@ -9,14 +9,18 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AboutComponent } from './about/about.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
-  declarations: [					
+  declarations: [							
     AppComponent,
       HomeComponent,
       ProfileComponent,
-      LoginComponent
+      LoginComponent,
+      AboutComponent,
+      LandingComponent
    ],
   imports: [
     BrowserModule,
