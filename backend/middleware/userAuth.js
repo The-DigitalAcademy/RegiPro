@@ -28,7 +28,7 @@ const db = require("../Models");
 
    //if email exist in the database respond with a status of 409
    if (emailcheck) {
-     return res.json(409).send("Authentication failed");
+     return res.status(409).json({message: "Email already exists", success:false});
    }
 
    next();

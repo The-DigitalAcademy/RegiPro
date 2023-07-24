@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { User } from 'src/app/interface/user';
+import { NgToastService } from 'ng-angular-popup';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +22,7 @@ export class SignInComponent implements OnInit{
 
   errMessage: string = "";
 
-  constructor(private authService : ApiService, private router : Router, private formBuilder: FormBuilder)
+  constructor(private authService : ApiService, private router : Router, private formBuilder: FormBuilder, private toastService: NgToastService)
   {}
 
   //Add user form actions
@@ -49,10 +51,13 @@ export class SignInComponent implements OnInit{
           this.router.navigateByUrl('/home');
           sessionStorage.setItem('user Details', JSON.stringify(res));
         }else{
-          alert(res.message);
+          this.toastService.error({ detail: 'ERROR', summary: res.message, sticky:true });
         }
         
+      }, (error: HttpErrorResponse) => {
+        this.toastService.error({ detail: 'Ooops', summary: error.error.message, sticky:true });
       })
+      
       // alert("Great!!");
     }
    

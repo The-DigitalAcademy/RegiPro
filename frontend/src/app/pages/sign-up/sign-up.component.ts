@@ -4,6 +4,7 @@ import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from 'src/app/interface/user';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,6 +15,7 @@ export class SignUpComponent implements OnInit{
 
   //Form variables
   signupForm:any = FormGroup;
+  
   submitted = false;
 
   firstname: string = "";
@@ -59,15 +61,18 @@ export class SignUpComponent implements OnInit{
 
         if(res.success){
           console.log(res);
-          this.toastService.success({ detail: 'SUCCESS', summary: 'Registration Successful', duration: 4000 });
+          this.toastService.success({ detail: 'SUCCESS', summary: res.message, duration: 4000 });
           this.router.navigateByUrl('/signIn');
           // alert("User registered successfuly");
         }else{
-          this.toastService.success({ detail: 'ERROR', summary: 'Error', sticky:true });
+          this.toastService.error({ detail: 'ERROR', summary: res.error.message, sticky:true });
           // alert(res.message)
           console.log(res);
         }
+        
               
+      }, (error: HttpErrorResponse) => {
+        this.toastService.error({ detail: 'Ooops', summary: error.error.message, sticky:true });
       })
       // alert("Great!!");
     }

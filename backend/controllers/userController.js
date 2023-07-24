@@ -36,7 +36,7 @@ const signup = async (req, res) => {
      //send users details
      return res.status(201).json({success : true, message: "Successfully Registered", user});
    } else {
-     return res.status(409).json({message:"Details are not correct"});
+     return res.status(409).json({message:"Details are not correct", success : false});
    }
  } catch (error) {
    console.log(error);
