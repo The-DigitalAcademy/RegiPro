@@ -13,20 +13,39 @@ import { AboutComponent } from './about/about.component';
 import { LandingComponent } from './landing/landing.component';
 
 
+import { LandingComponent } from './landing/landing.component';
+
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
+
+
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { HomeComponent } from './pages/home/home.component';
+
+
 @NgModule({
-  declarations: [							
+
+  declarations: [
     AppComponent,
-      HomeComponent,
-      ProfileComponent,
-      LoginComponent,
-      AboutComponent,
-      LandingComponent
-   ],
-  imports: [
+    LandingComponent,
+
+    SignInComponent,
+    SignUpComponent,
+    HomeComponent,
+     ProfileComponent,
+     AboutComponent,
+
+  ],
+imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgToastModule
   ],
   providers: [
     AuthGuard
