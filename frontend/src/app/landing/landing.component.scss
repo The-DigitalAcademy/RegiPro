@@ -1,5 +1,4 @@
 body{
-    // min-height: 500vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,20 +6,27 @@ body{
 }
 section{
     width: 333px;
-    height: 652px;
+    height: 632px;
+    margin-top: 25px;
     border: solid #0e0b0b;
     border-radius: 25px;
-    margin: 400px;
+    margin:auto;
     background-color: #ECFDF5;
 
 }
 .img-responsive{
     width: 100%;
-    padding: 60px;
+    padding: 40px;
     color: #10B981;
 }
+.logo{
+    width: 30%;
+    color: #10B981;
+    padding-left: 25px;
+}
+
 section h4{
-    margin: 30px;
+    margin: 10px;
     color:#47bb85 ;
     text-align: center;
 }
@@ -32,7 +38,9 @@ section p{
 
 section button{
     width: 180px;
-    margin: 80px;
+    // margin: 80px;
+    margin-left:25%;
+    margin-right:25%;
     height: 30px;
     background-color: #10B981;
     border: 1px solid #10B981 ;
@@ -49,4 +57,25 @@ section button:hover{
     box-shadow: 0 0 5px#10B981, 0 0 10px rgb(153, 227, 179), 0 0 15px rgb(113, 208, 140);
     font-weight: bold;
 }
+@media screen  and (min-width: 425px) and (max-width:720px){  
+    .overall{
+        display: flex;
+        width: 100%;
+        height: 500px;
+        /* align-content: center; */
+    }
+    .header{
+        flex-direction: column;
+    }
+     
+ }
+ @media screen and (max-width:425px){
+     .overall{
+         display: flex;
+         height: 500px;
+         /* width: 100%; */
+     }
+    }
+
+    
   
