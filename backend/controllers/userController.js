@@ -34,9 +34,9 @@ const signup = async (req, res) => {
      console.log("user", JSON.stringify(user, null, 2));
      console.log(token);
      //send users details
-     return res.status(201).send(user);
+     return res.status(201).json({success : true, message: "Successfully Registered", user});
    } else {
-     return res.status(409).send("Details are not correct");
+     return res.status(409).json({message:"Details are not correct"});
    }
  } catch (error) {
    console.log(error);

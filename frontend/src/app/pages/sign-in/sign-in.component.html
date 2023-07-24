@@ -8,7 +8,7 @@
                 <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
                   <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" [(ngModel)]="email" formControlName="email"
+                    <input type="email" [(ngModel)]="email" formControlName="email" [(ngModel)]="email"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
 
                       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -19,7 +19,7 @@
 
                   <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" formControlName="password"
+                    <input type="password" class="form-control" formControlName="password" [(ngModel)]="password"
                           class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
 
                           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">

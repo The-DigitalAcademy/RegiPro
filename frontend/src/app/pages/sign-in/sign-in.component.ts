@@ -27,6 +27,11 @@ export class SignInComponent implements OnInit{
   get f() { return this.signinForm.controls; }
 
   onSubmit() {
+
+    let bodyData = {
+      email: this.email,
+      password: this.password
+    };
   
     this.submitted = true;
     // stop here if form is invalid
@@ -36,11 +41,12 @@ export class SignInComponent implements OnInit{
     //True if all the fields are filled
     if(this.submitted)
     {
-      this.authService.signIn(this.signinForm).subscribe(res =>{
+      this.authService.signIn(bodyData).subscribe(res =>{
 
         if(res.success){
           console.log(res);
-          alert(res.message);
+          // alert(res.message);
+          this.router.navigateByUrl('/home');
           sessionStorage.setItem('user Details', JSON.stringify(res));
         }else{
           alert(res.message);

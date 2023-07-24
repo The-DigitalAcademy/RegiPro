@@ -1,12 +1,16 @@
 
 //importing modules
 const express = require('express')
+var cors = require('cors')
 const sequelize = require('sequelize')
 const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const db = require('./Models')
 const userRoutes = require('../backend/routes/userroutes')
  
+var corsOptions = {
+    origin: '*',
+  }
 
 //setting up your port
 const PORT = process.env.PORT || 8080
@@ -18,6 +22,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(cors(corsOptions))
 
 //synchronizing the database and forcing it to false so we dont lose data
 db.sequelize.sync({ force: true }).then(() => {
