@@ -1,0 +1,22 @@
+.img {
+    background-color: white;
+    width: 55.34px;
+    height: 57px;
+    border: 0.2px solid black;
+    border-radius: 50%;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    margin: auto;
+}
+
+.container {
+    background-color: #ECFDF5;
+    height: 100vh;
+}
+
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
