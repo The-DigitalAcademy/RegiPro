@@ -40,9 +40,9 @@ const signup = async (req, res) => {
    }
  } catch (error) {
    console.log(error);
+   
  }
 };
-
 
 //login authentication
 
