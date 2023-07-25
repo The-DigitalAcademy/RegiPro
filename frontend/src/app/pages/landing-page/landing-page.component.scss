@@ -12,12 +12,8 @@
     align-items: center;
     gap: 42px;
 }
-section{
-    width: 333px;
-    
-    border-radius: 20px;
+section{ 
     background: rgba(236, 253, 245, 0.35);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     max-width: 300px;
     margin:auto;
     background-color: #ECFDF5;
@@ -37,19 +33,23 @@ section{
 section h4{
     color:#47bb85 ;
     text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 section p{
-    margin: 30px;
+    margin: auto;
     color:#121815 ;
+    font-size: 1.2rem;
     text-align: center;
+    font-family: "Times New Roman", Times, serif;
 }
 
-section button{
-    width: 120px;
-    // margin: 80px;
-    margin-left:25%;
-    margin-right:25%;
-    height: 30px;
+button{
+    width: 15.94em;
+   
+    left: 50%;
+    right: 50%;
+    height: 2.94em;
     background-color: #10B981;
     border: 1px solid #10B981 ;
     color: white;

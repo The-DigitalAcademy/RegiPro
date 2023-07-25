@@ -1,11 +1,6 @@
 section {
-    width: 333px;
-    height: 632px;
-
-    border-radius: 25px;
     margin: auto;
     background-color: #ECFDF5;
-    box-shadow: 1px 1px 2px black;
 }
 
 
@@ -29,7 +24,8 @@ section h2 {
 
 }
 .p1{
-    margin: 30px;
+    margin: 0px;
+    max-width: 333px;
     color: #121815;
     text-align: center;
     font-family: "Times New Roman", Times, serif; 
@@ -45,7 +41,7 @@ section h2 {
 section button {
     margin: 0;
     position: absolute;
-    top: 96%;
+    top: 90%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
