@@ -1,5 +1,5 @@
 export interface User {
-    fullname?: string;
+    firstname?: string;
     lastname?: string;
     email: string;
     password: string;
@@ -7,3 +7,7 @@ export interface User {
     success?:boolean;
     message?:string;
   }
+  export interface UserRequest {
+    user: User[];
+}
+

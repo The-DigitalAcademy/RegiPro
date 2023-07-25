@@ -13,7 +13,9 @@
     height: 100vh;
     width: 100wh;
 }
-
+span{
+    color:black;
+}
 .svg-container {
     display: flex;
     justify-content: center;
@@ -31,3 +33,11 @@
     position: relative;
     right: 0.4rem;
 } 
+
+.svg-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
