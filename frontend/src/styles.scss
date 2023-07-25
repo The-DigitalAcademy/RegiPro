@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+:root {
+  // BACKGROUND
+  --PRIMARY_BGCOLOR: #ECFDF5;
+  --SECONDARY__BGCOLOR: #FFFFFF;
+
+  // TEXT
+  --PRIMARY__TEXT-COLOR: #2B2D33;
+  --SECONDARY__TEXT-COLOR: #10B981;
+
+
+  // BUTTONS
+  --BTN__BGCLOLOR: #10B981;
+  --PRIMARY__BTN__TEXT-COLOR: #FFFFFF;
+  --SECONDARY__BTN__TEXT-COLOR: #10B981;
+  --BTN__BORDER: #10B981;
+
+  // FORMS
+  --ERROR__RED: #EE0004;
+  --SUCCESS__GREEN__BORDER-COLOR: #10B981;
+  
+}
+
+body{
+  background-color: var(--PRIMARY_BGCOLOR);
+}
