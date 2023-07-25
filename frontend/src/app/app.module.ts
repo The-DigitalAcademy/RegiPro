@@ -3,14 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AboutComponent } from './about/about.component';
-import { LandingComponent } from './landing/landing.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
@@ -18,19 +15,26 @@ import { NgToastModule } from 'ng-angular-popup';
 
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { ChooseComponent } from './pages/choose/choose.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { AboutComponent } from './pages/about/about.component';
+import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 
 
 @NgModule({
 
   declarations: [
     AppComponent,
-    LandingComponent,
+    LandingPageComponent,
 
     SignInComponent,
     SignUpComponent,
     HomeComponent,
      ProfileComponent,
+     ChooseComponent,
+     LandingPageComponent,
      AboutComponent,
+     OnboardingComponent,
 
   ],
 imports: [
