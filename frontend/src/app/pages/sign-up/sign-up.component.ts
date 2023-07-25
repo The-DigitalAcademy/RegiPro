@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit{
 
         if(res.success){
           console.log(res);
-          this.toastService.success({ detail: 'SUCCESS', summary: res.message, duration: 4000 });
+          this.toastService.success({ detail: 'SUCCESS', summary: res.message, duration: 2000 });
           this.router.navigateByUrl('/boarding');
           // alert("User registered successfuly");
         }else{
