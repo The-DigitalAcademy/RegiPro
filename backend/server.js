@@ -19,6 +19,22 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
+// database
+const db = require("./models");
+const Role = db.role;
+
+// db.sequelize.sync();
+// force: true will drop the table if it already exists
+db.sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Database with { force: true }');
+    initial();
+  });
+  
+  
+  // routes
+  require('./routes/authRoutes')(app);
+  require('./routes/userRoutes')(app);
+
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
@@ -39,3 +55,20 @@ app.use(errorHandler)
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
+
+function initial() {
+    Role.create({
+      id: 1,
+      name: "user"
+    });
+   
+    Role.create({
+      id: 2,
+      name: "moderator"
+    });
+   
+    Role.create({
+      id: 3,
+      name: "admin"
+    });
+  }
