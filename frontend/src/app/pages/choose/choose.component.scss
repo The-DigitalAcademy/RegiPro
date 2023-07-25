@@ -21,25 +21,27 @@ section {
 }
 
 section h2 {
-    color: #47bb85;
+    color: var(--SECONDARY__TEXT-COLOR) ;
     text-align: center;
-    font-family: "Times New Roman", Times, serif;
-
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 section p {
-    margin: 30px;
-    color: #121815;
+    margin: auto;
+    max-width: 22em ;
+    color:#121815 ;
+    font-size: 1.2rem;
     text-align: center;
     font-family: "Times New Roman", Times, serif;
 
 }
 
 .btn1 {
-    width: 120px;
+    width: 10em;
+    height: 2.94em;
     margin-left: 25%;
     margin-right: 25%;
-    height: 30px;
     background-color: #10B981;
     border: 1px solid #10B981;
     color: white;
@@ -52,10 +54,8 @@ section p {
 }
 
 .btn2 {
-    width: 120px;
-    margin-left: 25%;
-    margin-right: 25%;
-    height: 30px;
+    width: 10em;
+    height: 2.94em;
     border: 1px solid #10B981;
     background-color: white;
     color: black;
