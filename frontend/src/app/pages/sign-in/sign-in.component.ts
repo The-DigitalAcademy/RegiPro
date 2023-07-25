@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
-import { ApiService } from 'src/app/service/api.service';
-import { User } from 'src/app/interface/user';
 import { NgToastService } from 'ng-angular-popup';
 import { HttpErrorResponse } from '@angular/common/http';
+import { User } from '../../interface/user';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-sign-in',

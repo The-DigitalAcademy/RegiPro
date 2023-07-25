@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from '../../service/api.service';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
-import { User } from 'src/app/interface/user';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
