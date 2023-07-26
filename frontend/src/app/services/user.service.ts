@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'https://digital-store-api.onrender.com/users/';
+const API_URL = 'https://regipro-api.onrender.com/users/';
 
 @Injectable({
   providedIn: 'root',
