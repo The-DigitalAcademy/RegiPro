@@ -52,11 +52,12 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.user = this.storageService.getUser().email;
+        console.log(data);
 
-        const {firstname, lastname, email} = data.user
-          localStorage.setItem("firstname",firstname);
-          localStorage.setItem("lastname",lastname);
-          localStorage.setItem("email",email);
+        // const {firstname, lastname, email} = data.user
+        //   localStorage.setItem("firstname",firstname);
+        //   localStorage.setItem("lastname",lastname);
+        //   localStorage.setItem("email",email);
 
       this.router.navigate(['/home'])
 
