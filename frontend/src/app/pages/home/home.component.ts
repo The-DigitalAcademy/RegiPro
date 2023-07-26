@@ -10,9 +10,9 @@ export class HomeComponent {
   @Input()
   user?: User;
 
-  firstname =localStorage.getItem("firstname");
-  lastname = localStorage.getItem("lastname");
-  email = localStorage.getItem("email");
+  // firstname =localStorage.getItem("firstname");
+  // lastname = localStorage.getItem("lastname");
+  // email = localStorage.getItem("email");
 
   users: any[] | undefined;
 
