@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  user? : string
+  user? : any
 
   constructor(
     private authService: AuthService,
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.user = this.storageService.getUser().email
       this.router.navigate(['/home'])
+
+      
 
       // setTimeout(() => {
       //   this.router.navigate(['/home'])
@@ -50,6 +52,11 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.user = this.storageService.getUser().email;
+
+        const {firstname, lastname, email} = data.user
+          localStorage.setItem("firstname",firstname);
+          localStorage.setItem("lastname",lastname);
+          localStorage.setItem("email",email);
 
       this.router.navigate(['/home'])
 
