@@ -15,7 +15,7 @@ export class HomeComponent {
   email = localStorage.getItem("email");
 
   users: any[] | undefined;
-  name = 'Thabisile'
+
   greetingUser: string = ''
 
   constructor() { }
