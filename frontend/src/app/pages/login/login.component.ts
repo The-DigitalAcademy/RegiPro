@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
       this.router.navigate(['/home'])
 
-        this.reloadPage();
+      this.reloadPage();
       },
       error: err => {
         this.errorMessage = err.error.message;
