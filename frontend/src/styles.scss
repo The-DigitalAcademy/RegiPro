@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+
+:root {
+  // BACKGROUND
+  --PRIMARY_BGCOLOR: #ECFDF5;
+  --SECONDARY__BGCOLOR: #FFFFFF;
+
+  // TEXT
+  --PRIMARY__TEXT-COLOR: #2B2D33;
+  --SECONDARY__TEXT-COLOR: #10B981;
+
+
+  // BUTTONS
+  --BTN__BGCLOLOR: #10B981;
+  --PRIMARY__BTN__TEXT-COLOR: #FFFFFF;
+  --SECONDARY__BTN__TEXT-COLOR: #10B981;
+  --BTN__BORDER: #10B981;
+
+  // FORMS
+  --ERROR__RED: #EE0004;
+  --SUCCESS__GREEN__BORDER-COLOR: #10B981;
+
+}
+
+body{
+  background-color: var(--PRIMARY_BGCOLOR);
+  font-family: 'Roboto', sans-serif;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+  font-weight: 600;
+}
