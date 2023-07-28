@@ -17,14 +17,14 @@ const sequelize = new Sequelize("sage_cqop", "vutomi", "drOU5lyGCQPL4Y94rZiRRjhs
   });
   
   // Test the connection
-  (async () => {
-    try {
-      await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
-    } catch (error) {
-      console.error('Unable to connect to the database:', error);
-    }
-  })();
+  // (async () => {
+  //   try {
+  //     await sequelize.authenticate();
+  //     console.log('Connection has been established successfully.');
+  //   } catch (error) {
+  //     console.error('Unable to connect to the database:', error);
+  //   }
+  // })();
   
 
 const db = {};
