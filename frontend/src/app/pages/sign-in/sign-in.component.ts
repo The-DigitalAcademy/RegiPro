@@ -49,7 +49,16 @@ export class SignInComponent implements OnInit{
           console.log(res);
           // alert(res.message);
           this.router.navigateByUrl('/home');
-          sessionStorage.setItem('user Details', JSON.stringify(res));
+          // sessionStorage.setItem('user Details', JSON.stringify(res));
+
+          const {firstname, lastname, email} = res.user
+          localStorage.setItem("firstname",firstname);
+          localStorage.setItem("lastname",lastname);
+          localStorage.setItem("email",email);
+
+          console.log(firstname,lastname,email);
+          
+          // localStorage.setItem("user",JSON.stringify(res));
         }else{
           this.toastService.error({ detail: 'ERROR', summary: res.message, sticky:true });
         }

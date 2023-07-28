@@ -18,6 +18,7 @@ import { ChooseComponent } from './pages/choose/choose.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AboutComponent } from './pages/about/about.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+import { Quiz3Component } from './pages/quiz3/quiz3.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { OnboardingComponent } from './pages/onboarding/onboarding.component';
      LandingPageComponent,
      AboutComponent,
      OnboardingComponent,
+     Quiz3Component,
 
   ],
 imports: [
