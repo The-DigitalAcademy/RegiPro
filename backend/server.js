@@ -7,8 +7,10 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
+const Question = require('./models/question')
+const Answer = require('./models/answer')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5002
 
 console.log(process.env.NODE_ENV)
 
@@ -49,7 +51,27 @@ app.all('*', (req, res) => {
         res.type('txt').send('404 Not Found')
     }
 })
+// POST /questions - Create a new question and store it in the database
+app.post('/questions', async (req, res) => {
+    try {
+      const { text } = req.body;
+      const question = await Question.create({ text });
+  
+      // Create answers for the question (assuming the answers are in an array)
+      const answers = req.body.answers;
+      for (const answer of answers) {
+        await Answer.create({
+          text: answer.text,
+          isCorrect: answer.isCorrect,
+          questionId: question.id,
+        });
+      }
+      res.status(201).json(question);
+    } catch (error) {
+      res.status(500).json({ message: 'Error creating the question.' });
+    }
 
+});
 app.use(errorHandler)
 
 app.listen(PORT, () => {
