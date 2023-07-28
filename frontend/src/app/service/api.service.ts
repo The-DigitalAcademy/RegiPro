@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../interface/user';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080/api/users';
+const baseUrl = 'https://regbackend-5lgx.onrender.com/api/users';
 
 @Injectable({
   providedIn: 'root'
