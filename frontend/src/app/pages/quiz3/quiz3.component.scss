@@ -1,0 +1,57 @@
+.circle{
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #2B2D33;
+    border-radius: 50%;
+    position: relative;
+}
+.number{
+    position: absolute;
+    width: inherit;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+}
+#active{
+    width: 3.5rem;
+    height: 3.5rem;
+    position: relative;
+    background-color: #ffff;
+}
+p{
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.form-control{
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 2px solid silver;
+    background-color: var(--background);
+
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.btn{
+    width: 150px;
+    height: 35px;
+    flex-shrink: 0;
+
+    color: #ffffff;
+    background-color: #10B981;
+}
+.containerB{
+    margin-top: 10rem;
+}
