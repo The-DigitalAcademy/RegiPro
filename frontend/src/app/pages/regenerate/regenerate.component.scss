@@ -1,3 +1,12 @@
+.bi {
+    width: 65px;
+    height: 25px;
+    flex-shrink: 0;
+}
+input {
+    background-color: #ECFDF5;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 .container {
     display: inline-flex;
     padding: 28px 0px;
@@ -10,13 +19,11 @@
     background: rgba(236, 253, 245, 0.35);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
 .text-container {
     border-radius: 20px;
     background: rgba(236, 253, 245, 0.35);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     max-width: 300px;
-
     display: flex;
     padding: 29px 55px;
     flex-direction: column;
@@ -32,9 +39,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
-    /* 133.333% */
 }
-
 h6 {
     color: #2B283A;
     text-align: center;
@@ -44,4 +49,9 @@ h6 {
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.96px;
+}
+.btn {
+    width: 100%;
+    color: #ffffff;
+    background-color: #10B981;
 }
