@@ -34,6 +34,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(firstname, lastname, email, password).subscribe({
       next: data => {
         this.isSuccessful = true;
+
+        const {firstname, lastname, email} = data
+          localStorage.setItem("firstname",firstname);
+          localStorage.setItem("lastname",lastname);
+          localStorage.setItem("email",email);
+          
         setTimeout(()=> {
           this.router.navigate(['/onboarding'])
         }, 1000)
