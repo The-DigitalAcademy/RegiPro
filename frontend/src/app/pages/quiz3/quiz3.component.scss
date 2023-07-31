@@ -32,7 +32,7 @@ p{
     line-height: normal;
 }
 .form-control{
-    width: 100%;
+    // width: 50%;
     padding: 0.5rem;
     border: none;
     border-bottom: 2px solid silver;
@@ -44,14 +44,24 @@ p{
     font-weight: 400;
 }
 
-.btn{
+#btnB{
     width: 150px;
     height: 35px;
     flex-shrink: 0;
 
+    color: #10B981;
+    background-color: #ffffff;
+    border: 1px solid;
+   
+}
+.btn{
+    width: 150px;
+    height: 35px;
+    flex-shrink: 0;
     color: #ffffff;
     background-color: #10B981;
 }
+
 .containerB{
     margin-top: 10rem;
 }

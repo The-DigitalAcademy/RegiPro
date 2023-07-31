@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class Quiz3Component {
 
+  firstname =localStorage.getItem("firstname");
+
 }
