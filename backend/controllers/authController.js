@@ -32,7 +32,12 @@ exports.signup = (req, res) => {
       } else {
         // user role = 1
         user.setRoles([1]).then(() => {
-          res.send({ message: "User registered successfully!" });
+          res.send({ message: "User registered successfully!" ,
+          id: user.id,
+          email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname
+         });
         });
       }
     })
@@ -76,6 +81,8 @@ exports.signin = (req, res) => {
         res.status(200).send({
           id: user.id,
           email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname,
           roles: authorities,
           accessToken: token
         });

@@ -8,7 +8,7 @@ const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5002
 
 console.log(process.env.NODE_ENV)
 
