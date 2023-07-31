@@ -14,6 +14,7 @@ import { ChooseComponent } from './pages/choose/choose.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { Quiz3Component } from './pages/quiz3/quiz3.component';
+import { Quiz1Component } from './pages/quiz1/quiz1.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { Quiz3Component } from './pages/quiz3/quiz3.component';
     HomeComponent,
     OnboardingComponent,
     Quiz3Component,
+    Quiz1Component,
   ],
   imports: [
     BrowserModule,
