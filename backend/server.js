@@ -7,16 +7,18 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
-const Question = require('./models/question')
-const Answer = require('./models/answer')
+const questionnaireRoutes = require('./routes/questionnaireRoutes')
+const questionController = require('./controllers/questionnaireControllers')
 
-const PORT = process.env.PORT || 5002
+questionnaireRoutes(app)
+
+
+
+const PORT = process.env.PORT || 5003
 
 console.log(process.env.NODE_ENV)
 
 app.use(logger)
-
-
 app.use(cors(corsOptions))
 
 app.use(express.json())
@@ -24,22 +26,27 @@ app.use(express.json())
 // database
 const db = require("./models");
 const Role = db.role;
+const Question = require('./models/questionnaire')(db.sequelize, db.Sequelize);
+
 
 // db.sequelize.sync();
 // force: true will drop the table if it already exists
 db.sequelize.sync({logging:true}).then(() => {
-    console.log('Drop and Resync Database with { force: true }');
+    console.log('Database');
     // initial();
   });
-  
-  
   // routes
   require('./routes/authRoutes')(app);
-  require('./routes/userRoutes')(app);
+  // require('./routes/userRoutes')(app);
+
+  require("./routes/questionnaireRoutes")(app);
+  
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
+
+// app.use('/', require('./routes/questionnaireRoutes'))
 
 app.all('*', (req, res) => {
     res.status(404)
@@ -50,47 +57,21 @@ app.all('*', (req, res) => {
     } else {
         res.type('txt').send('404 Not Found')
     }
-})
-// POST /questions - Create a new question and store it in the database
-app.post('/questions', async (req, res) => {
-    try {
-      const { text } = req.body;
-      const question = await Question.create({ text });
-  
-      // Create answers for the question (assuming the answers are in an array)
-      const answers = req.body.answers;
-      for (const answer of answers) {
-        await Answer.create({
-          text: answer.text,
-          isCorrect: answer.isCorrect,
-          questionId: question.id,
-        });
-      }
-      res.status(201).json(question);
-    } catch (error) {
-      res.status(500).json({ message: 'Error creating the question.' });
-    }
-
 });
-app.use(errorHandler)
 
+// Find all questions
+app.get('/api/questions', async (req, res) => {
+    try {
+      const questions = await Question.findAllQuestions();
+      res.send(questions);
+    } catch (error) {
+      res.status(500).send({
+        message: 'Some error occurred while retrieving data.',
+      });
+    }
+  });
+
+  
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
-
-// function initial() {
-//     Role.create({
-//       id: 1,
-//       name: "user"
-//     });
-   
-//     Role.create({
-//       id: 2,
-//       name: "moderator"
-//     });
-   
-//     Role.create({
-//       id: 3,
-//       name: "admin"
-//     });
-//   }
