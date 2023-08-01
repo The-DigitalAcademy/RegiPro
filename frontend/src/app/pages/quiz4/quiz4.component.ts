@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./quiz4.component.scss']
 })
 export class Quiz4Component {
-
+  firstname =localStorage.getItem("firstname");
 }
