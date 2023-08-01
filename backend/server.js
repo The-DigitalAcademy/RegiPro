@@ -34,11 +34,12 @@ db.sequelize.sync({logging:true}).then(() => {
   // routes
   require('./routes/authRoutes')(app);
   require('./routes/userRoutes')(app);
+  require('./routes/openaiRoutes')(app);
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
-app.use('/ai', require('./routes/openaiRoutes'));
+
 
 app.all('*', (req, res) => {
     res.status(404)

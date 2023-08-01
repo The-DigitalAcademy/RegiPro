@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Give Any Instruction</h1>
+    <form class="our-form" (ngSubmit)="handleSubmit()">
+      <input class="prompt-field" type="text" [(ngModel)]="prompt" (input)="handleChange($event)" />
+      <button class="prompt-button" type="submit">Go!</button>
+    </form>
+  
+    <div *ngIf="isLoading" class="loading-spinner"></div>
+  
+    <div class="answer-area">{{ answer }}</div>
