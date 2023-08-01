@@ -46,7 +46,6 @@ section p{
 
 button{
   width: 15.94em;
-
   left: 50%;
   right: 50%;
   height: 2.94em;
@@ -56,16 +55,8 @@ button{
   outline: none;
   transition: .6s ease;
   border-radius: 25px;
-
 }
 
- /* section button:hover{
-     cursor: pointer;
-     background-color: #10B981;
-     color: white;
-     box-shadow: 0 0 5px#10B981, 0 0 10px rgb(153, 227, 179), 0 0 15px rgb(113, 208, 140);
-     font-weight: bold;
- } */
 
 
 

@@ -29,5 +29,3 @@ export class RegenerateComponent implements OnInit {
     );
   }
 }
-
-

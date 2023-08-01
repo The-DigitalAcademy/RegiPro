@@ -7,6 +7,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
+import { StepsComponent } from './pages/steps/steps.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'choose', component: ChooseComponent},
   {path: 'onboarding', component: OnboardingComponent},
-  {path: 'regenerate', component: RegenerateComponent}
+  {path: 'regenerate', component: RegenerateComponent},
+  {path: 'steps', component: StepsComponent}
 
 ];
 

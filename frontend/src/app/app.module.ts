@@ -14,6 +14,7 @@ import { ChooseComponent } from './pages/choose/choose.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
+import { StepsComponent } from './pages/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RegenerateComponent } from './pages/regenerate/regenerate.component';
     HomeComponent,
     OnboardingComponent,
     RegenerateComponent,
+    StepsComponent,
   ],
   imports: [
     BrowserModule,
