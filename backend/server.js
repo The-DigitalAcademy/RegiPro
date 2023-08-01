@@ -7,11 +7,6 @@ const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
-const questionnaireRoutes = require('./routes/questionnaireRoutes')
-const questionController = require('./controllers/questionnaireControllers')
-
-questionnaireRoutes(app)
-
 
 
 const PORT = process.env.PORT || 5003
@@ -26,8 +21,6 @@ app.use(express.json())
 // database
 const db = require("./models");
 const Role = db.role;
-const Question = require('./models/questionnaire')(db.sequelize, db.Sequelize);
-
 
 // db.sequelize.sync();
 // force: true will drop the table if it already exists
@@ -37,16 +30,15 @@ db.sequelize.sync({logging:true}).then(() => {
   });
   // routes
   require('./routes/authRoutes')(app);
+  require('./routes/businessnameRoutes')(app)
   // require('./routes/userRoutes')(app);
-
-  require("./routes/questionnaireRoutes")(app);
-  
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
 
-// app.use('/', require('./routes/questionnaireRoutes'))
+
+
 
 app.all('*', (req, res) => {
     res.status(404)
