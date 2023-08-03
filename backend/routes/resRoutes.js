@@ -1,5 +1,5 @@
 
-const controller = require('../controllers/businessnameController')
+const controller = require('../controllers/resController')
 
 module.exports = function (app) {
     app.use(function (req, res, next) {
@@ -10,8 +10,8 @@ module.exports = function (app) {
       next();
     });
   
-  app.post("/questions", controller.createQuestion);
-  app.get("/questions", controller.getQuestions);  
+  app.post("/questions", controller.createNewResponse);
+  // app.get("/questions", controller.getQuestions);  
   
    
   };

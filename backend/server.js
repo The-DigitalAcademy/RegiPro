@@ -8,7 +8,6 @@ const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
-
 const PORT = process.env.PORT || 5003
 
 console.log(process.env.NODE_ENV)
@@ -30,7 +29,7 @@ db.sequelize.sync({logging:true}).then(() => {
   });
   // routes
   require('./routes/authRoutes')(app);
-  require('./routes/businessnameRoutes')(app)
+  require('./routes/resRoutes')(app)
   // require('./routes/userRoutes')(app);
 
 app.use('/', express.static(path.join(__dirname, 'public')))
@@ -51,19 +50,7 @@ app.all('*', (req, res) => {
     }
 });
 
-// Find all questions
-app.get('/api/questions', async (req, res) => {
-    try {
-      const questions = await Question.findAllQuestions();
-      res.send(questions);
-    } catch (error) {
-      res.status(500).send({
-        message: 'Some error occurred while retrieving data.',
-      });
-    }
-  });
 
-  
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
