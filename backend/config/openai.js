@@ -13,21 +13,18 @@ exports.handler = async (req, res) => {
   try  {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: req.body.prompt,
+      prompt: `Write a 3000 words business plan based on the following requirements
+      business name: ${name}
+      industry: ${industry}
+      about business: ${description}
+  .`,
       temperature: 0,
       max_tokens: 4000,
     });
-
+    console.log(response.data.choices[0].text)
     res.status(200).json({ text: response.data.choices[0].text });
   } catch(error) {
     res.status(500).json({ message: "Internal server error." });
   }
 };
 
-function generatePrompt(name, industry, description) {
-  return `Write a 3000 words business plan based on the following requirements
-        business name: ${name}
-        industry: ${industry}
-        about business: ${description}
-    .`;
-}
