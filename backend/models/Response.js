@@ -22,12 +22,13 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       isRegistered: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       hasBusinessPlan: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+        type: Sequelize.STRING,
+        allowNull: false,
+       
       },
     },
     {
