@@ -7,13 +7,13 @@
 </a>
 <div class="text-container">
     <h6>RegiPro</h6>
-    <div>
+    <div *ngFor="let item of data">
         <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">{{item.name}}</label>
+            <label for="formGroupExampleInput" class="form-label">{{item.industry}}</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tech">
         </div>
         <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">{{item.About}}</label>
+            <label for="formGroupExampleInput2" class="form-label">{{item.description}}</label>
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Internet cafe">
         </div>
     </div>

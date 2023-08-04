@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { StepInfoComponent } from './pages/step-info/step-info.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { StepsComponent } from './pages/steps/steps.component';
     OnboardingComponent,
     RegenerateComponent,
     StepsComponent,
+    StepInfoComponent,
   ],
   imports: [
     BrowserModule,

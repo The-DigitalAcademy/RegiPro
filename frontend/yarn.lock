@@ -2083,6 +2083,13 @@ autoprefixer@10.4.14:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
+aws-cdk@2.89.0:
+  version "2.89.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.89.0.tgz#56f7be0bbec4ce95ec95833f5c119d43657bcff8"
+  integrity sha512-4FF/5jNd86x9iSk/xQB1KRFWkhMWd/Z7x7tOwztgZYDj6aYR/3Xru7pb2BD6s6Oli/eeQaXTG11+eY9zdrJIQA==
+  optionalDependencies:
+    fsevents "2.3.2"
+
 babel-loader@9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-9.1.2.tgz#a16a080de52d08854ee14570469905a5fc00d39c"
@@ -2323,6 +2330,13 @@ caniuse-lite@^1.0.30001464, caniuse-lite@^1.0.30001503:
   version "1.0.30001517"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001517.tgz#90fabae294215c3495807eb24fc809e11dc2f0a8"
   integrity sha512-Vdhm5S11DaFVLlyiKu4hiUTkpZu+y1KA/rZZqVQfOD5YdDT/eQKlkt7NaE0WGOFgX32diqt9MiP9CAiFeRklaA==
+
+cdk@^2.89.0:
+  version "2.89.0"
+  resolved "https://registry.yarnpkg.com/cdk/-/cdk-2.89.0.tgz#d1b4d043ef3f38e9c9d2f31dcab4088011db12bd"
+  integrity sha512-EuEIWITxcddBUEuA2qKPTt0dTcz86omurq/mCfr5AHJjeNAdr/sUgUN7NT0nNiSGobih+kHr3RU01qycsu5jgg==
+  dependencies:
+    aws-cdk "2.89.0"
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -3244,7 +3258,7 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
-fsevents@~2.3.2:
+fsevents@2.3.2, fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
@@ -4152,6 +4166,11 @@ make-fetch-happen@^11.0.0, make-fetch-happen@^11.0.1, make-fetch-happen@^11.0.3,
     promise-retry "^2.0.1"
     socks-proxy-agent "^7.0.0"
     ssri "^10.0.0"
+
+material@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/material/-/material-0.5.3.tgz#d9dedb4f7f474bb390cd4fd2409f7db1ea1fb0a3"
+  integrity sha512-3WSnzicuz6wljiMSRfA+RbbMe77shGMjh9B2gNugN09ANdNuhTZddsZCzfFXB3F26ooHNWykgedS1UYBWFXJCg==
 
 media-typer@0.3.0:
   version "0.3.0"
