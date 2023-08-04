@@ -19,6 +19,7 @@ import { Quiz2Component } from './pages/quiz2/quiz2.component';
 import { Quiz4Component } from './pages/quiz4/quiz4.component';
 import { Quiz5Component } from './pages/quiz5/quiz5.component';
 import { CipsNumComponent } from './pages/cips-num/cips-num.component';
+import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CipsNumComponent } from './pages/cips-num/cips-num.component';
     Quiz4Component,
     Quiz5Component,
     CipsNumComponent,
+    QuestionnairesComponent,
   ],
   imports: [
     BrowserModule,
