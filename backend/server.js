@@ -8,13 +8,11 @@ const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5003
 
 console.log(process.env.NODE_ENV)
 
 app.use(logger)
-
-
 app.use(cors(corsOptions))
 
 app.use(express.json())
@@ -26,18 +24,20 @@ const Role = db.role;
 // db.sequelize.sync();
 // force: true will drop the table if it already exists
 db.sequelize.sync({logging:true}).then(() => {
-    console.log('Drop and Resync Database with { force: true }');
+    console.log('Database');
     // initial();
   });
-  
-  
   // routes
   require('./routes/authRoutes')(app);
-  require('./routes/userRoutes')(app);
+  require('./routes/resRoutes')(app)
+  // require('./routes/userRoutes')(app);
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
+
+
+
 
 app.all('*', (req, res) => {
     res.status(404)
@@ -48,27 +48,9 @@ app.all('*', (req, res) => {
     } else {
         res.type('txt').send('404 Not Found')
     }
-})
+});
 
-app.use(errorHandler)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
-
-// function initial() {
-//     Role.create({
-//       id: 1,
-//       name: "user"
-//     });
-   
-//     Role.create({
-//       id: 2,
-//       name: "moderator"
-//     });
-   
-//     Role.create({
-//       id: 3,
-//       name: "admin"
-//     });
-//   }
