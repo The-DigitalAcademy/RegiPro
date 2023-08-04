@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./steps.component.scss']
 })
 export class StepsComponent {
+  currentStep = 1;
 
+  nextStep(): void {
+    this.currentStep++;
+  }
+
+  
 }

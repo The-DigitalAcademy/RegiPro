@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./step-info.component.scss']
 })
 export class StepInfoComponent {
-
+  currentStep = 1;
+    
+  nextStep(): void {
+    this.currentStep++;
+  }
 }
