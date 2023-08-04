@@ -36,9 +36,6 @@ app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/root'))
 
-
-
-
 app.all('*', (req, res) => {
     res.status(404)
     if (req.accepts('html')) {
