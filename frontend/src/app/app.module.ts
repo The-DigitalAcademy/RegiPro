@@ -20,6 +20,9 @@ import { Quiz4Component } from './pages/quiz4/quiz4.component';
 import { Quiz5Component } from './pages/quiz5/quiz5.component';
 import { CipsNumComponent } from './pages/cips-num/cips-num.component';
 import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AboutComponent } from './pages/about/about.component';
+import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.c
     Quiz5Component,
     CipsNumComponent,
     QuestionnairesComponent,
+    AboutComponent,
+    BusinessPlanComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.c
     ReactiveFormsModule
 
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
