@@ -7,7 +7,6 @@ const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 
-
 const PORT = process.env.PORT || 5000;
 
 console.log(process.env.NODE_ENV);
@@ -17,13 +16,6 @@ app.use(logger);
 app.use(cors(corsOptions));
 
 app.use(express.json());
-
-app.use(
-  fileUpload({
-    useTempFiles: true,
-    limits: { fileSize: 50 * 2024 * 1024 },
-  })
-);
 
 // database
 const db = require("./models");
