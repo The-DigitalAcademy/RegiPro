@@ -2,54 +2,79 @@ import { Component, Input } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
-
+import { EventBusService } from 'src/app/_shared/event-bus.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   @Input() user?: any;
- 
 
-  firstname = sessionStorage.getItem("firstname");
-  lastname = sessionStorage.getItem("lastname");
-  email = sessionStorage.getItem("email");
+  firstname = sessionStorage.getItem('firstname');
+  lastname = sessionStorage.getItem('lastname');
+  email = sessionStorage.getItem('email');
 
   users: any[] | undefined;
 
-  greetingUser: string = ''
+  greetingUser: string = '';
 
-  constructor(private storageService: StorageService, private router: Router) { }
+  eventBusSub?: Subscription;
+
+  constructor(
+    private storageService: StorageService,
+    public router: Router,
+    private eventBusService: EventBusService,
+    private authService: AuthService,
+
+  ) {}
 
   ngOnInit() {
-    this.greetingUser = this.greeting()
-    this.user = "home"
-    
-  }
-  greeting() {
-    const date = new Date()
+    this.greetingUser = this.greeting();
+    this.user = 'home';
 
-    const currentTime = date.getHours()
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
+  }
+
+  greeting() {
+    const date = new Date();
+
+    const currentTime = date.getHours();
 
     // Morning 0 - 11
     // Noon 12 - 16
     // Evening 17 - 23
     if (currentTime >= 0 && currentTime <= 11) {
-      return `Good morning,`
+      return `Good morning,`;
     } else if (currentTime >= 12 && currentTime <= 16) {
-      return `Good afternoon,`
+      return `Good afternoon,`;
     } else if (currentTime >= 17 && currentTime <= 23) {
-      return `Good evening, `
+      return `Good evening, `;
     } else {
-      return ''
+      return '';
     }
   }
 
   logout(): void {
-    if(this.storageService.isLoggedIn() != null)
-    sessionStorage.clear()
-    this.router.navigate(['landing'])
+    // if (this.storageService.isLoggedIn() != null) sessionStorage.clear();
+    // this.router.navigate(['landing']);
+
+    this.authService.logout().subscribe({
+      next: res => {
+        this.storageService.clean();
+
+        window.location.reload();
+        this.router.navigate(['/'])
+
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 }

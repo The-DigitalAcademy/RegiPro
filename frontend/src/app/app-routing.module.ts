@@ -19,27 +19,27 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
-  {path: 'choose', component: ChooseComponent},
-  {path: 'landing', component: LandingComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'onboarding', component: OnboardingComponent},
-  {path: 'business-plan', component: BusinessPlanComponent},
-  {path: 'business-pro', component: BusinessProductComponent},
-  {path: 'quiz1', component:Quiz1Component},
-  {path: 'quiz2', component:Quiz2Component},
-  {path: 'quiz3', component:Quiz3Component},
-  {path: 'quiz4', component:Quiz4Component},
-  {path: 'quiz5', component:Quiz5Component},
-  {path: 'cipcnum', component:CipsNumComponent},
-  {path: 'questions', component: QuestionnairesComponent}
+  { path: '', component: LandingComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'choose', component: ChooseComponent },
+  { path: 'landing', component: LandingComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'onboarding', component: OnboardingComponent },
+  { path: 'business-plan', component: BusinessPlanComponent },
+  { path: 'business-pro', component: BusinessProductComponent },
+  { path: 'quiz1', component: Quiz1Component },
+  { path: 'quiz2', component: Quiz2Component },
+  { path: 'quiz3', component: Quiz3Component },
+  { path: 'quiz4', component: Quiz4Component },
+  { path: 'quiz5', component: Quiz5Component },
+  { path: 'cipcnum', component: CipsNumComponent },
+  { path: 'questions', component: QuestionnairesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
