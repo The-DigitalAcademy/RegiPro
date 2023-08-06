@@ -12,15 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @Input() user?: any;
-
-  firstname = sessionStorage.getItem('firstname');
-  lastname = sessionStorage.getItem('lastname');
-  email = sessionStorage.getItem('email');
-
-  users: any[] | undefined;
-
   greetingUser: string = '';
+
+  currentUser: any;
 
   eventBusSub?: Subscription;
 
@@ -28,13 +22,12 @@ export class HomeComponent {
     private storageService: StorageService,
     public router: Router,
     private eventBusService: EventBusService,
-    private authService: AuthService,
-
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
-    this.user = 'home';
 
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
@@ -61,20 +54,15 @@ export class HomeComponent {
   }
 
   logout(): void {
-    // if (this.storageService.isLoggedIn() != null) sessionStorage.clear();
-    // this.router.navigate(['landing']);
-
     this.authService.logout().subscribe({
-      next: res => {
+      next: (res) => {
         this.storageService.clean();
-
         window.location.reload();
-        this.router.navigate(['/'])
-
+        this.router.navigate(['/']);
       },
-      error: err => {
+      error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 }

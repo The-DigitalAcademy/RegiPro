@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     if (this.storageService.isLoggedIn()) {
       return true;
     } else {
+      window.alert('Access Denied, Login is Required to Access This Page!');
       this.router.navigate(['/login']);
       return false;
     }

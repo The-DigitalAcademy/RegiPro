@@ -19,12 +19,12 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'landing', component: LandingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'choose', component: ChooseComponent },
-  { path: 'landing', component: LandingComponent },
   { path: 'about', component: AboutComponent },
   { path: 'onboarding', component: OnboardingComponent },
   { path: 'business-plan', component: BusinessPlanComponent },

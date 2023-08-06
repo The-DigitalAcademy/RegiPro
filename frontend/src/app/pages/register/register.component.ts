@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -22,10 +23,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
     ) { }
 
   ngOnInit(): void {
+    if (this.storageService.isLoggedIn()) {
+
+      this.storageService.getUser()
+    }
   }
 
   onSubmit(): void {
@@ -34,17 +40,14 @@ export class RegisterComponent implements OnInit {
     this.authService.register(firstname, lastname, email, password).subscribe({
       next: data => {
         this.isSuccessful = true;
+        this.storageService.saveUser(data)
 
-        const {firstname, lastname, email} = data
-          localStorage.setItem("firstname",firstname);
-          localStorage.setItem("lastname",lastname);
-          localStorage.setItem("email",email);
-          
         setTimeout(()=> {
           this.router.navigate(['/onboarding'])
         }, 1000)
         this.isSignUpFailed = false;
-        console.log(data)
+        this.storageService.getUser()
+
       },
       error: err => {
         this.errorMessage = err.error.message;
