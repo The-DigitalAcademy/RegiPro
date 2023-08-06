@@ -28,10 +28,8 @@ export class RegisterComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    if (this.storageService.isLoggedIn()) {
-
       this.storageService.getUser()
-    }
+
   }
 
   onSubmit(): void {
