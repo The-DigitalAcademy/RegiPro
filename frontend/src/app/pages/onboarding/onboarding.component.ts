@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnboardingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
+    this.storageService.getUser()
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -25,6 +26,8 @@ export class QuestionnairesComponent implements OnInit{
 
   firstname =localStorage.getItem("firstname");
 
+  currentUser: any;
+
 
   form1: FormGroup = new FormGroup({
     businessName: new FormControl('')
@@ -35,9 +38,10 @@ export class QuestionnairesComponent implements OnInit{
 
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private storageService: StorageService ) {}
 
   ngOnInit(): void {
+    this.storageService.getUser()
 
     this.form1 = this.formBuilder.group(
       {
