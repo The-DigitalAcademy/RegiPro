@@ -14,23 +14,13 @@ import { Observable } from 'rxjs';
 export class AuthGuard {
   constructor(private storageService: StorageService, private router: Router) {}
 
-  // canActivate(): boolean {
-  //   if (this.storageService.isLoggedIn()) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //     window.alert('Access Denied, Login is Required to Access This Page!');
-  //     this.router.navigate(['/login']);
-  //   }
-  // }
-
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
     if (!this.storageService.isLoggedIn()) {
+      this.router.navigate(['']);
       window.alert('Access Denied, Login is Required to Access This Page!');
-      this.router.navigate(['login']);
     }
     return true;
   }
