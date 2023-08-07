@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
+import { AllSetComponent } from './pages/all-set/all-set.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'landing', component: LandingComponent},
   {path: 'about', component: AboutComponent},
   {path: 'onboarding', component: OnboardingComponent},
+  {path: 'all-set', component: AllSetComponent},
   {path: 'business-plan', component: BusinessPlanComponent},
   {path: 'business-pro', component: BusinessProductComponent},
   {path: 'quiz1', component:Quiz1Component},

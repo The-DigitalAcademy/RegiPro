@@ -1,0 +1,29 @@
+.btn-all-set {
+    position: absolute;
+    top: 43rem;
+    background-color: #10B981;
+    border-radius: 11px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 151px;
+    height: 35px;
+    flex-shrink: 0;
+}
+
+.all-set {
+    position: relative;
+    left: 1rem;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+
+}
