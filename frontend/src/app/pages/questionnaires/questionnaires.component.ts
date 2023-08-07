@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl , } from '@angular/forms';
 
 @Component({
   selector: 'app-questionnaires',
   templateUrl: './questionnaires.component.html',
   styleUrls: ['./questionnaires.component.scss']
 })
-export class QuestionnairesComponent implement OnInit{
+export class QuestionnairesComponent implements OnInit{
 
   step: any = 1;
 
