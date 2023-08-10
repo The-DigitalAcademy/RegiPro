@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { answers } from 'src/app/interfaces/questions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaires',
@@ -11,7 +12,6 @@ import { answers } from 'src/app/interfaces/questions';
 export class QuestionnairesComponent implements OnInit{
 
   step: any = 1;
-  userBusiness: answers[] = [];
 
   Agriculture = "Agriculture";
   Fitness = "Fitness & Wellness";
@@ -40,7 +40,7 @@ export class QuestionnairesComponent implements OnInit{
 
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private storageService: StorageService ) {}
+  constructor(private formBuilder: FormBuilder, private storageService: StorageService, private route: Router ) {}
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser()
@@ -64,7 +64,7 @@ export class QuestionnairesComponent implements OnInit{
       return;
     }
 
-    this.questionsArray.push({businessName:this.form1.value})
+    this.questionsArray.push(this.form1.value)
 
     this.step = this.step + 1;
 
@@ -78,7 +78,7 @@ export class QuestionnairesComponent implements OnInit{
       return;
     }
 
-    this.questionsArray.push({aboutBusiness:this.form2.value})
+    this.questionsArray.push(this.form2.value)
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -161,6 +161,7 @@ export class QuestionnairesComponent implements OnInit{
     this.submitted = true;
 
     this.questionsArray.push({regBusiness:this.regBusiness});
+    this.route.navigate(['/home'])
     // this.step = this.step + 1;
     
     console.log("added to array",this.questionsArray);
