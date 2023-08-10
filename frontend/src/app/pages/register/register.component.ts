@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
+import { user } from 'src/app/interfaces/User';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  loggedUser!: user;
   form: any = {
     firstname: null,
     lastname: null,
@@ -39,6 +42,8 @@ export class RegisterComponent implements OnInit {
       next: data => {
         this.isSuccessful = true;
         this.storageService.saveUser(data)
+
+        this.loggedUser = data;
 
         setTimeout(()=> {
           this.router.navigate(['/onboarding'])

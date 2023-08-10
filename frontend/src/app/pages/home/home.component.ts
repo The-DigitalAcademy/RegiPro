@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import { user } from '../../interfaces/User';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
 import { EventBusService } from 'src/app/_shared/event-bus.service';

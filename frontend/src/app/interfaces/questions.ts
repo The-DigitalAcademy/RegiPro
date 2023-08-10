@@ -1,4 +1,5 @@
 export interface answers {
+    id?:string;
     businessName?: string;
     industry?: string;
     aboutBusiness?: string;
