@@ -71,8 +71,8 @@
                     formControlName="businessName" [ngClass]="{ 'is-invalid': submitted && f['businessName'].errors }">
                 </div>
             </div>
-
-            <div *ngIf="submitted && f['businessName'].errors" class="invalid-feedback">
+        
+            <div *ngIf="submitted && f['businessName'].errors" class="name">
                 <div *ngIf="f['businessName'].errors['required']">Business name is required</div>
             </div>
             
@@ -264,7 +264,7 @@
                     formControlName="aboutBusiness" [ngClass]="{ 'is-invalid': submitted && p['aboutBusiness'].errors }">
                 </div>
             </div>
-            <div *ngIf="submitted && p['aboutBusiness'].errors" class="invalid-feedback">
+            <div *ngIf="submitted && p['aboutBusiness'].errors" class="name">
                 <div *ngIf="p['aboutBusiness'].errors['required']">About Business is required</div>
             </div>
             

@@ -32,10 +32,10 @@ export class QuestionnairesComponent implements OnInit{
 
 
   form1: FormGroup = new FormGroup({
-    businessName: new FormControl('')
+    businessName: new FormControl('',Validators.required )
   });
   form2:FormGroup = new FormGroup({
-    aboutBusiness: new FormControl('')
+    aboutBusiness: new FormControl('',Validators.required )
   });
 
   submitted = false;
@@ -45,16 +45,6 @@ export class QuestionnairesComponent implements OnInit{
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser()
 
-    this.form1 = this.formBuilder.group(
-      {
-        businessName: [ '', [ Validators.required ] ]
-      })
-
-      this.form2 = this.formBuilder.group(
-        {
-          aboutBusiness: [ '', [ Validators.required ] ]
-        })
-    
   }
 
   submit(){
