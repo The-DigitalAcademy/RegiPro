@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
+import { answers } from 'src/app/interfaces/questions';
 
 @Component({
   selector: 'app-questionnaires',
@@ -10,6 +11,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class QuestionnairesComponent implements OnInit{
 
   step: any = 1;
+  userBusiness: answers[] = [];
 
   Agriculture = "Agriculture";
   Fitness = "Fitness & Wellness";
@@ -22,7 +24,7 @@ export class QuestionnairesComponent implements OnInit{
   businessPlan : boolean = false;
   regBusiness = false;
 
-  questionsArray = [{}];
+  questionsArray: answers[]  = [];
 
   firstname =localStorage.getItem("firstname");
 
@@ -62,7 +64,7 @@ export class QuestionnairesComponent implements OnInit{
       return;
     }
 
-    this.questionsArray.push(this.form1.value)
+    this.questionsArray.push({businessName:this.form1.value})
 
     this.step = this.step + 1;
 
@@ -76,7 +78,7 @@ export class QuestionnairesComponent implements OnInit{
       return;
     }
 
-    this.questionsArray.push(this.form2.value)
+    this.questionsArray.push({aboutBusiness:this.form2.value})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -86,7 +88,7 @@ export class QuestionnairesComponent implements OnInit{
     this.submitted = true;
     const Tech = "Tech & Software"
 
-    this.questionsArray.push(Tech)
+    this.questionsArray.push({industry:Tech})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -94,7 +96,7 @@ export class QuestionnairesComponent implements OnInit{
   submit4(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Agriculture)
+    this.questionsArray.push({industry:this.Agriculture})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -102,7 +104,7 @@ export class QuestionnairesComponent implements OnInit{
   submit5(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Fitness)
+    this.questionsArray.push({industry:this.Fitness})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -110,7 +112,7 @@ export class QuestionnairesComponent implements OnInit{
   submit6(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Retail)
+    this.questionsArray.push({industry:this.Retail})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -118,7 +120,7 @@ export class QuestionnairesComponent implements OnInit{
   submit7(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Manufacturing)
+    this.questionsArray.push({industry:this.Manufacturing})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -126,7 +128,7 @@ export class QuestionnairesComponent implements OnInit{
   submit8(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Entertainment)
+    this.questionsArray.push({industry:this.Entertainment})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -134,7 +136,7 @@ export class QuestionnairesComponent implements OnInit{
   submit9(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Property)
+    this.questionsArray.push({industry:this.Property})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -142,7 +144,7 @@ export class QuestionnairesComponent implements OnInit{
   submit01(){
     this.submitted = true;
   
-    this.questionsArray.push(this.Marketing)
+    this.questionsArray.push({industry:this.Marketing})
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -150,7 +152,7 @@ export class QuestionnairesComponent implements OnInit{
   onSubmit(): void {
     this.submitted = true;
 
-    this.questionsArray.push(this.businessPlan);
+    this.questionsArray.push({businessPlan:this.businessPlan});
     this.step = this.step + 1;
 
     console.log("added to array",this.questionsArray);
@@ -158,7 +160,7 @@ export class QuestionnairesComponent implements OnInit{
   onSubmit2(): void {
     this.submitted = true;
 
-    this.questionsArray.push(this.regBusiness);
+    this.questionsArray.push({regBusiness:this.regBusiness});
     // this.step = this.step + 1;
     
     console.log("added to array",this.questionsArray);
