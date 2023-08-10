@@ -9,7 +9,7 @@ const sequelize = new Sequelize("sage_cqop", "vutomi", "drOU5lyGCQPL4Y94rZiRRjhs
       },
     },
     pool: {
-      max: 5,
+      max: 5,   
       min: 0,
       acquire: 30000,
       idle: 10000,
@@ -50,9 +50,13 @@ db.user.belongsToMany(db.role, {
 
 // User and Response associations
 db.user.hasMany(db.response, {
-  foreignKey: "userId"
+  foreignKey: "userId",
+  as: "responses"
 })
-db.response.belongsTo(db.user)
+db.response.belongsTo(db.user, {
+  foreignKey: "userId",
+  as: "user"
+})
 
 db.ROLES = ["user", "admin", "moderator"];
 
