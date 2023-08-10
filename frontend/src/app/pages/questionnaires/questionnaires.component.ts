@@ -41,7 +41,7 @@ export class QuestionnairesComponent implements OnInit{
   constructor(private formBuilder: FormBuilder, private storageService: StorageService ) {}
 
   ngOnInit(): void {
-    this.storageService.getUser()
+    this.currentUser = this.storageService.getUser()
 
     this.form1 = this.formBuilder.group(
       {
