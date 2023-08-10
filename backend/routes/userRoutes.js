@@ -19,7 +19,6 @@ module.exports = function (app) {
     [authJWT.verifyToken, authJWT.isModerator],
     controller.moderatorBoard
   );
-
   app.get(
     "/users/admin",
     [authJWT.verifyToken, authJWT.isAdmin],
