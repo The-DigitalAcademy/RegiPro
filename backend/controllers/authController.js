@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
         });
       } else {
         // user role = 1
-        user.setRoles([1]).then(() => {
+        user.setRoles([2]).then(() => {
           res.status(201).send({
             message: "User registered successfully!",
             id: user.id,

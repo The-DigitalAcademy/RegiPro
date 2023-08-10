@@ -1,4 +1,4 @@
-
+const authJWT = require("../middleware/authJWT");
 const controller = require('../controllers/resController')
 
 module.exports = function (app) {
@@ -10,9 +10,7 @@ module.exports = function (app) {
       next();
     });
   
-  app.post("/responses", controller.createNewResponse);
-  // app.get("/questions", controller.getQuestions);  
+  app.post("/responses" , [authJWT.verifyToken], controller.createNewResponse);
   
-   
   };
 
