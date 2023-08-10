@@ -52,4 +52,8 @@ export class HomeComponent {
     sessionStorage.clear()
     this.router.navigate(['landing'])
   }
+
+  addNewBusiness(){
+    
+  }
 }

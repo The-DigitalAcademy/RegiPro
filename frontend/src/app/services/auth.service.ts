@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post(
@@ -37,4 +37,17 @@ export class AuthService {
       httpOptions
     );
   }
+
+  requestReset(body: any): Observable<any> {
+    return this.http.post(`${AUTH_API}/req-reset-password`, body);
+  }
+
+  newPassword(body: any): Observable<any> {
+    return this.http.post(`${AUTH_API}/new-password`, body);
+  }
+
+  ValidPasswordToken(body: any): Observable<any> {
+    return this.http.post(`${AUTH_API}/valid-password-token`, body);
+  }
 }
+

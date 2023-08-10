@@ -18,6 +18,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path: 'quiz4', component:Quiz4Component},
   {path: 'quiz5', component:Quiz5Component},
   {path: 'cipcnum', component:CipsNumComponent},
-  {path: 'questions', component: QuestionnairesComponent}
+  {path: 'questions', component: QuestionnairesComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({

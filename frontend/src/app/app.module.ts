@@ -24,6 +24,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AllSetComponent } from './pages/all-set/all-set.component';
     AboutComponent,
     BusinessPlanComponent,
     AllSetComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
