@@ -34,6 +34,7 @@ db.sequelize.sync({logging:true}).then(() => {
   // routes
   require('./routes/authRoutes')(app);
   require('./routes/userRoutes')(app);
+  require('./routes/resRoutes')(app);
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
