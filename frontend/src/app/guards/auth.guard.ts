@@ -20,7 +20,6 @@ export class AuthGuard {
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
     if (!this.storageService.isLoggedIn()) {
       this.router.navigate(['']);
-      window.alert('Access Denied, Login is Required to Access This Page!');
     }
     return true;
   }
