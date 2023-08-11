@@ -45,6 +45,11 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.reloadPage();
+
+        const token = data.accessToken;
+
+        // Store the token in local storage
+        localStorage.setItem('accessToken', token);
       },
       error: (err) => {
         this.errorMessage = err.error.message;

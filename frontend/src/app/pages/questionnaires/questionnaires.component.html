@@ -68,12 +68,12 @@
             <div class="row position-relative py-4">
                 <div class="col-10 position-absolute top-50 start-50 translate-middle">
                     <input type="text" class="form-control" placeholder="eg. Regi-Pro" 
-                    formControlName="businessName" [ngClass]="{ 'is-invalid': submitted && f['businessName'].errors }">
+                    formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                 </div>
             </div>
         
-            <div *ngIf="submitted && f['businessName'].errors" class="name">
-                <div *ngIf="f['businessName'].errors['required']">Business name is required</div>
+            <div *ngIf="submitted && f['name'].errors" class="name">
+                <div *ngIf="f['name'].errors['required']">Business name is required</div>
             </div>
             
             <div class="containerB">
@@ -261,11 +261,11 @@
             <div class="row position-relative py-4">
                 <div class="col-10 position-absolute top-50 start-50 translate-middle">
                     <input type="text" class="form-control" placeholder="eg. book store"
-                    formControlName="aboutBusiness" [ngClass]="{ 'is-invalid': submitted && p['aboutBusiness'].errors }">
+                    formControlName="description" [ngClass]="{ 'is-invalid': submitted && p['description'].errors }">
                 </div>
             </div>
-            <div *ngIf="submitted && p['aboutBusiness'].errors" class="name">
-                <div *ngIf="p['aboutBusiness'].errors['required']">About Business is required</div>
+            <div *ngIf="submitted && p['description'].errors" class="name">
+                <div *ngIf="p['description'].errors['required']">About Business is required</div>
             </div>
             
             <div class="containerB">

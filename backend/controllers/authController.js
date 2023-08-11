@@ -26,18 +26,36 @@ exports.signup = (req, res) => {
           },
         }).then((roles) => {
           user.setRoles(roles).then(() => {
-            res.send({ message: "User registered successfully!" });
+            var token = jwt.sign({ id: user.id }, config.secret, {
+              expiresIn: 86400, // 24 hours
+            });
+
+            res.status(201).send({
+              message: "User registered successfully!",
+              id: user.id,
+              email: user.email,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              roles: req.body.roles,
+              accessToken: token,
+            });
           });
         });
       } else {
         // user role = 1
         user.setRoles([2]).then(() => {
+          var token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400, // 24 hours
+          });
+
           res.status(201).send({
             message: "User registered successfully!",
             id: user.id,
             email: user.email,
             firstname: user.firstname,
             lastname: user.lastname,
+            roles: ["user"], // You can customize this role if needed
+            accessToken: token,
           });
         });
       }

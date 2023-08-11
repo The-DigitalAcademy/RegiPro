@@ -6,4 +6,5 @@ export interface user {
   id: string;
   success:boolean;
   message:string;
+  accessToken:string;
 }

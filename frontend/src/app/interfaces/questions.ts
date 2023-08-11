@@ -1,9 +1,10 @@
 export interface answers {
     id?:string;
-    businessName?: string;
+    name?: string;
     industry?: string;
-    aboutBusiness?: string;
+    description?: string;
     businessPlan?: boolean;
-    regBusiness?:boolean;
+    isRegistered?:boolean;
     userId?:string;
+    accessToken?:string;
   }
