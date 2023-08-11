@@ -26,7 +26,7 @@ exports.createNewResponse = async (req, res) => {
     const response = await Response.create({ userId , name, industry, description, isRegistered, hasBusinessPlan });
     console.log(response)
     if (response) { // Created
-        return res.status(201).json({ message: 'New response created' });
+        return res.status(201).json({ message: 'New response created', response });
     } else {
         return res.status(400).json({ message: 'Invalid response data received' });
     }
