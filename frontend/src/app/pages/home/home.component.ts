@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { user } from '../../interfaces/User';
+import { user } from '../../interfaces/user';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
 import { EventBusService } from 'src/app/_shared/event-bus.service';
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomeComponent {
   greetingUser: string = '';
 
-  currentUser: any;
+  currentUser!: user;
 
   eventBusSub?: Subscription;
 

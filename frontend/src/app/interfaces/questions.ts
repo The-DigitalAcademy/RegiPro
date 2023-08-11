@@ -5,4 +5,5 @@ export interface answers {
     aboutBusiness?: string;
     businessPlan?: boolean;
     regBusiness?:boolean;
+    userId?:string;
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
-import { user } from 'src/app/interfaces/User';
+import { user } from 'src/app/interfaces/user';
 
 
 @Component({
