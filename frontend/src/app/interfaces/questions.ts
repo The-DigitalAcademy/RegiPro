@@ -3,7 +3,7 @@ export interface answers {
     name?: string;
     industry?: string;
     description?: string;
-    businessPlan?: boolean;
+    hasBusinessPlan?: boolean;
     isRegistered?:boolean;
     userId?:string;
     accessToken?:string;

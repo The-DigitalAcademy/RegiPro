@@ -53,4 +53,16 @@ export class StorageService {
     }
     return false;
   }
+
+  public saveAnswers(answers: any): void {
+    window.sessionStorage.setItem('answers', JSON.stringify(answers));
+  }
+
+  public getAnswers(): any {
+    const answers = window.sessionStorage.getItem('answers');
+    if (answers) {
+      return JSON.parse(answers);
+    }
+    return null;
+  }
 }

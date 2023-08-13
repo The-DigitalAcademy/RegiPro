@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { answers } from '../interfaces/questions';
 
 const Res_API = 'http://localhost:5001/responses';
 
@@ -11,15 +12,20 @@ export class ResponsesService {
 
   constructor(private http: HttpClient) { }
 
-  response(data: any) : Observable<any>{
+  response(name: string, industry: string, description: string, isRegistered: boolean, hasBusinessPlan: boolean) : Observable<any>{
+    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const headersConfig: any = {
+      'Content-Type': 'application/json'
+    };
 
-    return this.http.post<any>(Res_API,data);
+    if (token) {
+      headersConfig['x-access-token'] = token;
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders(headersConfig)
+    };
+    return this.http.post<answers>(Res_API, {name, industry, description, isRegistered, hasBusinessPlan}, httpOptions);
   }
 
-  // Example method for making an authenticated GET request
-  getAuthenticatedData(): Observable<any> {
-    const token = localStorage.getItem('accessToken'); // Assuming you store the token in local storage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${Res_API}/protected-route`, { headers });
-  }
 }

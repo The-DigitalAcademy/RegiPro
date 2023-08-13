@@ -45,6 +45,11 @@ export class RegisterComponent implements OnInit {
 
         this.loggedUser = data;
 
+        const token = data.accessToken;
+        console.log(token)
+        // Store the token in local storage
+        localStorage.setItem('accessToken', token);
+
         setTimeout(()=> {
           this.router.navigate(['/onboarding'])
         }, 1000)

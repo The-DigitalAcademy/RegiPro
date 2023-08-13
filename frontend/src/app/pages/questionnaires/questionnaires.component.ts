@@ -34,8 +34,6 @@ export class QuestionnairesComponent implements OnInit {
   data:any;
   questionsArray: answers[] = [];
 
-  firstname = localStorage.getItem('firstname');
-
   currentUser: any;
 
   form1: FormGroup = new FormGroup({
@@ -57,17 +55,6 @@ export class QuestionnairesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
-  }
-
-  getData() {
-    this.respService.getAuthenticatedData().subscribe(
-      (response) => {
-        this.data = response;
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
   }
 
   submit() {
@@ -165,7 +152,7 @@ export class QuestionnairesComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    this.questionsArray.push({ businessPlan: this.businessPlan });
+    this.questionsArray.push({ hasBusinessPlan: this.businessPlan });
     this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
@@ -174,25 +161,33 @@ export class QuestionnairesComponent implements OnInit {
     this.submitted = true;
 
     this.questionsArray.push({ isRegistered: this.isRegistered });
+
+    this.storageService.saveAnswers(this.questionsArray);
     
-    this.respService.response(this.questionsArray).subscribe({
+    const savedAnswers = this.storageService.getAnswers();
+
+    console.log('saved answer',savedAnswers[0].name);
+    console.log('saved answer',savedAnswers[1].industry);
+    console.log('saved answer',savedAnswers[2].description);
+    console.log('saved answer',savedAnswers[3].isRegistered);
+    console.log('saved answer',savedAnswers[4].hasBusinessPlan);
+
+    let name = savedAnswers[0].name, industry = savedAnswers[1].industry, description = savedAnswers[2].description, isRegistered = savedAnswers[3].isRegistered, hasBusinessPlan = savedAnswers[4].hasBusinessPlan;
+   
+    this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
       next: data => {
         console.log(data);
-
         this.route.navigate(['/home']);
-        
       },
       error: err => {
         this.errorMessage = err.error.message;
         console.log(this.errorMessage);
         alert(this.errorMessage)
-        
       }
-
     })
+    this.step = this.step + 1;
 
-    
-    // this.step = this.step + 1;
+    this.route.navigate(['/home']);
 
     console.log('added to array', this.questionsArray);
   }
