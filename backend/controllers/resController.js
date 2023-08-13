@@ -26,6 +26,18 @@ exports.createNewResponse = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+
+    const duplicate = await Response.findOne({
+      where: {
+        name: {
+          [Op.iLike]: name // Using Op.iLike for case-insensitive comparison
+        }
+      }
+    });
+  
+    if (duplicate) {
+      return res.status(409).json({ message: 'This business name exists, try another name' });
+    }
     // Create and store the new response
     const response = await Response.create({
       userId,
