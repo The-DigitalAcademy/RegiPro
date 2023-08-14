@@ -28,4 +28,21 @@ export class ResponsesService {
     return this.http.post<answers>(Res_API, {name, industry, description, isRegistered, hasBusinessPlan}, httpOptions);
   }
 
+  getResponses(): Observable<any> {
+    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const headersConfig: any = {
+      'Content-Type': 'application/json'
+    };
+
+    if (token) {
+      headersConfig['x-access-token'] = token;
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders(headersConfig)
+    };
+
+    return this.http.get<answers>( `${Res_API}`,  httpOptions);
+  }
+
 }

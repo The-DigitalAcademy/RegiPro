@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { EventBusService } from 'src/app/_shared/event-bus.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { ResponsesService } from 'src/app/services/responses.service';
+import { answers } from 'src/app/interfaces/questions';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent {
   greetingUser: string = '';
-
+  businesses: answers[] = [];
   currentUser!: user;
 
   eventBusSub?: Subscription;
@@ -22,10 +24,18 @@ export class HomeComponent {
     private storageService: StorageService,
     public router: Router,
     private eventBusService: EventBusService,
-    private authService: AuthService
+    private authService: AuthService,
+    private responses : ResponsesService
   ) {}
 
+  getResponse(){
+    this.responses.getResponses().subscribe(data => {
+      this.businesses = data;
+    })
+  }
+
   ngOnInit() {
+    this.getResponse()
     this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
 
