@@ -2,21 +2,72 @@ const { Configuration, OpenAIApi } = require("openai");
 const fs = require("fs");
 const fsPromises = require("fs").promises;
 const path = require("path");
-const docx = require("docx");
+const cloudinary = require("cloudinary");
+const { Document, Packer, Paragraph, TextRun } = require("docx");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI,
 });
 const openai = new OpenAIApi(configuration);
 
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: "dfyinxihm",
+  api_key: "118732527716991",
+  api_secret: "8CbQQIxezNSmI4YbjmvPFthyD4I",
+});
+
 if (fs.existsSync(path.join(__dirname, "..", "responses"))) {
   const business = require("../responses/response.js");
 
-  console.log(business["Business Plan"])
+  console.log(business["Business Plan"]);
   // console.log(business["Business Plan"].Conclusion)
   // console.log(business["Business Plan"]["Company Overview"]["Company Goals"]["Long-Term Goals"])
+
+  const generateWordDoc = async () => {
+    const doc = new Document({
+      sections: [
+        {
+          properties: {},
+          children: [
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: business["Business Plan"],
+                  bold: true,
+                }),
+                new TextRun({
+                  text: "\tGithub is the best",
+                  bold: true,
+                }),
+              ],
+            }),
+          ],
+        },
+      ],
+    });
+
+    try {
+      const buffer = await Packer.toBuffer(doc);
+
+      // Upload to Cloudinary
+      cloudinary.v2.uploader
+        .upload_stream({ resource_type: "raw" }, (error, result) => {
+          if (error) {
+            console.error("Error uploading to Cloudinary:", error);
+            throw error;
+          }
+          console.log(result.url)
+          return result.url;
+        })
+        .end(buffer);
+
+    } catch (error) {
+      console.error("Error generating DOCX:", error);
+      throw error
+    }
+  };
+  generateWordDoc();
 }
-
-
 
 exports.handler = async (req, res, next) => {
   const { name, industry, description } = req.body;
@@ -63,9 +114,3 @@ const generateContent = async (logFileName, logItem) => {
     console.log(err);
   }
 };
-
-// const logPlan = (req, res, next) => {
-//     logEvents('response.js')
-//     console.log(`Created`)
-//     next()
-// }
