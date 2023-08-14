@@ -27,8 +27,6 @@ export class QuestionnairesComponent implements OnInit {
   Property = 'Property';
   Marketing = 'Marketing';
 
-  businessPlan: boolean = false;
-  isRegistered = false;
   errorMessage = '';
 
   data:any;
@@ -152,7 +150,9 @@ export class QuestionnairesComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    this.questionsArray.push({ hasBusinessPlan: this.businessPlan });
+    const businessPlan = "no";
+
+    this.questionsArray.push({ hasBusinessPlan: businessPlan });
     this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
@@ -160,23 +160,20 @@ export class QuestionnairesComponent implements OnInit {
   onSubmit2(): void {
     this.submitted = true;
 
-    this.questionsArray.push({ isRegistered: this.isRegistered });
+    const registered = "no";
+
+    this.questionsArray.push({ isRegistered: registered });
 
     this.storageService.saveAnswers(this.questionsArray);
     
     const savedAnswers = this.storageService.getAnswers();
 
-    console.log('saved answer',savedAnswers[0].name);
-    console.log('saved answer',savedAnswers[1].industry);
-    console.log('saved answer',savedAnswers[2].description);
-    console.log('saved answer',savedAnswers[3].isRegistered);
-    console.log('saved answer',savedAnswers[4].hasBusinessPlan);
-
-    let name = savedAnswers[0].name, industry = savedAnswers[1].industry, description = savedAnswers[2].description, isRegistered = savedAnswers[3].isRegistered, hasBusinessPlan = savedAnswers[4].hasBusinessPlan;
+    let name = savedAnswers[0].name, industry = savedAnswers[1].industry, description = savedAnswers[2].description, hasBusinessPlan = savedAnswers[3].hasBusinessPlan, isRegistered = savedAnswers[4].isRegistered;
    
     this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
       next: data => {
         console.log(data);
+        alert(data.message)
         this.route.navigate(['/home']);
       },
       error: err => {

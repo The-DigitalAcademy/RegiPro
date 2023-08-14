@@ -3,8 +3,8 @@ export interface answers {
     name?: string;
     industry?: string;
     description?: string;
-    hasBusinessPlan?: boolean;
-    isRegistered?:boolean;
-    userId?:string;
-    accessToken?:string;
+    hasBusinessPlan?: string;
+    isRegistered?: string;
+    userId?: string;
+    accessToken?: string;
   }
