@@ -105,7 +105,7 @@
           <!-- new card -->
           <div
             class="col d-flex justify-content-center my-1 mx-1"
-            *ngFor="let res of businesses; let i = index"
+            *ngFor="let res of responses.businesses(); let i = index"
             style="
               width: 94.962px;
               height: 119px;
@@ -129,9 +129,9 @@
               </svg>
               <p
                 class="col text-center"
-                style="font-size: 12px; margin-top: 3.3rem; font-weight: 600"
+                style="font-size: 12px; margin-top: 3.5rem; font-weight: 600"
               >
-                RegiPro Tech
+                {{res.name}}
               </p>
             </div>
           </div>

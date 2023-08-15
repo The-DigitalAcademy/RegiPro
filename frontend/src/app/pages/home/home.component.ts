@@ -14,6 +14,7 @@ import { answers } from 'src/app/interfaces/questions';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  
   greetingUser: string = '';
   businesses: answers[] = [];
   currentUser!: user;
@@ -25,17 +26,10 @@ export class HomeComponent {
     public router: Router,
     private eventBusService: EventBusService,
     private authService: AuthService,
-    private responses : ResponsesService
+    public responses : ResponsesService
   ) {}
 
-  getResponse(){
-    this.responses.getResponses().subscribe(data => {
-      this.businesses = data;
-    })
-  }
-
   ngOnInit() {
-    this.getResponse()
     this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
 
