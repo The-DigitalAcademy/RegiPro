@@ -2,26 +2,20 @@ section {
   margin: auto;
   background-color: #ECFDF5;
 }
-
-
-
 .img-responsive {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
 }
-
 .logo {
   width: 30%;
   color: #10B981;
 }
-
 section h2 {
   color: #47bb85;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
-
 }
 .p1{
   margin: 0px;
@@ -31,12 +25,10 @@ section h2 {
   font-family: "Times New Roman", Times, serif;
 }
 .p2{
-  /* margin: 30px; */
   color:lightgrey;
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
 }
-
 section button {
   margin: 0;
   position: absolute;
