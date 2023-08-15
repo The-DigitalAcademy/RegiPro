@@ -273,7 +273,7 @@ if (fs.existsSync(path.join(__dirname, "..", "responses"))) {
     }
   };
 
-  generateWordDoc();
+  // generateWordDoc();
 }
 
 exports.handler = async (req, res, next) => {
@@ -292,7 +292,8 @@ exports.handler = async (req, res, next) => {
     });
     console.log(response.data.choices[0].text);
     generateContent("response.js", response.data.choices[0].text);
-    res.status(200).json({ text: response.data.choices[0].text });
+    const url = await generateWordDoc();
+    res.status(200).json({ url: url });
   } catch (error) {
     res.status(500).json({ message: "Internal server error." });
   }
