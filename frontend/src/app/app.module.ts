@@ -13,6 +13,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OnboardingComponent } from './pages/onboarding/onboarding.component';
     ChooseComponent,
     HomeComponent,
     OnboardingComponent,
+    GenerateBusinessPlanComponent,
   ],
   imports: [
     BrowserModule,
