@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { answers } from 'src/app/interfaces/questions';
 import { Router } from '@angular/router';
 import { ResponsesService } from 'src/app/services/responses.service';
+import { BusinessService } from 'src/app/services/store/business.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -45,7 +46,7 @@ export class QuestionnairesComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder,
+    private busService: BusinessService,
     private storageService: StorageService,
     private route: Router,
     private respService: ResponsesService
@@ -187,6 +188,10 @@ export class QuestionnairesComponent implements OnInit {
     this.route.navigate(['/home']);
 
     console.log('added to array', this.questionsArray);
+  }
+
+  addBusiness(business: answers){
+    this.busService.addBusinessSignal(business);
   }
 
   previous() {

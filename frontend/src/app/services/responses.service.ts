@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { answers } from '../interfaces/questions';
+
 
 const Res_API = 'http://localhost:5001/responses';
 
@@ -42,7 +43,9 @@ export class ResponsesService {
       headers: new HttpHeaders(headersConfig)
     };
 
-    return this.http.get<answers>( `${Res_API}`,  httpOptions);
+    return this.http.get<answers[]>( `${Res_API}`,  httpOptions);
   }
+
+
 
 }
