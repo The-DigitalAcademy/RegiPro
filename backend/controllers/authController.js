@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer');
 const db = require("../models");
 const config = require("../config/authConfig");
 const User = db.user;
@@ -112,7 +113,6 @@ exports.signin = (req, res) => {
     });
 };
 
-
 exports.signout = (req, res) => {
   try {
     req.session = null;
@@ -121,3 +121,70 @@ exports.signout = (req, res) => {
     this.next(err);
   }
 };
+
+//forgot password
+exports.forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).send({ message: 'User not found.' });
+    }
+
+ 
+
+    // Create a transport using Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail', // e.g., 'Gmail'
+      auth: {
+        user: 'chalatsethabo@gmail.com',
+        pass: 'xicawwpjgjwenprt',
+      },
+    });
+
+    let x = "http://localhost:5001/forgotPassword"
+    // Define the email options
+    const mailOptions = {
+      from: 'chalatsethabo@gmail.com',
+      to: user.email,
+      subject: 'Password Reset Request',
+      text: `To reset your password, click the following link: ${x}`,
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).send({ message: 'Password reset email sent successfully' });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+// reset password
+exports.resetPassword = async (req, res) => {
+  try {
+    const { userId, newPassword } = req.body;
+
+    const user = await User.findOne({ where: { userId} });
+    if (!user) {
+      return res.status(400).send({ message: 'User not available' });
+    }
+    // Update the user's password and reset token
+    user.password = bcrypt.hashSync(newPassword, 10);
+    user.passwordResetToken = null;
+    user.passwordResetType = null;
+    await user.save();
+
+    return res.status(200).send({ message: 'Password reset successful' });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+
+
+
+
+
+
