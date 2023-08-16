@@ -1,29 +1,20 @@
-
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/regenerate.service';
+import { answers } from 'src/app/interfaces/questions';
+import { user } from 'src/app/interfaces/user';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-regenerate',
   templateUrl: './regenerate.component.html',
-  styleUrls: ['./regenerate.component.scss'],
+  styleUrls: ['./regenerate.component.scss']
 })
 export class RegenerateComponent implements OnInit {
-  data: any[] = []; 
-  item: any;
+  businesses: answers[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private storageService: StorageService) { }
+
   ngOnInit() {
-    this.getDataFromServer();
-  }
+    this.businesses = this.storageService.getAnswers();
 
-  getDataFromServer() {
-    this.dataService.getData().subscribe(
-      (response: any[]) => {
-        this.data = response;
-      },
-      (error: any[]) => {
-        console.error('Error fetching data:', error);
-      }
-    );
   }
 }
