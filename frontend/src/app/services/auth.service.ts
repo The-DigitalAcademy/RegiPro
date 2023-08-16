@@ -57,9 +57,5 @@ export class AuthService {
     return this.http.post(`${AUTH_API}forgotPassword`, email);
   }
 
-  ValidPasswordToken(body: any): Observable<any> {
-    return this.http.post(`${AUTH_API}valid-password-token`, body);
-
-  }
 }
 
