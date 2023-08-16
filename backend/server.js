@@ -17,7 +17,7 @@ app.use(logger);
 app.use(cors(corsOptions));
 
 app.use(express.json());
-
+swaggerDocs(app);
 // database
 const db = require("./models");
 const Role = db.role;
@@ -53,6 +53,6 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`RegiPro Server is running on port: ${PORT}`);
-  swaggerDocs(app,PORT);
+  
 });
 

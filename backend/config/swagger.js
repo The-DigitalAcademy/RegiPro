@@ -22,6 +22,7 @@ const swaggerSpec = swaggerJsdoc(options);
 
 function swaggerDocs(app, port) {
   // Swagger Page
+  // app.use("/regipro", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   app.use("/regipro", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   // Documentation in JSON format
