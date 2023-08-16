@@ -9,12 +9,14 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./regenerate.component.scss']
 })
 export class RegenerateComponent implements OnInit {
-  businesses: answers[] = [];
+  businesses: answers[] =[]
 
   constructor(private storageService: StorageService) { }
 
   ngOnInit() {
     this.businesses = this.storageService.getAnswers();
+    console.log(this.businesses);
+    
 
   }
 }
