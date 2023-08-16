@@ -6,6 +6,7 @@ const { logger, logEvents } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
+const swaggerDocs =require("./config/swagger")
 
 const PORT = process.env.PORT || 5001;
 
@@ -51,22 +52,7 @@ app.all("*", (req, res) => {
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
+  console.log(`RegiPro Server is running on port: ${PORT}`);
+  swaggerDocs(app,PORT);
 });
 
-// function initial() {
-//     Role.create({
-//       id: 1,
-//       name: "user"
-//     });
-
-//     Role.create({
-//       id: 2,
-//       name: "moderator"
-//     });
-
-//     Role.create({
-//       id: 3,
-//       name: "admin"
-//     });
-//   }

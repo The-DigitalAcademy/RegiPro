@@ -71,4 +71,8 @@ export class HomeComponent {
       },
     });
   }
+
+  addNewBusiness(){
+    
+  }
 }
