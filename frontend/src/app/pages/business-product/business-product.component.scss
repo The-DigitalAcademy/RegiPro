@@ -48,24 +48,27 @@
 }
 
 .download-link{
-    background-color: #10B981;
-    border-radius: 50px solid grey;
+    border-radius: 25px;
+    border: 2px solid  #10B981;
+    padding: 20px;
+    width: 190px;
+    height: 118px;
     color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    padding: 4px 9px;
-    width: 151px;
-    height: 35px;
+    // padding: 4px 9px;
+    // width: 151px;
+    // height: 35px;
     position: relative;
-    bottom:100px;
-    right: 5rem;
+    bottom:112px;
+    right: 5.9rem;
 }
 
 .btn-finish{
     position: absolute;
-    top: 45rem;
+    // top: 45rem;
     background-color: #10B981;
     border-radius: 11px;
     border: none;
@@ -74,7 +77,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    // margin: 4px 2px;
     cursor: pointer;
     width: 151px;
     height: 35px; 
@@ -82,7 +85,7 @@
 
 .btn-prev{
     position: absolute;
-    top: 4rem;
+    // top: 4rem;
     background-color: #10B981;
     border-radius: 11px;
     border: none;
@@ -91,8 +94,16 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    // margin: 4px 2px;
     cursor: pointer;
     width: 151px;
     height: 35px; 
+}
+
+.bottom-btn{
+    position: relative;
+    display: flex;
+    margin-top: -3rem;
+    margin-left: .4rem;
+    // justify-content:space-around
 }

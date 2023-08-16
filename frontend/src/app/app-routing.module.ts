@@ -12,6 +12,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
+import { AllSetComponent } from './pages/all-set/all-set.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -26,6 +28,9 @@ const routes: Routes = [
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
+  {path: 'all-set', component: AllSetComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent}
+
 ];
 
 @NgModule({

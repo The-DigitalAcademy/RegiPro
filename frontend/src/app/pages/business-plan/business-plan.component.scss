@@ -48,21 +48,35 @@
 }
 
 .download-link{
-    background-color: #10B981;
-    border-radius: 50px solid grey;
+    border-radius: 25px;
+    border: 2px solid  #10B981;
+
+    padding: 20px;
+    width: 190px;
+    height: 120px;
     color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    padding: 4px 9px;
-    width: 151px;
-    height: 35px;
+    // padding: 4px 9px;
+    // width: 161px;
+    // height: 90px;
     position: relative;
     bottom:100px;
-    right: 5rem;
+    right: 5.9rem;
 }
 
+.link-content{
+    position: relative;
+    top: 25px;
+}
+
+.download-icon{
+    position: relative;
+    top: 23px;
+    right: 10px;
+}
 .btn-reg{
     position: absolute;
     top: 45rem;
