@@ -22,5 +22,5 @@ module.exports = function(app) {
   app.post("/auth/signout", controller.signout);
   //
 app.post('/auth/forgotPassword', controller.forgotPassword);
-app.put('/auth/resetPassword', controller.resetPassword);
+// app.put('/auth/resetPassword', controller.resetPassword);
 };

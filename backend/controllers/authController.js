@@ -162,25 +162,25 @@ exports.forgotPassword = async (req, res) => {
 };
 
 // reset password
-exports.resetPassword = async (req, res) => {
-  try {
-    const { userId, newPassword } = req.body;
+// exports.resetPassword = async (req, res) => {
+//   try {
+//     const { userId, newPassword } = req.body;
 
-    const user = await User.findOne({ where: { userId} });
-    if (!user) {
-      return res.status(400).send({ message: 'User not available' });
-    }
-    // Update the user's password and reset token
-    user.password = bcrypt.hashSync(newPassword, 10);
-    user.passwordResetToken = null;
-    user.passwordResetType = null;
-    await user.save();
+//     const user = await User.findOne({ where: { userId} });
+//     if (!user) {
+//       return res.status(400).send({ message: 'User not available' });
+//     }
+//     // Update the user's password and reset token
+//     user.password = bcrypt.hashSync(newPassword, 10);
+//     user.passwordResetToken = null;
+//     user.passwordResetType = null;
+//     await user.save();
 
-    return res.status(200).send({ message: 'Password reset successful' });
-  } catch (err) {
-    res.status(500).send({ message: err.message });
-  }
-};
+//     return res.status(200).send({ message: 'Password reset successful' });
+//   } catch (err) {
+//     res.status(500).send({ message: err.message });
+//   }
+// };
 
 
 
