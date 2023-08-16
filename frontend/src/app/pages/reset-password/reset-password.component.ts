@@ -12,7 +12,7 @@ export class ResetPasswordComponent {
   constructor() {
     this.forgotPasswordform = new FormGroup({
       password: new FormControl('', [Validators.required]),
-      samePassword: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
     });
   }
 
