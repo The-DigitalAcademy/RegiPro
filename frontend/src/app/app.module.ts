@@ -20,6 +20,7 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { StepsComponent } from './pages/steps/steps.component';
     AllSetComponent,
     ForgotPasswordComponent,
     StepsComponent,
+    RegenerateComponent,
   ],
   imports: [
     BrowserModule,
