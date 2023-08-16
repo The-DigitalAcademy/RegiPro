@@ -21,7 +21,6 @@ import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
-import { LinkExpiredComponent } from './pages/link-expired/link-expired.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { LinkExpiredComponent } from './pages/link-expired/link-expired.componen
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ResendLinkComponent,
-    LinkExpiredComponent,
+   
   ],
   imports: [
     BrowserModule,

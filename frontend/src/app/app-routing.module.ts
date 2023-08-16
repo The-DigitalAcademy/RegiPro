@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'resend-link', component: ResendLinkComponent},
-  {path: 'link-expired', component: LinkExpiredComponent}
+  {path: 'reset-password', component: LinkExpiredComponent}
 
 ];
 
