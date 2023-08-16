@@ -13,7 +13,6 @@ export class RegenerateComponent implements OnInit {
   item: any;
 
   constructor(private dataService: DataService) { }
-
   ngOnInit() {
     this.getDataFromServer();
   }
