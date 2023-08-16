@@ -173,6 +173,7 @@ export class QuestionnairesComponent implements OnInit {
    
     this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
       next: data => {
+        this.addBusiness(data.response)
         console.log(data);
         alert(data.message)
         this.route.navigate(['/home']);
