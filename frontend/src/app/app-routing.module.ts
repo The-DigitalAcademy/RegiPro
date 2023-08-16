@@ -14,6 +14,7 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { StepsComponent } from './pages/steps/steps.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -28,8 +29,9 @@ const routes: Routes = [
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
-  {path: 'all-set', component: AllSetComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent}
+  { path: 'all-set', component: AllSetComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'steps', component: StepsComponent }
 
 ];
 
@@ -37,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
