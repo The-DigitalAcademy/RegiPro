@@ -11,8 +11,8 @@ export class ResetPasswordComponent {
 
   constructor() {
     this.forgotPasswordform = new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.email]),
-      samePassword: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      samePassword: new FormControl('', [Validators.required]),
     });
   }
 
