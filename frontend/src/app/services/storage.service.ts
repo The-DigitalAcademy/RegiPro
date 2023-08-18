@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { timer } from 'rxjs';
 
 
 const USER_KEY = 'auth-user';
@@ -41,18 +42,27 @@ export class StorageService {
     if (user) {
       return JSON.parse(user);
     }
-
     return {};
   }
 
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
+    if (user) 
+    {
       return true;
     }
-
     return false;
   }
 
+  public saveAnswers(answers: any): void {
+    window.sessionStorage.setItem('answers', JSON.stringify(answers));
+  }
 
+  public getAnswers(): any {
+    const answers = window.sessionStorage.getItem('answers');
+    if (answers) {
+      return JSON.parse(answers);
+    }
+    return null;
+  }
 }

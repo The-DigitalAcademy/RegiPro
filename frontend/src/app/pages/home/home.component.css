@@ -1,6 +1,6 @@
 .img {
   background-color: white;
-  width: 55.34px;
+  width: 57px;
   height: 57px;
   border: 0.2px solid black;
   border-radius: 50%;
@@ -40,4 +40,23 @@ span{
   align-items: center;
   width: 50px;
   height: 50px;
+}
+p::first-letter {
+
+  text-transform: capitalize;
+  
+}
+.circle{
+  width: 45px;
+  height: 45px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: relative;
+  margin-top: .5rem;
+}
+.bic{
+  position: absolute;
+  width: inherit;
+  top: 50%;
+  transform: translateY(-50%);
 }
