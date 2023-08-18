@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { answers } from '../interfaces/questions';
 import { toSignal } from '@angular/core/rxjs-interop'
+import { environment } from 'src/environments/environment';
 
 
-const Res_API = 'http://localhost:5000/responses';
+const Res_API = `${environment.apiBaseUrl}/responses`;
 
 @Injectable({
   providedIn: 'root'
