@@ -36,19 +36,19 @@ export class ResetPasswordComponent {
         next:
           (data) => {
             this.forgotPasswordform.reset();
-            // this.successMessage = "Reset password link send to email sucessfully.";
+            this.successMessage = "Reset password link send to email sucessfully.";
             console.log('User can return to login')
-            // setTimeout(() => {
-            //   this.successMessage = null;
+            setTimeout(() => {
+              this.successMessage = null;
               this.router.navigate(['login']);
-            // }, 3000)
+            }, 3000)
           }
       }),
-      //  (error:any) => {
-      //     if (error.message) {
-      //       this.errorMessage = error.message;
-      //     }
-      //   }
+       (error:any) => {
+          if (error.message) {
+            this.errorMessage = error.message;
+          }
+        }
       console.log('Something went wrong.')
     } else {
       this.IsvalidForm = false;

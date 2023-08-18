@@ -173,7 +173,7 @@ exports.resetPassword = async (req, res) => {
 
     // Update the user's password and reset token
     user.password = bcrypt.hashSync(password, 10);
-   
+
 
     // Save the updated user
     await user.save();
@@ -183,3 +183,48 @@ exports.resetPassword = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
+
+
+
+// route.patch('/reset-password/:token', async (req, res) => {
+// Get the token from params
+
+// exports.resetPassword = (req, res) => {
+//   const resetLink = req.params.token;
+//   const newPassword = req.body;
+//   // if there is a token we need to decoded and check for no errors
+//   if (resetLink) {
+//     jwt.verify(resetLink, resetPassword, (error, decodedToken) => {
+//       if (error) {
+//         res.status().json({ message: 'Incorrect token or expired' })
+//       }
+//     })
+//   }
+
+//   try {
+//     // find user by the temporary token we stored earlier
+//     const [user] = filterBy({ resetLink });
+
+//     // if there is no user, send back an error
+//     if (!user) {
+//       res.status(400).json({ message: 'We could not find a match for this link' });
+//     }
+
+//     // otherwise we need to hash the new password  before saving it in the database
+//     const hashPassword = bcrypt.hashSync(newPassword.password, 8);
+//     newPassword.password = hashPassword;
+
+//     // update user credentials and remove the temporary link from database before saving
+//     const updatedCredentials = {
+//       password: newPassword.password,
+//       resetLink: null
+//     }
+
+//     update(user.id, updatedCredentials);
+//     res.status(200).json({ message: 'Password updated' });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// }
+
+

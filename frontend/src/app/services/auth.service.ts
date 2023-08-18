@@ -50,7 +50,7 @@ export class AuthService {
   }
  
   requestResetPassword(body: any): Observable<any> {
-    return this.http.post(`${AUTH_API}resetPassword`, body);
+    return this.http.put(`${AUTH_API}resetPassword`, body);
   }
 
   newPassword(email: any): Observable<any> {
