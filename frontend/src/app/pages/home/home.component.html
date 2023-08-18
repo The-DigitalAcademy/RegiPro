@@ -6,98 +6,185 @@
           {{ greetingUser }}
         </div>
         <div class="d-flex justify-content-center" style="font-size: 48px">
-<!--           <b>{{firstname}}</b> -->
-          <b>Thabisile</b>
-
+          <b>{{ currentUser.firstname | titlecase }}</b>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="profile-content" style="position: relative; top: 2.5rem">
         <div class="shadow p-4 mb-1 rounded">
-          <div class="col d-flex justify-content-evenly" style="position: relative; right: 8.4rem; top: 0.3rem">
-            <div class="img"><div class="svg-profile"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-            </svg></div></div>
+          <div
+            class="col d-flex justify-content-evenly"
+            style="position: relative; right: 8.4rem; top: 0.3rem"
+          >
+            <div class="img">
+              <div class="svg-profile">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-person"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
-          <div class="col d-flex justify-content-center" style="position: relative; bottom: 3rem; right: 1rem">
-<!--             <b>{{firstname}} {{lastname}}</b> -->
-            <b>Thabisile Skhosana</b>
+          <div
+            class="col d-flex justify-content-center"
+            style="position: relative; bottom: 3rem; right: 1rem"
+          >
+            <b
+              >{{ currentUser.firstname | titlecase }}
+              {{ currentUser.lastname | titlecase }}</b
+            >
           </div>
         </div>
-        <div class="col d-flex justify-content-center"
-          style="color: #ababab; position: inherit; bottom: 5rem; right: 1rem">
-<!--           {{email}} -->
-          thabisile@gmail.com
-
+        <div
+          class="col d-flex justify-content-center"
+          style="color: #ababab; position: inherit; bottom: 5rem; right: 1rem"
+        >
+          {{ currentUser.email | lowercase }}
         </div>
       </div>
     </div>
     <div class="row">
       <div class="user-business" style="position: relative; top: 4.9rem">
-        <div class="d-flex justify-content-start" style="
+        <div
+          class="d-flex justify-content-start"
+          style="
             font-size: 20px;
             color: #495250;
             position: relative;
             left: 1rem;
-          ">
+          "
+        >
           <b>Your Businesses</b>
         </div>
 
-        <div class="col d-flex justify-content-start" style="
-            border-radius: 11px;
-            position: relative;
-            left: 1rem;
-            top: 1rem;
-            border: 2px solid #748984;
-            padding: 20px;
-            width: 94.96px;
-            height: 119px;
-            justify-content: center;
-            background-color: #d9d9d9;
-            opacity: 0.5;
-          ">
-          <div class="img" style="position: relative; bottom: 25px;background-color: white !important;">
-            <div class="svg-container">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor" class="bi bi-plus"
-                viewBox="0 0 16">
+        <div
+          class="row row-cols-1 ml-4 mt-4"
+          style="position: relative; left: 1rem"
+        >
+          <div
+            class="col d-flex justify-content-center my-1 mx-1"
+            routerLink="/questions"
+            style="
+              width: 94.962px;
+              height: 119px;
+              border-radius: 12px;
+              border: 2px solid rgba(116, 137, 132, 0.64);
+              background: rgba(217, 217, 217, 0.5);
+            "
+          >
+            <div class="circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="currentColor"
+                class="bi bi-plus bic"
+                viewBox="0 0 16 16"
+              >
                 <path
-                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                />
               </svg>
+              <p
+                class="col text-center"
+                style="font-size: 12px; margin-top: 3.3rem; font-weight: 600"
+              >
+                Add New Business
+              </p>
             </div>
-            <span style="display: flex; justify-content: center;font-size: 10px; padding-top: 10px;">Add New Business</span>
+          </div>
+          <!-- new card -->
+          <div
+            class="col d-flex justify-content-center my-1 mx-1"
+            *ngFor="let res of responses.businesses(); let i = index"
+            style="
+              width: 94.962px;
+              height: 119px;
+              border-radius: 12px;
+              border: 2px solid rgba(116, 137, 132, 0.64);
+              background: rgba(217, 217, 217, 0.5);
+            "
+          >
+            <div class="circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-person bic"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                />
+              </svg>
+              <p
+                class="col text-center"
+                style="font-size: 12px; margin-top: 3.5rem; font-weight: 600"
+              >
+                {{res.name}}
+              </p>
+            </div>
           </div>
         </div>
-
-<!--         <div class="col d-flex justify-content-end" style="
-            border-radius: 11px;
-            border: 2px solid #748984;
-            padding: 20px;
-            width: 94.96px;
-            height: 119px;
-            position: relative;
-            left: 8rem;
-            bottom: 6.4rem;
-            background-color: #d9d9d9;
-            opacity: 0.5;
-          ">
-          <div class="img" style="position: relative; bottom: 15px; margin: 0"><div class="svg-profile"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-          </svg></div><span style="display:flex;justify-content: center center;font-size: 10px; padding-top: 10px;padding-left: 5px;">RegiPro Tech</span></div>
-        </div> -->
+<div class="new-business" ng>
         <div style="position: relative"></div>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="svg-about-logout" style="position: absolute; top: 40rem;left: 15px;">
-    <div class="d-flex  p-2 mb-1 vjustify-content-start" routerLink="/about"><div class="svg-about"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-    </svg></div>About App</div>
-    <div class="d-flex p-2 mb-1  justify-content-start"><div routerLink="/" class="svg-logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-    </svg></div>Log Out</div>
+  <div
+    class="svg-about-logout"
+    style="position: absolute; top: 40rem; left: 15px"
+  >
+    <div class="d-flex p-2 mb-1 vjustify-content-start" routerLink="/about">
+      <div class="svg-about">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-info-circle-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+          />
+        </svg>
+      </div>
+      About App
+    </div>
+    <div class="d-flex p-2 mb-1 justify-content-start" (click)="logout()">
+      <div class="svg-logout">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          />
+        </svg>
+      </div>
+      Log Out
+    </div>
   </div>
 </div>

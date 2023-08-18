@@ -1,3 +1,4 @@
+const nodemailer = require("nodemailer");
 const db = require("../models");
 const config = require("../config/authConfig");
 const User = db.user;
@@ -14,29 +15,53 @@ exports.signup = (req, res) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 10)
+    password: bcrypt.hashSync(req.body.password, 10),
   })
-    .then(user => {
+    .then((user) => {
       if (req.body.roles) {
         Role.findAll({
           where: {
             name: {
-              [Op.or]: req.body.roles
-            }
-          }
-        }).then(roles => {
+              [Op.or]: req.body.roles,
+            },
+          },
+        }).then((roles) => {
           user.setRoles(roles).then(() => {
-            res.send({ message: "User registered successfully!" });
+            var token = jwt.sign({ id: user.id }, config.secret, {
+              expiresIn: 86400, // 24 hours
+            });
+
+            res.status(201).send({
+              message: "User registered successfully!",
+              id: user.id,
+              email: user.email,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              roles: req.body.roles,
+              accessToken: token,
+            });
           });
         });
       } else {
         // user role = 1
-        user.setRoles([1]).then(() => {
-          res.send({ message: "User registered successfully!" });
+        user.setRoles([2]).then(() => {
+          var token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400, // 24 hours
+          });
+
+          res.status(201).send({
+            message: "User registered successfully!",
+            id: user.id,
+            email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            roles: ["user"], // You can customize this role if needed
+            accessToken: token,
+          });
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({ message: err.message });
     });
 };
@@ -44,10 +69,10 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email
-    }
+      email: req.body.email,
+    },
   })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
@@ -60,16 +85,16 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "Invalid Password!",
         });
       }
 
       var token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400 // 24 hours
+        expiresIn: 86400, // 24 hours
       });
 
       var authorities = [];
-      user.getRoles().then(roles => {
+      user.getRoles().then((roles) => {
         for (let i = 0; i < roles.length; i++) {
           authorities.push("ROLE_" + roles[i].name.toUpperCase());
         }
@@ -78,12 +103,113 @@ exports.signin = (req, res) => {
           firstname: user.firstname,
           lastname: user.lastname,
           email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname,
           roles: authorities,
-          accessToken: token
+          accessToken: token,
         });
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({ message: err.message });
     });
 };
+
+
+exports.signout = (req, res) => {
+  try {
+    req.session = null;
+    return res.status(200).send({ message: "You've been signed out!" });
+  } catch (err) {
+    this.next(err);
+  }
+};
+
+//forgot password
+exports.forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).send({ message: "User not found." });
+    }
+
+    // Create a transport using Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: "Gmail", // e.g., 'Gmail'
+      auth: {
+        user: "chalatsethabo@gmail.com",
+        pass: "xicawwpjgjwenprt",
+      },
+    });
+
+    let x = "http://localhost:5001/forgotPassword";
+    // Define the email options
+    const mailOptions = {
+      from: "chalatsethabo@gmail.com",
+      to: user.email,
+      subject: "Password Reset Request",
+      text: `To reset your password, click the following link: ${x}`,
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    return res
+      .status(200)
+      .send({ message: "Password reset email sent successfully" });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+// reset password
+// exports.resetPassword = async (req, res) => {
+//   try {
+//     const { id, password } = req.body;
+
+//     const user = await User.findOne({ where: { id } });
+//     if (!user) {
+//       return res.status(400).send({ message: "User not available" });
+//     }
+
+//     // Update the user's password and reset token
+//     user.password = bcrypt.hashSync(password, 10);
+   
+
+//     // Save the updated user
+//     await user.save();
+
+//     return res.status(200).send({ message: "Password reset successful" });
+//   } catch (err) {
+//     res.status(500).send({ message: err.message });
+//   }
+// };
+
+exports.resetPassword = async (req, res) => {
+  try {
+    const { id, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).send({ message: "Passwords do not match" });
+    }
+
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      return res.status(400).send({ message: "User not available" });
+    }
+
+    // Update the user's password and reset token
+    user.password = bcrypt.hashSync(password, 10);
+
+    // Save the updated user
+    await user.save();
+
+    return res.status(200).send({ message: "Password reset successful" });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+

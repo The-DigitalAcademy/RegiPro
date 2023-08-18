@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { user } from '../interfaces/user';
 
-const AUTH_API = 'https://regipro-api.onrender.com/auth/';
+const AUTH_API = 'http://localhost:5001/auth/';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(
+  login(email: string, password: string): Observable<user> {
+    return this.http.post<user>(
       AUTH_API + 'signin',
       {
         email,
@@ -25,8 +26,13 @@ export class AuthService {
     );
   }
 
-  register(firstname: string, lastname: string, email: string, password: string): Observable<any> {
-    return this.http.post(
+  register(
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string
+  ): Observable<user> {
+    return this.http.post<user>(
       AUTH_API + 'signup',
       {
         firstname,
@@ -38,7 +44,22 @@ export class AuthService {
     );
   }
 
+
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
+
+//   requestReset(body: any): Observable<any> {
+//     return this.http.post(`${AUTH_API}/req-reset-password`, body);
+//   }
+
+//   newPassword(body: any): Observable<any> {
+//     return this.http.post(`${AUTH_API}/new-password`, body);
+//   }
+
+//   ValidPasswordToken(body: any): Observable<any> {
+//     return this.http.post(`${AUTH_API}/valid-password-token`, body);
+
+//   }
 }
+

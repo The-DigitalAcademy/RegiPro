@@ -6,15 +6,18 @@ const { logger, logEvents } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
+
 const rateLimit = require("./middleware/loginLimiter");
 
 const PORT = process.env.PORT || 5000;
+
 
 console.log(process.env.NODE_ENV);
 
 app.use(logger);
 
 app.use(cors(corsOptions));
+
 
 app.use(rateLimit);
 
@@ -34,7 +37,11 @@ db.sequelize.sync({ force: false, alter: true, logging: true }).then(() => {
 // routes
 require("./routes/authRoutes")(app);
 require("./routes/userRoutes")(app);
+
+require("./routes/resRoutes")(app);
+
 require("./routes/openaiRoutes")(app);
+
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
@@ -54,8 +61,10 @@ app.all("*", (req, res) => {
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
+  console.log(`RegiPro Server is running on port: ${PORT}`);
+  
 });
+
 
 // function initial() {
 //     Role.create({

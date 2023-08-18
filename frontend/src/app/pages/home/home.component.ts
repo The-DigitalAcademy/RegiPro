@@ -1,49 +1,76 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import { user } from '../../interfaces/user';
+import { StorageService } from 'src/app/services/storage.service';
+import { Router } from '@angular/router';
+import { EventBusService } from 'src/app/_shared/event-bus.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { ResponsesService } from 'src/app/services/responses.service';
+import { answers } from 'src/app/interfaces/questions';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @Input()
-  user?: User;
+  
+  greetingUser: string = '';
+  businesses: answers[] = [];
+  currentUser!: user;
 
-  // firstname =localStorage.getItem("firstname");
-  // lastname = localStorage.getItem("lastname");
-  // email = localStorage.getItem("email");
+  eventBusSub?: Subscription;
 
-  users: any[] | undefined;
-
-  greetingUser: string = ''
-
-  constructor() { }
+  constructor(
+    private storageService: StorageService,
+    public router: Router,
+    private eventBusService: EventBusService,
+    private authService: AuthService,
+    public responses : ResponsesService
+  ) {}
 
   ngOnInit() {
-    this.greetingUser = this.greeting()
+    this.currentUser = this.storageService.getUser();
+    this.greetingUser = this.greeting();
 
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
   }
-    greeting() {
-      const date = new Date()
 
-const currentTime = date.getHours()
+  greeting() {
+    const date = new Date();
 
-// Morning 0 - 11
-// Noon 12 - 16
-// Evening 17 - 23
-if(currentTime >= 0 && currentTime <= 11) {
-    return `Good morning,`
-} else if (currentTime >=12 && currentTime <= 16) {
-    return `Good afternoon,`
-} else if (currentTime >= 17 && currentTime <= 23) {
-    return `Good evening, `
-} else {
-    return ''
-}
+    const currentTime = date.getHours();
+
+    // Morning 0 - 11
+    // Noon 12 - 16
+    // Evening 17 - 23
+    if (currentTime >= 0 && currentTime <= 11) {
+      return `Good morning,`;
+    } else if (currentTime >= 12 && currentTime <= 16) {
+      return `Good afternoon,`;
+    } else if (currentTime >= 17 && currentTime <= 23) {
+      return `Good evening, `;
+    } else {
+      return '';
     }
+  }
 
-    logout(){
-      localStorage.removeItem
-    }
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: (res) => {
+        this.storageService.clean();
+        this.router.navigate(['/']);
+        window.location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  addNewBusiness(){
+    
+  }
 }
