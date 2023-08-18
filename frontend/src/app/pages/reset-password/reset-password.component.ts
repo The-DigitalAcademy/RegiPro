@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,49 +9,49 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent {
-  forgotPasswordform: FormGroup;
+  resetForm: FormGroup;
   forbiddenEmails: any;
   errorMessage: string ="";
   successMessage: any;
-  IsvalidForm = true;
+  // IsvalidForm = false;
+  IsResetFormValid = true;
+  userId:any
 
-  constructor(private authService: AuthService, private router:Router) {
-    this.forgotPasswordform = new FormGroup({
+  constructor(private authService: AuthService, private router:Router,private activatedRoute: ActivatedRoute,) {
+    this.resetForm = new FormGroup({
+      email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
     });
   }
 
   onSubmit() {
-    if(this.forgotPasswordform.valid) {
-      return this.forgotPasswordform?.value
+    if(this.resetForm.valid) {
+      return this.resetForm?.value
     }
-  }
 
+  }
   resetPassword(form: any) {
-    console.log(form)
     if (form.valid) {
-      this.IsvalidForm = true;
-      this.authService.requestResetPassword(this.forgotPasswordform.value).subscribe({
-        next:
-          (data) => {
-            this.forgotPasswordform.reset();
-            this.successMessage = "Reset password link send to email sucessfully.";
-            console.log('User can return to login')
-            setTimeout(() => {
-              this.successMessage = null;
-              this.router.navigate(['login']);
-            }, 3000)
+      // this.IsvalidForm = true;
+      form.value['id'] = this.userId;
+      this.authService.resetPassword(form.value).subscribe({
+        next: (data) => {
+          this.resetForm.reset();
+          this.successMessage = data.message;
+          setTimeout(() => {
+            this.successMessage = null;
+            this.router.navigate(['login']);
+          }, 3000);
+        },
+        error: (err) => {
+          if (err.error.message) {
+            this.errorMessage = err.error.message;
           }
-      }),
-       (error:any) => {
-          if (error.message) {
-            this.errorMessage = error.message;
-          }
-        }
-      console.log('Something went wrong.')
+        },
+      });
     } else {
-      this.IsvalidForm = false;
+      this.resetForm.valid
     }
   }
 }

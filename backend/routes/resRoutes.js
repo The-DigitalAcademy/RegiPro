@@ -9,7 +9,7 @@ module.exports = function (app) {
       );
       next();
     });
-  
+
   app.post("/responses" , [authJWT.verifyToken], controller.createNewResponse);
   app.get("/responses" , [authJWT.verifyToken], controller.getAllResponses);
 };

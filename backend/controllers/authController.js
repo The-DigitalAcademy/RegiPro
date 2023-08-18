@@ -147,7 +147,8 @@ exports.forgotPassword = async (req, res) => {
       from: "chalatsethabo@gmail.com",
       to: user.email,
       subject: "Password Reset Request",
-      text: `To reset your password, click the following link: ${x}`,
+      text: `To reset your password, click the following link: `,
+      html:`<a href=${x}>Link to frontent</a>`
     };
 
     // Send the email
@@ -162,9 +163,36 @@ exports.forgotPassword = async (req, res) => {
 };
 
 // reset password
+// exports.resetPassword = async (req, res) => {
+//   try {
+//     const { id, password } = req.body;
+
+//     const user = await User.findOne({ where: { id } });
+//     if (!user) {
+//       return res.status(400).send({ message: "User not available" });
+//     }
+
+//     // Update the user's password and reset token
+//     user.password = bcrypt.hashSync(password, 10);
+   
+
+//     // Save the updated user
+//     await user.save();
+
+//     return res.status(200).send({ message: "Password reset successful" });
+//   } catch (err) {
+//     res.status(500).send({ message: err.message });
+//   }
+// };
+
 exports.resetPassword = async (req, res) => {
   try {
-    const { id, password } = req.body;
+    const { id,password, confirmPassword } = req.body;
+    // const id =  req.params.id
+
+    if (password !== confirmPassword) {
+      return res.status(400).send({ message: "Passwords do not match" });
+    }
 
     const user = await User.findOne({ where: { id } });
     if (!user) {
@@ -173,7 +201,7 @@ exports.resetPassword = async (req, res) => {
 
     // Update the user's password and reset token
     user.password = bcrypt.hashSync(password, 10);
-
+   
 
     // Save the updated user
     await user.save();
@@ -183,48 +211,3 @@ exports.resetPassword = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
-
-
-
-// route.patch('/reset-password/:token', async (req, res) => {
-// Get the token from params
-
-// exports.resetPassword = (req, res) => {
-//   const resetLink = req.params.token;
-//   const newPassword = req.body;
-//   // if there is a token we need to decoded and check for no errors
-//   if (resetLink) {
-//     jwt.verify(resetLink, resetPassword, (error, decodedToken) => {
-//       if (error) {
-//         res.status().json({ message: 'Incorrect token or expired' })
-//       }
-//     })
-//   }
-
-//   try {
-//     // find user by the temporary token we stored earlier
-//     const [user] = filterBy({ resetLink });
-
-//     // if there is no user, send back an error
-//     if (!user) {
-//       res.status(400).json({ message: 'We could not find a match for this link' });
-//     }
-
-//     // otherwise we need to hash the new password  before saving it in the database
-//     const hashPassword = bcrypt.hashSync(newPassword.password, 8);
-//     newPassword.password = hashPassword;
-
-//     // update user credentials and remove the temporary link from database before saving
-//     const updatedCredentials = {
-//       password: newPassword.password,
-//       resetLink: null
-//     }
-
-//     update(user.id, updatedCredentials);
-//     res.status(200).json({ message: 'Password updated' });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// }
-
-

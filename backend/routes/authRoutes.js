@@ -21,7 +21,7 @@ module.exports = function(app) {
   );
 
   /**
- * @openapi
+ * @signup
  '/auth/signin':
  *  post:
  *     tags:
@@ -51,6 +51,8 @@ module.exports = function(app) {
  *        description: Internal Server Error
  */
   app.post("/auth/signin", controller.signin);
+
+  
   app.post("/auth/signout", controller.signout);
   //
 app.post('/auth/forgotPassword', controller.forgotPassword);
