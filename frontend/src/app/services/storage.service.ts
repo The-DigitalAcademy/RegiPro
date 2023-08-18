@@ -63,6 +63,15 @@ export class StorageService {
     if (answers) {
       return JSON.parse(answers);
     }
-    return null;
+    return answers;
+  }
+
+  public getAnswerById(answerId: number): any {
+    const answers = this.getAnswers();
+    if (answers) {
+      const answer = answers.find((answer:any) => answer.id === answerId);
+      return answer || null;
+    }
+    return answers;
   }
 }

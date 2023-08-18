@@ -46,6 +46,7 @@ export class ResponsesService {
 
     return this.http.get<answers[]>( `${Res_API}`,  httpOptions);
   }
+  
 
   public businesses = toSignal<answers[]>(this.getResponses());
 

@@ -14,9 +14,9 @@ export class RegenerateComponent implements OnInit {
   constructor(private storageService: StorageService) { }
 
   ngOnInit() {
+    const answerId: any = 1
     this.businesses = this.storageService.getAnswers();
     console.log(this.businesses);
     
-
   }
 }
