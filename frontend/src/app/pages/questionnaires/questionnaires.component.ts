@@ -182,7 +182,7 @@ export class QuestionnairesComponent implements OnInit {
         this.addBusiness(data.response)
         console.log(data);
         this.toast.success({detail:"SUCCESS",summary: data.message, duration:5000});
-        this.route.navigate(['/home']);
+        this.route.navigate(['/steps']);
       },
       error: err => {
         this.errorMessage = err.error.message;

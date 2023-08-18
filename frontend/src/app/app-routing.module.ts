@@ -15,6 +15,7 @@ import { BusinessProductComponent } from './pages/business-product/business-prod
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
+import { StepsComponent } from './pages/steps/steps.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'regenerate/:bId', component:RegenerateComponent}
+  {path: 'regenerate/:bId', component:RegenerateComponent},
+  {path: 'steps', component:StepsComponent}
 
 ];
 
