@@ -175,14 +175,14 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).send({ message: "Passwords do not match" });
     }
 
-    const user = await User.findOne({ where: {email:email}  });
+    const user = await User.findOne({ where: { email: email } });
     if (!user) {
       return res.status(400).send({ message: "User not available" });
     }
 
     // Update the user's password and reset token
     user.password = bcrypt.hashSync(password, 10);
-   
+
 
     // Save the updated user
     await user.save();
