@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-const apiUrl = 'http://localhost:5000/ai/';
+const apiUrl =`${environment.apiBaseUrl}/ai/`;
+
 
 const httpOptions = {
   headers: new HttpHeaders({
