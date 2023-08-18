@@ -12,7 +12,6 @@ export class ResetPasswordComponent {
   resetForm: FormGroup;
   forbiddenEmails: any;
   errorMessage: string = "";
-  successMessage: any;
   IsvalidForm = true;
   IsResetFormValid = true;
   email: any
@@ -29,18 +28,18 @@ export class ResetPasswordComponent {
     if (this.resetForm.valid) {
       return this.resetForm?.value
     }
-
   }
+
+
   resetPassword(form: any) {
     if (form.valid) {
       this.IsvalidForm = true;
       this.authService.resetPassword(form.value).subscribe({
         next: (data) => {
           this.resetForm.reset();
-          this.successMessage = "Reset password link send to email sucessfully.";
-          console.log(data,"succesfully")
+          console.log(data)
           setTimeout(() => {
-            this.successMessage = null;
+            // this.successMessage = null;
             this.router.navigate(['/login']);
           }, 3000);
         },
