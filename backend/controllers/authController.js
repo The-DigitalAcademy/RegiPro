@@ -141,7 +141,7 @@ exports.forgotPassword = async (req, res) => {
       },
     });
 
-    let resetLink = "http://localhost:5001/forgotPassword";
+    let resetLink = "http://localhost:4200/reset-password";
     // Define the email options
     const mailOptions = {
       from: "chalatsethabo@gmail.com",
