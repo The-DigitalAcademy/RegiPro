@@ -11,37 +11,36 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ResetPasswordComponent {
   resetForm: FormGroup;
   forbiddenEmails: any;
-  errorMessage: string ="";
+  errorMessage: string = "";
   successMessage: any;
-  // IsvalidForm = false;
+  IsvalidForm = true;
   IsResetFormValid = true;
-  userId:any
+  email: any
 
-  constructor(private authService: AuthService, private router:Router,private activatedRoute: ActivatedRoute,) {
+  constructor(private authService: AuthService, private router: Router) {
     this.resetForm = new FormGroup({
-      email: new FormControl('', [Validators.required,Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
     });
   }
 
   onSubmit() {
-    if(this.resetForm.valid) {
+    if (this.resetForm.valid) {
       return this.resetForm?.value
     }
 
   }
   resetPassword(form: any) {
     if (form.valid) {
-      // this.IsvalidForm = true;
-      form.value['id'] = this.userId;
+      this.IsvalidForm = true;
       this.authService.resetPassword(form.value).subscribe({
         next: (data) => {
           this.resetForm.reset();
-          this.successMessage = data.message;
+          this.successMessage = "Reset password link send to email sucessfully.";
           setTimeout(() => {
             this.successMessage = null;
-            this.router.navigate(['login']);
+            this.router.navigate(['/login']);
           }, 3000);
         },
         error: (err) => {
@@ -51,7 +50,7 @@ export class ResetPasswordComponent {
         },
       });
     } else {
-      this.resetForm.valid
+      this.IsvalidForm = false
     }
   }
 }

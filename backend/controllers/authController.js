@@ -147,10 +147,6 @@ exports.forgotPassword = async (req, res) => {
       from: "chalatsethabo@gmail.com",
       to: user.email,
       subject: "Password Reset Request",
-<<<<<<< HEAD
-      text: `To reset your password, click the following link: `,
-      html:`<a href=${x}>Link to frontent</a>`
-=======
       // text: `To reset your password, click the following link: ${x}`,
       html: `
       <p>Hello,</p>
@@ -158,7 +154,6 @@ exports.forgotPassword = async (req, res) => {
       <a href="${resetLink}">${resetLink}</a>
       <p>If you didn't request this, please ignore this email.</p>
     `,
->>>>>>> 9e35da614995166995cc99e2c4b79c7506b3d0f0
     };
 
     // Send the email
@@ -174,18 +169,13 @@ exports.forgotPassword = async (req, res) => {
 // reset password
 exports.resetPassword = async (req, res) => {
   try {
-<<<<<<< HEAD
-    const { id,password, confirmPassword } = req.body;
-    // const id =  req.params.id
-=======
     const { email, password, confirmPassword } = req.body;
->>>>>>> 9e35da614995166995cc99e2c4b79c7506b3d0f0
 
     if (password !== confirmPassword) {
       return res.status(400).send({ message: "Passwords do not match" });
     }
 
-    const user = await User.findOne({ where:  {email:email}  });
+    const user = await User.findOne({ where: {email:email}  });
     if (!user) {
       return res.status(400).send({ message: "User not available" });
     }
