@@ -3,7 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { user } from 'src/app/interfaces/user';
-
+import { NgToastService } from 'ng-angular-popup';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-register',
@@ -22,12 +23,15 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  message = '';
 
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private toast: NgToastService,
+    public loaderService: LoaderService
     ) { }
 
   ngOnInit(): void {
@@ -36,11 +40,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.loaderService.show(); // Show the loader
     const { firstname, lastname, email, password } = this.form;
 
     this.authService.register(firstname, lastname, email, password).subscribe({
       next: data => {
-        this.isSuccessful = true;
+        // this.isSuccessful = true;
         this.storageService.saveUser(data)
 
         this.loggedUser = data;
@@ -50,16 +55,20 @@ export class RegisterComponent implements OnInit {
         // Store the token in local storage
         localStorage.setItem('accessToken', token);
 
-        setTimeout(()=> {
-          this.router.navigate(['/onboarding'])
-        }, 1000)
+        // setTimeout(()=> {
+        //   this.router.navigate(['/onboarding'])
+        // }, 1000)
+        this.toast.success({detail:"SUCCESS",summary:'Your registration is successful!',duration:5000});
         this.isSignUpFailed = false;
         this.storageService.getUser()
-
+        this.router.navigate(['/onboarding'])
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+      },
+      complete: () => {
+        this.loaderService.hide(); // Hide the loader
       }
     });
   }

@@ -12,6 +12,7 @@ module.exports = function (app) {
   
   app.post("/responses" , [authJWT.verifyToken], controller.createNewResponse);
   app.get("/responses" , [authJWT.verifyToken], controller.getAllResponses);
+  app.get("/responses/:id", [authJWT.verifyToken], controller.getResponseById);
 
   // app.get('/responses/:userId', async (req, res)  => {
   //   try {

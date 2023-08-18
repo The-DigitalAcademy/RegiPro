@@ -47,6 +47,23 @@ export class ResponsesService {
     return this.http.get<answers[]>( `${Res_API}`,  httpOptions);
   }
 
+  getResponseById(id: number): Observable<answers> {
+    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const headersConfig: any = {
+      'Content-Type': 'application/json'
+    };
+
+    if (token) {
+      headersConfig['x-access-token'] = token;
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders(headersConfig)
+    };
+
+    return this.http.get<answers>(`${Res_API}/${id}`, httpOptions);
+  }
+
   public businesses = toSignal<answers[]>(this.getResponses());
 
 }

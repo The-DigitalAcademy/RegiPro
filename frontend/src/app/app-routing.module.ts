@@ -14,6 +14,7 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent}
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'regenerate/:bId', component:RegenerateComponent}
 
 ];
 

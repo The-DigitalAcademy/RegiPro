@@ -24,6 +24,7 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
+import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     AllSetComponent,
     ForgotPasswordComponent,
     LoadingIndicatorComponent,
+    RegenerateComponent,
   ],
   imports: [
     BrowserModule,

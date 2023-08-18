@@ -35,6 +35,7 @@ export class HomeComponent {
     this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
 
+    
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });

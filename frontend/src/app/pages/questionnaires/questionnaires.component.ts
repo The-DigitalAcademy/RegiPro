@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -52,7 +53,8 @@ export class QuestionnairesComponent implements OnInit {
     private storageService: StorageService,
     private route: Router,
     private respService: ResponsesService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
@@ -179,13 +181,15 @@ export class QuestionnairesComponent implements OnInit {
       next: data => {
         this.addBusiness(data.response)
         console.log(data);
-        alert(data.message)
+        this.toast.success({detail:"SUCCESS",summary: data.message, duration:5000});
         this.route.navigate(['/home']);
       },
       error: err => {
         this.errorMessage = err.error.message;
+        
         console.log(this.errorMessage);
-        alert(this.errorMessage)
+
+        this.toast.error({detail:"ERROR",summary: this.errorMessage, sticky:true});
       },
       complete: () => {
         this.loaderService.hide(); // Hide the loader
