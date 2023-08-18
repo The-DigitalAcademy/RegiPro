@@ -11,6 +11,8 @@ import { answers } from 'src/app/interfaces/questions';
 import { Router } from '@angular/router';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
+import { LoaderService } from 'src/app/services/loader.service';
+
 
 @Component({
   selector: 'app-questionnaires',
@@ -49,7 +51,8 @@ export class QuestionnairesComponent implements OnInit {
     private busService: BusinessService,
     private storageService: StorageService,
     private route: Router,
-    private respService: ResponsesService
+    private respService: ResponsesService,
+    public loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -162,6 +165,7 @@ export class QuestionnairesComponent implements OnInit {
     this.submitted = true;
 
     const registered = "no";
+    this.loaderService.show(); // Show the loader
 
     this.questionsArray.push({ isRegistered: registered });
 
@@ -182,11 +186,12 @@ export class QuestionnairesComponent implements OnInit {
         this.errorMessage = err.error.message;
         console.log(this.errorMessage);
         alert(this.errorMessage)
+      },
+      complete: () => {
+        this.loaderService.hide(); // Hide the loader
       }
     })
-    this.step = this.step + 1;
-
-    this.route.navigate(['/home']);
+    // this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
   }

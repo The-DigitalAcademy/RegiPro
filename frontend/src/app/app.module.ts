@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { NgToastModule } from 'ng-angular-popup'
 
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -20,6 +23,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     BusinessPlanComponent,
     AllSetComponent,
     ForgotPasswordComponent,
+    LoadingIndicatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,10 +48,11 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     FormsModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgToastModule
 
   ],
-  providers: [httpInterceptorProviders,AuthGuard],
+  providers: [httpInterceptorProviders,AuthGuard ,{provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

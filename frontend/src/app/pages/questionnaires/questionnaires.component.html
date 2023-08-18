@@ -465,3 +465,4 @@
 <div *ngIf="step == 6">
     <app-cips-num></app-cips-num>
 </div>
+<app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
