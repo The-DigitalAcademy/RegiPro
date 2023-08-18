@@ -162,9 +162,35 @@ exports.forgotPassword = async (req, res) => {
 };
 
 // reset password
+// exports.resetPassword = async (req, res) => {
+//   try {
+//     const { id, password } = req.body;
+
+//     const user = await User.findOne({ where: { id } });
+//     if (!user) {
+//       return res.status(400).send({ message: "User not available" });
+//     }
+
+//     // Update the user's password and reset token
+//     user.password = bcrypt.hashSync(password, 10);
+   
+
+//     // Save the updated user
+//     await user.save();
+
+//     return res.status(200).send({ message: "Password reset successful" });
+//   } catch (err) {
+//     res.status(500).send({ message: err.message });
+//   }
+// };
+
 exports.resetPassword = async (req, res) => {
   try {
-    const { id, password } = req.body;
+    const { id, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).send({ message: "Passwords do not match" });
+    }
 
     const user = await User.findOne({ where: { id } });
     if (!user) {
@@ -173,7 +199,6 @@ exports.resetPassword = async (req, res) => {
 
     // Update the user's password and reset token
     user.password = bcrypt.hashSync(password, 10);
-   
 
     // Save the updated user
     await user.save();
@@ -183,3 +208,4 @@ exports.resetPassword = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
+
