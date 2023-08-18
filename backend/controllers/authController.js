@@ -141,14 +141,24 @@ exports.forgotPassword = async (req, res) => {
       },
     });
 
-    let x = "http://localhost:5001/forgotPassword";
+    let resetLink = "http://localhost:5001/forgotPassword";
     // Define the email options
     const mailOptions = {
       from: "chalatsethabo@gmail.com",
       to: user.email,
       subject: "Password Reset Request",
+<<<<<<< HEAD
       text: `To reset your password, click the following link: `,
       html:`<a href=${x}>Link to frontent</a>`
+=======
+      // text: `To reset your password, click the following link: ${x}`,
+      html: `
+      <p>Hello,</p>
+      <p>To reset your password, click the following link:</p>
+      <a href="${resetLink}">${resetLink}</a>
+      <p>If you didn't request this, please ignore this email.</p>
+    `,
+>>>>>>> 9e35da614995166995cc99e2c4b79c7506b3d0f0
     };
 
     // Send the email
@@ -161,40 +171,21 @@ exports.forgotPassword = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
-
 // reset password
-// exports.resetPassword = async (req, res) => {
-//   try {
-//     const { id, password } = req.body;
-
-//     const user = await User.findOne({ where: { id } });
-//     if (!user) {
-//       return res.status(400).send({ message: "User not available" });
-//     }
-
-//     // Update the user's password and reset token
-//     user.password = bcrypt.hashSync(password, 10);
-   
-
-//     // Save the updated user
-//     await user.save();
-
-//     return res.status(200).send({ message: "Password reset successful" });
-//   } catch (err) {
-//     res.status(500).send({ message: err.message });
-//   }
-// };
-
 exports.resetPassword = async (req, res) => {
   try {
+<<<<<<< HEAD
     const { id,password, confirmPassword } = req.body;
     // const id =  req.params.id
+=======
+    const { email, password, confirmPassword } = req.body;
+>>>>>>> 9e35da614995166995cc99e2c4b79c7506b3d0f0
 
     if (password !== confirmPassword) {
       return res.status(400).send({ message: "Passwords do not match" });
     }
 
-    const user = await User.findOne({ where: { id } });
+    const user = await User.findOne({ where:  {email:email}  });
     if (!user) {
       return res.status(400).send({ message: "User not available" });
     }
