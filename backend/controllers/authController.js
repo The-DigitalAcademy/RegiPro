@@ -141,7 +141,7 @@ exports.forgotPassword = async (req, res) => {
       },
     });
 
-    let resetLink = "http://localhost:5001/forgotPassword";
+    let resetLink = "http://localhost:4200/reset-password";
     // Define the email options
     const mailOptions = {
       from: "chalatsethabo@gmail.com",
@@ -175,7 +175,7 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).send({ message: "Passwords do not match" });
     }
 
-    const user = await User.findOne({ where: {email: email });
+    const user = await User.findOne({ where:  {email:email}  });
     if (!user) {
       return res.status(400).send({ message: "User not available" });
     }
