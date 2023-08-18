@@ -12,6 +12,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+
 import { CipsNumComponent } from './pages/cips-num/cips-num.component';
 import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -19,6 +20,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+
+import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
+
 
 @NgModule({
   declarations: [
@@ -29,12 +33,16 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     ChooseComponent,
     HomeComponent,
     OnboardingComponent,
+
     CipsNumComponent,
     QuestionnairesComponent,
     AboutComponent,
     BusinessPlanComponent,
     AllSetComponent,
     ForgotPasswordComponent,
+
+    GenerateBusinessPlanComponent,
+
   ],
   imports: [
     BrowserModule,
