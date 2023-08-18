@@ -21,14 +21,11 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-  app.post("/auth/signin", controller.signin);
+  app.post("/auth/signin", loginLimiter, controller.signin);
 
   
   app.post("/auth/signout", controller.signout);
   //
 app.post('/auth/forgotPassword', controller.forgotPassword);
 app.put('/auth/resetPassword', controller.resetPassword);
-};
-
-  app.post("/auth/signin", loginLimiter , controller.signin);
 };

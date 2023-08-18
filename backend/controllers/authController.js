@@ -55,7 +55,7 @@ exports.signup = (req, res) => {
             email: user.email,
             firstname: user.firstname,
             lastname: user.lastname,
-            roles: ["user"], // You can customize this role if needed
+            roles: ["moderator"], // You can customize this role if needed
             accessToken: token,
           });
         });
