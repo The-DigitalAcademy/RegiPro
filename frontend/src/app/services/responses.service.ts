@@ -5,7 +5,7 @@ import { answers } from '../interfaces/questions';
 import { toSignal } from '@angular/core/rxjs-interop'
 
 
-const Res_API = 'http://localhost:5001/responses';
+const Res_API = 'http://localhost:5000/responses';
 
 @Injectable({
   providedIn: 'root'

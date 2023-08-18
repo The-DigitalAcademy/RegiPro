@@ -29,7 +29,7 @@ const Role = db.role;
 
 // db.sequelize.sync();
 // Synchronize Database Schema (No Drop, No Alter)
-db.sequelize.sync({ force: false,  logging: true }).then(() => {
+db.sequelize.sync({ force: false, alter: true,  logging: true }).then(() => {
   console.log("Synchronize Database Schema (No Drop, No Alter)");
   initial(); // Run the initial function after schema synchronization
 });
