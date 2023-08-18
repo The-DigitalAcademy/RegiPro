@@ -38,6 +38,7 @@ export class ResetPasswordComponent {
         next: (data) => {
           this.resetForm.reset();
           this.successMessage = "Reset password link send to email sucessfully.";
+          console.log(data,"succesfully")
           setTimeout(() => {
             this.successMessage = null;
             this.router.navigate(['/login']);
