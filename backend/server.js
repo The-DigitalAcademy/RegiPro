@@ -6,7 +6,7 @@ const { logger, logEvents } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
-con
+const rateLimit = require("./middleware/loginLimiter");
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,6 +16,8 @@ app.use(logger);
 
 app.use(cors(corsOptions));
 
+app.use(rateLimit);
+
 app.use(express.json());
 
 // database
@@ -24,7 +26,7 @@ const Role = db.role;
 
 // db.sequelize.sync();
 // force: true will drop the table if it already exists
-db.sequelize.sync({ logging: true }).then(() => {
+db.sequelize.sync({ force: false, alter: true, logging: true }).then(() => {
   console.log("Drop and Resync Database with { force: true }");
   // initial();
 });
