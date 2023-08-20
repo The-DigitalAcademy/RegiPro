@@ -23,22 +23,11 @@ import { NgToastService } from 'ng-angular-popup';
 export class QuestionnairesComponent implements OnInit {
   step: any = 1;
 
-  Agriculture = 'Agriculture';
-  Fitness = 'Fitness & Wellness';
-  Retail = 'Retail';
-  Manufacturing = 'Manufacturing';
-  Entertainment = 'Entertainment';
-  Property = 'Property';
-  Marketing = 'Marketing';
-
   errorMessage = '';
 
-  data:any;
   questionsArray: answers[] = [];
 
   currentUser: any;
-
-  busDescription = new FormControl();
 
   form1: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -151,7 +140,9 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   previous() {
+    this.questionsArray.pop();
     this.step = this.step - 1;
+    console.log("remaining answers", this.questionsArray)
   }
 
   get f(): { [key: string]: AbstractControl } {
