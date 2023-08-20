@@ -1,3 +1,5 @@
+<app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
+
 <a [routerLink]="['/home']">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle"
         viewBox="0 0 16 16">
@@ -6,7 +8,7 @@
     </svg>
 </a>
 <div class="text-container">
-    <h6>RegiPro</h6>
+    <h6>{{bus.name}}</h6>
     <!-- <div *ngFor="let item of data"> -->
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">business name</label>
