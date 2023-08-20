@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'generate', component: GenerateBusinessPlanComponent}
 ]
 
 

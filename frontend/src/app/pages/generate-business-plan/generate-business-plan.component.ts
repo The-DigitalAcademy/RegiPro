@@ -6,18 +6,20 @@ import { OpenaiService } from 'src/app/services/openai.service';
 @Component({
   selector: 'app-generate-business-plan',
   templateUrl: './generate-business-plan.component.html',
-  styleUrls: ['./generate-business-plan.component.scss']
+  styleUrls: ['./generate-business-plan.component.scss'],
 })
 export class GenerateBusinessPlanComponent {
-
   prompt: any = {
     name: null,
     industry: null,
-    description: null
+    description: null,
   };
   prompt2: string = '';
   answer: string = '';
   isLoading: boolean = false;
+  content: string = "";
+  section: string = "";
+
 
   constructor(private http: HttpClient, private openaiService: OpenaiService) {}
 
@@ -43,23 +45,21 @@ export class GenerateBusinessPlanComponent {
   // }
 
   handleSubmit() {
-    const { name, industry, description } = this.prompt
-    this.openaiService.generate(name, industry, description).subscribe(res => {
-      console.log(res)
-      this.answer = res.text.trim();
-      
+    const { name, industry, description } = this.prompt;
+    this.openaiService
+      .generate(name, industry, description)
+      .subscribe((res) => {
+        const cleanedJsonString = res.text.replace(/\n/g, '')
+       const items = JSON.parse(cleanedJsonString)
+        items.forEach(function(item: any) {
+          console.log(item)
+        });
 
-    })
+      });
   }
-
 
   handleChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.prompt = target.value;
   }
-
-}  
-
-
-
-
+}
