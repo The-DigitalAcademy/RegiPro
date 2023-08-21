@@ -16,6 +16,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+
 import { CipsNumComponent } from './pages/cips-num/cips-num.component';
 import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -26,6 +27,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { StepsComponent } from './pages/steps/steps.component';
     ChooseComponent,
     HomeComponent,
     OnboardingComponent,
+
     CipsNumComponent,
     QuestionnairesComponent,
     AboutComponent,
@@ -45,6 +49,7 @@ import { StepsComponent } from './pages/steps/steps.component';
     LoadingIndicatorComponent,
     RegenerateComponent,
     StepsComponent,
+    GenerateBusinessPlanComponent
   ],
   imports: [
     BrowserModule,

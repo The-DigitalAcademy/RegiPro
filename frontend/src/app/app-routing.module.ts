@@ -16,6 +16,7 @@ import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -34,8 +35,9 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'regenerate/:bId', component:RegenerateComponent},
   {path: 'steps', component:StepsComponent}
+  {path: 'generate', component: GenerateBusinessPlanComponent}
+]
 
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

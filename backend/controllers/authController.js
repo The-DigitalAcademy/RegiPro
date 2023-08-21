@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 const db = require("../models");
 const config = require("../config/authConfig");
 const User = db.user;
@@ -55,7 +55,7 @@ exports.signup = (req, res) => {
             email: user.email,
             firstname: user.firstname,
             lastname: user.lastname,
-            roles: ["user"], // You can customize this role if needed
+            roles: ["moderator"], // You can customize this role if needed
             accessToken: token,
           });
         });
@@ -100,6 +100,8 @@ exports.signin = (req, res) => {
         }
         res.status(200).send({
           id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
           email: user.email,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -112,6 +114,7 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
 
 exports.signout = (req, res) => {
   try {
@@ -129,33 +132,33 @@ exports.forgotPassword = async (req, res) => {
 
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      return res.status(404).send({ message: 'User not found.' });
+      return res.status(404).send({ message: "User not found." });
     }
-
- 
 
     // Create a transport using Nodemailer
     const transporter = nodemailer.createTransport({
-      service: 'Gmail', // e.g., 'Gmail'
+      service: "Gmail", // e.g., 'Gmail'
       auth: {
-        user: 'chalatsethabo@gmail.com',
-        pass: 'xicawwpjgjwenprt',
+        user: "chalatsethabo@gmail.com",
+        pass: "xicawwpjgjwenprt",
       },
     });
 
-    let x = "http://localhost:5001/forgotPassword"
+    let x = "http://localhost:5001/forgotPassword";
     // Define the email options
     const mailOptions = {
-      from: 'chalatsethabo@gmail.com',
+      from: "chalatsethabo@gmail.com",
       to: user.email,
-      subject: 'Password Reset Request',
+      subject: "Password Reset Request",
       text: `To reset your password, click the following link: ${x}`,
     };
 
     // Send the email
     await transporter.sendMail(mailOptions);
 
-    return res.status(200).send({ message: 'Password reset email sent successfully' });
+    return res
+      .status(200)
+      .send({ message: "Password reset email sent successfully" });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -164,27 +167,49 @@ exports.forgotPassword = async (req, res) => {
 // reset password
 // exports.resetPassword = async (req, res) => {
 //   try {
-//     const { userId, newPassword } = req.body;
+//     const { id, password } = req.body;
 
-//     const user = await User.findOne({ where: { userId} });
+//     const user = await User.findOne({ where: { id } });
 //     if (!user) {
-//       return res.status(400).send({ message: 'User not available' });
+//       return res.status(400).send({ message: "User not available" });
 //     }
+
 //     // Update the user's password and reset token
-//     user.password = bcrypt.hashSync(newPassword, 10);
-//     user.passwordResetToken = null;
-//     user.passwordResetType = null;
+//     user.password = bcrypt.hashSync(password, 10);
+   
+
+//     // Save the updated user
 //     await user.save();
 
-//     return res.status(200).send({ message: 'Password reset successful' });
+//     return res.status(200).send({ message: "Password reset successful" });
 //   } catch (err) {
 //     res.status(500).send({ message: err.message });
 //   }
 // };
 
+exports.resetPassword = async (req, res) => {
+  try {
+    const { id, password, confirmPassword } = req.body;
 
+    if (password !== confirmPassword) {
+      return res.status(400).send({ message: "Passwords do not match" });
+    }
 
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      return res.status(400).send({ message: "User not available" });
+    }
 
+    // Update the user's password and reset token
+    user.password = bcrypt.hashSync(password, 10);
 
+    // Save the updated user
+    await user.save();
+
+    return res.status(200).send({ message: "Password reset successful" });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
 
 
