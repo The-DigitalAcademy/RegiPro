@@ -50,17 +50,16 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
 
-//   requestReset(body: any): Observable<any> {
-//     return this.http.post(`${AUTH_API}/req-reset-password`, body);
-//   }
+  resetPassword(body:any): Observable<any> {
+    return this.http.put(`${AUTH_API}resetPassword`, body);
+  }
 
-//   newPassword(body: any): Observable<any> {
-//     return this.http.post(`${AUTH_API}/new-password`, body);
-//   }
+  newPassword(email: any): Observable<any> {
+    return this.http.post(`${AUTH_API}forgotPassword`, email);
+  }
 
-//   ValidPasswordToken(body: any): Observable<any> {
-//     return this.http.post(`${AUTH_API}/valid-password-token`, body);
-
-//   }
+  // resetPassword(id: string, password: string, confirmPassword: string): Observable<any> {
+  //   return this.http.post(`${AUTH_API}resetPassword`, { id, password, confirmPassword });
+  // }
 }
 

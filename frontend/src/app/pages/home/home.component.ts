@@ -45,10 +45,7 @@ export class HomeComponent {
     const date = new Date();
 
     const currentTime = date.getHours();
-
-    // Morning 0 - 11
-    // Noon 12 - 16
-    // Evening 17 - 23
+    
     if (currentTime >= 0 && currentTime <= 11) {
       return `Good morning,`;
     } else if (currentTime >= 12 && currentTime <= 16) {
@@ -64,7 +61,7 @@ export class HomeComponent {
     this.authService.logout().subscribe({
       next: (res) => {
         this.storageService.clean();
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
         window.location.reload();
       },
       error: (err) => {

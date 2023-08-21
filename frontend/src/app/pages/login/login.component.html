@@ -1,44 +1,23 @@
 <div class="container-sm">
   <div class="form-container mx-auto">
-      <div class="text-center">
-          <h2>Sign In</h2>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <form
-          *ngIf="!isLoggedIn"
-          name="form"
-          (ngSubmit)="f.form.valid && onSubmit()"
-          #f="ngForm"
-          novalidate
-        >
+    <div class="text-center">
+      <h2>Sign In</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="mb-3">
             <label for="email">Email</label>
-            <input
-              type="text"
-              class="form-control"
-              name="email"
-              [(ngModel)]="form.email"
-              required
-              #email="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
-            />
+            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
             <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
               Email is required!
             </div>
           </div>
           <div class="mb-3">
             <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              name="password"
-              [(ngModel)]="form.password"
-              required
-              minlength="6"
-              #password="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
-            />
+            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+              minlength="6" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
             <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
               <div *ngIf="password.errors['required']">Password is required</div>
               <div *ngIf="password.errors['minlength']">
@@ -46,16 +25,18 @@
               </div>
             </div>
           </div>
+          <div class="mb-3 d-flex justify-content-end">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
           <div class="mb-3">
-            <button type="submit" class="btn"
-            style="text-decoration: white;"
-            >
+            <button type="submit" class="btn" style="text-decoration: white;">
               Sign In
             </button>
             <div class="flex flex-col items-center mt-5">
               <p class="mt-1 text-xs font-light text-gray-500">
-                Don't have an account?&nbsp;<a routerLink="/register" class="ml-1 font-medium " style="color: #689498;">Sign Up</a>
-                </p>
+                Don't have an account?&nbsp;<a routerLink="/register" class="ml-1 font-medium "
+                  style="color: #689498;">Sign Up</a>
+              </p>
             </div>
           </div>
           <div class="mb-3">
@@ -65,11 +46,13 @@
           </div>
         </form>
 
-        </div>
-
       </div>
+
   </div>
 </div>
 <app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
 
 
+    </div>
+  </div>
+</div>

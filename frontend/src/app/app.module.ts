@@ -24,6 +24,10 @@ import { AboutComponent } from './pages/about/about.component';
 import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
+
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
@@ -46,10 +50,15 @@ import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/ge
     BusinessPlanComponent,
     AllSetComponent,
     ForgotPasswordComponent,
+
+    ResetPasswordComponent,
+    ResendLinkComponent,
+
     LoadingIndicatorComponent,
     RegenerateComponent,
     StepsComponent,
     GenerateBusinessPlanComponent
+
   ],
   imports: [
     BrowserModule,
