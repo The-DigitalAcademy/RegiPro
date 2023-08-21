@@ -38,11 +38,9 @@ const routes: Routes = [
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'resend-link', component: ResendLinkComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
-
   {path: 'regenerate/:bId', component:RegenerateComponent},
   {path: 'steps', component:StepsComponent},
   {path: 'generate', component: GenerateBusinessPlanComponent}
