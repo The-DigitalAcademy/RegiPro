@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'choose', component: ChooseComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'onboarding', component: OnboardingComponent, canActivate: [AuthGuard] },
+  { path: 'onboarding', component: OnboardingComponent },
   { path: 'business-plan', component: BusinessPlanComponent },
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
