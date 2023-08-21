@@ -1,0 +1,61 @@
+import { ValidationErrors, ValidatorFn, AbstractControl } from "@angular/forms";
+
+export class PasswordValidators {
+
+  static patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) {
+        // If the control value is empty, return no error.
+        return null;
+      }
+
+      // Test the value of the control against the RegExp supplied.
+      const valid = regex.test(control.value);
+
+      // If true, return no error; otherwise, return the error object passed in the second parameter.
+      return valid ? null : error;
+    };
+  }
+
+  static MatchValidator(control: AbstractControl): ValidationErrors | any {
+    const password: string = control.get('password')?.value; // get password from our password form control
+    const confirmPassword: string = control.get('confirmPassword')?.value; // get password from our confirmPassword form control
+    const errormessage: string = 'message'
+    // if the confirmPassword value is null or empty, don't return an error.
+    //   if (!confirmPassword?.length) {
+    //     return null;
+    //   }
+
+    //   // if the confirmPassword length is < 8, set the minLength error.
+    //   if (confirmPassword.length < 8) {
+    //     control.get('confirmPassword')?.setErrors({ minLength: true });
+    //   } else {
+    //     // compare the passwords and see if they match.
+    //     if (password !== confirmPassword) {
+    //       control.get("confirmPassword")?.setErrors({ mismatch: true });
+    //     } else {
+    //       // if passwords match, don't return an error.
+    //       return null;
+    //     }
+    //     return null;
+    //   }
+    // }
+
+   
+    if (!confirmPassword?.length) {
+      // control.get('confirmPassword')?.setErrors(null);
+      return null;
+    }
+
+    if (confirmPassword.length < 8) {
+      control.get('confirmPassword')?.setErrors({ minLength: true });
+    } else if (password !== confirmPassword) {
+      control.get('confirmPassword')?.setErrors({ mismatch: true });
+    } else {
+      control.get('confirmPassword')?.setErrors(null);
+      return null;
+    }
+
+    return null;
+  }
+}

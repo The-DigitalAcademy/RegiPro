@@ -34,8 +34,9 @@ export class ForgotPasswordComponent {
       this.authService.newPassword(this.forgotPasswordform.value).subscribe({
         next:
           (data) => {
-            this.forgotPasswordform.reset();
+            // this.forgotPasswordform.reset();
             this.successMessage = "Reset password link send to email sucessfully.";
+            console.log(data)
             setTimeout(() => {
               this.successMessage = null;
               this.router.navigate(['resend-link']);
