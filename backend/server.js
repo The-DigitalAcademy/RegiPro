@@ -9,7 +9,7 @@ const corsOptions = require("./config/corsOptions");
 
 const rateLimit = require("./middleware/loginLimiter");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 
 console.log(process.env.NODE_ENV);

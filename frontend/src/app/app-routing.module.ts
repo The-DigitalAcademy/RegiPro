@@ -31,17 +31,18 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'choose', component: ChooseComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'onboarding', component: OnboardingComponent, canActivate: [AuthGuard] },
+  { path: 'onboarding', component: OnboardingComponent },
   { path: 'business-plan', component: BusinessPlanComponent },
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'resend-link', component: ResendLinkComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
+
+
 
   {path: 'regenerate/:bId', component:RegenerateComponent},
   {path: 'steps', component:StepsComponent},

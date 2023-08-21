@@ -13,6 +13,7 @@ import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
+import { OpenaiService } from 'src/app/services/openai.service';
 
 
 @Component({
@@ -46,7 +47,8 @@ export class QuestionnairesComponent implements OnInit {
     private route: Router,
     private respService: ResponsesService,
     public loaderService: LoaderService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private openaiService: OpenaiService
   ) {}
 
   ngOnInit(): void {
@@ -119,6 +121,13 @@ export class QuestionnairesComponent implements OnInit {
         this.addBusiness(data.response)
         console.log(data);
         this.toast.success({detail:"SUCCESS",summary: data.message, duration:5000});
+        this.openaiService
+      .generate(name, industry, description)
+      .subscribe((res) => {
+        console.log(res.url)
+       
+
+      });
         this.route.navigate(['/steps']);
       },
       error: err => {

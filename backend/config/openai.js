@@ -31,7 +31,7 @@ exports.handler = async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Generate 3000-word business plan for ${name} in ${industry}, outlining ${description}. Return JavaScript array with section and content JSON properties, keeping consistent format for all plans. 
+      prompt: `Generate 3000-word business plan for ${name} in ${industry}, outlining ${description}. Return JavaScript array with section and content JSON properties, keeping consistent format for all plans.
      `,
       temperature: 0,
       max_tokens: 4000,
@@ -44,27 +44,6 @@ exports.handler = async (req, res) => {
     try {
       const parsedArray = JSON.parse(arr);
       let allParagraphs = [];
-      // if (Array.isArray(parsedArray)) {
-      //   console.log(parsedArray);
-      //   parsedArray.forEach((section) => {
-      //     console.log(`Section: ${section.section}`);
-      //     Object.entries(section.content).forEach(([key, value]) => {
-      //       console.log(`  ${key}: ${value}`);
-      //       const sectionParagraphs = [
-      //         new Paragraph({
-      //           text: key,
-      //           heading: HeadingLevel.HEADING_1,
-      //         }),
-      //         new Paragraph({
-      //           text: '',
-      //         }),
-      //         new Paragraph({
-      //           text: value,
-      //         }),
-      //       ];
-      //       allParagraphs = allParagraphs.concat(sectionParagraphs);
-      //     });
-      //   });
 
       if (Array.isArray(parsedArray)) {
         parsedArray.forEach((section) => {
