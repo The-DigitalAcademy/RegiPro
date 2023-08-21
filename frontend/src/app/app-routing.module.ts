@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'regenerate/:bId', component:RegenerateComponent},
-  {path: 'steps', component:StepsComponent}
+  {path: 'steps', component:StepsComponent},
   {path: 'generate', component: GenerateBusinessPlanComponent}
 ]
 

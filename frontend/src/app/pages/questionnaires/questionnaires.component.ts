@@ -50,6 +50,7 @@ export class QuestionnairesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
   }
 
@@ -111,7 +112,8 @@ export class QuestionnairesComponent implements OnInit {
     const savedAnswers = this.storageService.getAnswers();
 
     let name = savedAnswers[0].name, industry = savedAnswers[1].industry, description = savedAnswers[2].description, hasBusinessPlan = savedAnswers[3].hasBusinessPlan, isRegistered = savedAnswers[4].isRegistered;
-   
+    console.log("name answer",name);
+    
     this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
       next: data => {
         this.addBusiness(data.response)
