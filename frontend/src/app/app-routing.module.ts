@@ -14,9 +14,14 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
+
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
 import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -33,10 +38,16 @@ const routes: Routes = [
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'resend-link', component: ResendLinkComponent},
+  {path: 'reset-password', component: ResetPasswordComponent}
+
   {path: 'regenerate/:bId', component:RegenerateComponent},
   {path: 'steps', component:StepsComponent},
   {path: 'generate', component: GenerateBusinessPlanComponent}
 ]
+
 
 
 @NgModule({
