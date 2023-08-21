@@ -139,6 +139,7 @@
           <!-- new card -->
           <div
             class="col d-flex justify-content-center my-1 mx-1"
+            routerLink="/regenerate/{{ res.id }}"
             *ngFor="let res of business.businessList(); let i = index"
             style="
               width: 94.962px;
