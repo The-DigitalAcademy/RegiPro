@@ -8,7 +8,13 @@ const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-
+const transporter = nodemailer.createTransport({
+  service: "Gmail", // e.g., 'Gmail'
+  auth: {
+    user: "chalatsethabo@gmail.com",
+    pass: "xicawwpjgjwenprt",
+  },
+});
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({
@@ -26,10 +32,25 @@ exports.signup = (req, res) => {
             },
           },
         }).then((roles) => {
-          user.setRoles(roles).then(() => {
+          user.setRoles(roles).then(async() => {
             var token = jwt.sign({ id: user.id }, config.secret, {
               expiresIn: 86400, // 24 hours
             });
+
+            const mailOptions = {
+              from: "chalatsethabo@gmail.com",
+              to: user.email,
+              subject: "Successfully Registration",
+              // text: `To reset your password, click the following link: ${x}`,
+              html: `
+              <p>Hello,</p>
+              <p>Thanks You for successfully Registering with RegiPro</p>
+              <p>AI intergrated Platform</p>
+            `,
+            };
+        
+            // Send the email
+            await transporter.sendMail(mailOptions);
 
             res.status(201).send({
               message: "User registered successfully!",
@@ -55,7 +76,7 @@ exports.signup = (req, res) => {
             email: user.email,
             firstname: user.firstname,
             lastname: user.lastname,
-            roles: ["user"], // You can customize this role if needed
+            roles: ["moderator"], // You can customize this role if needed
             accessToken: token,
           });
         });
@@ -100,6 +121,8 @@ exports.signin = (req, res) => {
         }
         res.status(200).send({
           id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
           email: user.email,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -112,6 +135,7 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
 
 exports.signout = (req, res) => {
   try {
@@ -133,13 +157,7 @@ exports.forgotPassword = async (req, res) => {
     }
 
     // Create a transport using Nodemailer
-    const transporter = nodemailer.createTransport({
-      service: "Gmail", // e.g., 'Gmail'
-      auth: {
-        user: "chalatsethabo@gmail.com",
-        pass: "xicawwpjgjwenprt",
-      },
-    });
+ 
 
     let resetLink = "http://localhost:4200/reset-password";
     // Define the email options
@@ -175,14 +193,13 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).send({ message: "Passwords do not match" });
     }
 
-    const user = await User.findOne({ where: { email: email } });
+    const user = await User.findOne({ where:  {email:email}  });
     if (!user) {
       return res.status(400).send({ message: "User not available" });
     }
 
     // Update the user's password and reset token
     user.password = bcrypt.hashSync(password, 10);
-
 
     // Save the updated user
     await user.save();
@@ -191,4 +208,6 @@ exports.resetPassword = async (req, res) => {
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
+
 };
+

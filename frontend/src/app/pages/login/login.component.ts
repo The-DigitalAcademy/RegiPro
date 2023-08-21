@@ -3,11 +3,13 @@ import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { user } from 'src/app/interfaces/user';
+import { LoaderService } from 'src/app/services/loader.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form: any = {
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    public loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {

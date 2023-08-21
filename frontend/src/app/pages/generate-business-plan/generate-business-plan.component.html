@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Generate Business Plan</h1>
+    <form class="our-form" (ngSubmit)="handleSubmit()">
+      <!-- <input class="prompt-field" type="text" [(ngModel)]="prompt.name" (input)="handleChange($event)" /> -->
+      <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              [(ngModel)]="prompt.name"
+              required
+              minlength="6"
+              #name="ngModel"
+            />
+      <label for="industry">Industry</label>
+            <input
+              type="text"
+              class="form-control"
+              name="password"
+              [(ngModel)]="prompt.industry"
+              required
+              minlength="6"
+              #industry="ngModel"
+            />
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              [(ngModel)]="prompt.description"
+              required
+              minlength="6"
+              #description="ngModel"
+            />
+      <button class="prompt-button" type="submit">Go!</button>
+    </form>
+
+    <div *ngIf="isLoading" class="loading-spinner"></div>
+
+    <div class="answer-area">{{ section }} : {{ content }}</div>

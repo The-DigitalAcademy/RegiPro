@@ -94,3 +94,36 @@ exports.getAllResponses = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+// @desc Get response by ID
+// @route GET /responses/:id
+// @access Private
+exports.getResponseById = async (req, res) => {
+  const userId = req.userId;
+  const responseId = req.params.id; // Assuming the ID is passed in the route parameters
+
+  try {
+    // Check if the user exists
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Get the response by ID and user ID
+    const response = await Response.findOne({
+      where: {
+        id: responseId,
+        userId: userId
+      }
+    });
+
+    if (!response) {
+      return res.status(404).json({ message: "Response not found" });
+    }
+
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
