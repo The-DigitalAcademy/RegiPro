@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -14,7 +14,7 @@ import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
 import { OpenaiService } from 'src/app/services/openai.service';
-
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -22,6 +22,9 @@ import { OpenaiService } from 'src/app/services/openai.service';
   styleUrls: ['./questionnaires.component.scss'],
 })
 export class QuestionnairesComponent implements OnInit {
+
+  @ViewChild('cloudinaryLink') cloudinaryLink!: ElementRef;
+
   step: any = 1;
 
   errorMessage = '';
@@ -39,7 +42,7 @@ export class QuestionnairesComponent implements OnInit {
 
   submitted = false;
   submitted2 = false;
-
+  isReturned = false;
 
   constructor(
     private busService: BusinessService,
@@ -48,7 +51,8 @@ export class QuestionnairesComponent implements OnInit {
     private respService: ResponsesService,
     public loaderService: LoaderService,
     private toast: NgToastService,
-    private openaiService: OpenaiService
+    private openaiService: OpenaiService,
+    private downloadService: DownloadService
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +87,7 @@ export class QuestionnairesComponent implements OnInit {
     console.log('added to array', this.questionsArray);
   }
 
-  submitIndustry(value : string) {
+  submitIndustry(value: string) {
     this.submitted = true;
 
     this.questionsArray.push({ industry: value });
@@ -101,7 +105,7 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-  
+
   submitReg(value: string): void {
     this.submitted = true;
 
@@ -110,50 +114,65 @@ export class QuestionnairesComponent implements OnInit {
     this.questionsArray.push({ isRegistered: value });
 
     this.storageService.saveAnswers(this.questionsArray);
-    
+
     const savedAnswers = this.storageService.getAnswers();
 
-    let name = savedAnswers[0].name, industry = savedAnswers[1].industry, description = savedAnswers[2].description, hasBusinessPlan = savedAnswers[3].hasBusinessPlan, isRegistered = savedAnswers[4].isRegistered;
-    console.log("name answer",name);
-    
-    this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
-      next: data => {
-        this.addBusiness(data.response)
-        console.log(data);
-        this.toast.success({detail:"SUCCESS",summary: data.message, duration:5000});
-        this.openaiService
-      .generate(name, industry, description)
-      .subscribe((res) => {
-        console.log(res.url)
-       
+    let name = savedAnswers[0].name,
+      industry = savedAnswers[1].industry,
+      description = savedAnswers[2].description,
+      hasBusinessPlan = savedAnswers[3].hasBusinessPlan,
+      isRegistered = savedAnswers[4].isRegistered;
+    console.log('name answer', name);
 
+    this.respService
+      .response(name, industry, description, isRegistered, hasBusinessPlan)
+      .subscribe({
+        next: (data) => {
+          this.addBusiness(data.response);
+          console.log(data);
+          this.toast.success({
+            detail: 'SUCCESS',
+            summary: data.message,
+            duration: 5000,
+          });
+          this.openaiService
+            .generate(name, industry, description)
+            .subscribe((res) => {
+              this.cloudinaryLink = res.url;
+              this.isReturned = true;
+              
+              console.log(res.url);
+            });
+          
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+
+          console.log(this.errorMessage);
+
+          this.toast.error({
+            detail: 'ERROR',
+            summary: this.errorMessage,
+            sticky: true,
+          });
+        },
+        complete: () => {
+          this.loaderService.hide(); // Hide the loader
+        },
       });
-        this.route.navigate(['/steps']);
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        
-        console.log(this.errorMessage);
-
-        this.toast.error({detail:"ERROR",summary: this.errorMessage, sticky:true});
-      },
-      complete: () => {
-        this.loaderService.hide(); // Hide the loader
-      }
-    })
     // this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
   }
 
-  addBusiness(business: answers){
+  addBusiness(business: answers) {
     this.busService.addBusinessSignal(business);
   }
 
   previous() {
     this.questionsArray.pop();
     this.step = this.step - 1;
-    console.log("remaining answers", this.questionsArray)
+    console.log('remaining answers', this.questionsArray);
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -162,4 +181,23 @@ export class QuestionnairesComponent implements OnInit {
   get p(): { [key: string]: AbstractControl } {
     return this.form2.controls;
   }
+
+
+  triggerDownload() {
+    if (this.isReturned) {
+      const cloudinaryLink = this.cloudinaryLink.nativeElement.getAttribute('href');
+      const newWindow = window.open('', '_blank');
+      if (newWindow) {
+        const downloadLink = newWindow.document.createElement('a');
+        downloadLink.href = cloudinaryLink;
+        downloadLink.style.display = 'none';
+        newWindow.document.body.appendChild(downloadLink);
+  
+        downloadLink.click();
+  
+        newWindow.document.body.removeChild(downloadLink);
+      }
+    }
+  }
+  
 }
