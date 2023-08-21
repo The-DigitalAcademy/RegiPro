@@ -5,7 +5,24 @@ section {
   margin: auto;
   background-color: #ECFDF5;
 }
+.btn{
+  width: 150px;
+  border-radius: 30px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #ffffff;
+  background-color: #10B981;
+}
+#btnB{
+  width: 150px;
+  height: 35px;
+  flex-shrink: 0;
 
+  color: #10B981;
+  background-color: #ffffff;
+  border: 1px solid;
+ 
+}
 
 
 .img-responsive {

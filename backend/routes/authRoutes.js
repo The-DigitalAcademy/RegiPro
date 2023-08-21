@@ -1,6 +1,8 @@
 const verifySignUp  = require("../middleware/verifySignup");
 const controller = require("../controllers/authController");
-const swaggerDocs = require("../config/swagger");
+
+const loginLimiter = require('../middleware/loginLimiter')
+
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -19,38 +21,7 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-
-  /**
- * @signup
- '/auth/signin':
- *  post:
- *     tags:
- *     - Auth Route
- *     summary: Signs in a user
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *           schema:
- *            type: object
- *            properties:
- *              email:
- *                 type: string
- *                 default: string
- *              password:
- *                 type: string
- *                 default: string
- *     responses:
- *      200:
- *        description: Success
- *      409:
- *        description: Conflict
- *      404:
- *        description: Not Found
- *      500:
- *        description: Internal Server Error
- */
-  app.post("/auth/signin", controller.signin);
+  app.post("/auth/signin", loginLimiter, controller.signin);
 
   
   app.post("/auth/signout", controller.signout);

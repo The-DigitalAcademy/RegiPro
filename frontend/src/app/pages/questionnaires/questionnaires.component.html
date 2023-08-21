@@ -108,17 +108,16 @@
 
             <div class="row row-cols-2 g-4">
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit3()">Tech & Software</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Tech & Software')">Tech & Software</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit4()">Agriculture</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Agriculture')">Agriculture</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit5()">Fitness & Wellness
-                    </button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Fitness & Wellness')">Fitness & Wellness</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit6()">Retail</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Retail')">Retail</button>
                 </div>
             </div>
         </form>
@@ -171,16 +170,16 @@
         <div class="container my-4">
             <div class="row row-cols-2 g-4">
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit7()">Manufacturing</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Manufacturing')">Manufacturing</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit8()">Entertainment</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Entertainment')">Entertainment</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit9()">Property</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Property')">Property</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submit01()">Marketing</button>
+                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Marketing')">Marketing</button>
                 </div>
             </div>
         </div>
@@ -261,10 +260,10 @@
             <div class="row position-relative py-4">
                 <div class="col-10 position-absolute top-50 start-50 translate-middle">
                     <input type="text" class="form-control" placeholder="eg. book store"
-                    formControlName="description" [ngClass]="{ 'is-invalid': submitted && p['description'].errors }">
+                    formControlName="description" [ngClass]="{ 'is-invalid': submitted2 && p['description'].errors }">
                 </div>
             </div>
-            <div *ngIf="submitted && p['description'].errors" class="name">
+            <div *ngIf="submitted2 && p['description'].errors" class="name">
                 <div *ngIf="p['description'].errors['required']">About Business is required</div>
             </div>
             
@@ -351,13 +350,13 @@
         
             <div class="row row-cols-2 justify-content-between py-2">
                  <div class="col">
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn" (click)="submitPlan('Yes')">
                         Yes
                     </button>
                  </div>
         
                  <div class="col">
-                    <button type="submit" class="btn" (click)="onSubmit()">
+                    <button type="submit" class="btn" (click)="submitPlan('No')">
                         No
                     </button>
                  </div>
@@ -439,13 +438,13 @@
         
             <div class="row row-cols-2 justify-content-between py-2">
                  <div class="col">
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn" (click)="submitReg('Yes')">
                         Yes
                     </button>
                  </div>
         
                  <div class="col">
-                    <button type="submit" class="btn" (click)="onSubmit2()">
+                    <button type="submit" class="btn" (click)="submitReg('No')">
                         No
                     </button>
                  </div>
@@ -465,3 +464,4 @@
 <div *ngIf="step == 6">
     <app-cips-num></app-cips-num>
 </div>
+<app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>

@@ -76,7 +76,7 @@ exports.signup = (req, res) => {
             email: user.email,
             firstname: user.firstname,
             lastname: user.lastname,
-            roles: ["user"], // You can customize this role if needed
+            roles: ["moderator"], // You can customize this role if needed
             accessToken: token,
           });
         });
@@ -121,6 +121,8 @@ exports.signin = (req, res) => {
         }
         res.status(200).send({
           id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
           email: user.email,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -133,6 +135,7 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
 
 exports.signout = (req, res) => {
   try {
@@ -205,4 +208,6 @@ exports.resetPassword = async (req, res) => {
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
+
 };
+
