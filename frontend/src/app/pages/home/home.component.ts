@@ -6,6 +6,7 @@ import { EventBusService } from 'src/app/_shared/event-bus.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResponsesService } from 'src/app/services/responses.service';
+import { BusinessService } from 'src/app/services/store/business.service';
 import { answers } from 'src/app/interfaces/questions';
 
 @Component({
@@ -26,13 +27,15 @@ export class HomeComponent {
     public router: Router,
     private eventBusService: EventBusService,
     private authService: AuthService,
-    public responses : ResponsesService
+    public responses : ResponsesService,
+    public business: BusinessService
   ) {}
 
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
 
+    
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });

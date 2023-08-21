@@ -14,6 +14,8 @@ import { BusinessPlanComponent } from './pages/business-plan/business-plan.compo
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { RegenerateComponent } from './pages/regenerate/regenerate.component';
+import { StepsComponent } from './pages/steps/steps.component';
 import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
 
 const routes: Routes = [
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   {path: 'all-set', component: AllSetComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'regenerate/:bId', component:RegenerateComponent},
+  {path: 'steps', component:StepsComponent}
   {path: 'generate', component: GenerateBusinessPlanComponent}
 ]
 

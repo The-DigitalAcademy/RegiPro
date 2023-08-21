@@ -11,6 +11,9 @@ import { answers } from 'src/app/interfaces/questions';
 import { Router } from '@angular/router';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-questionnaires',
@@ -20,17 +23,8 @@ import { BusinessService } from 'src/app/services/store/business.service';
 export class QuestionnairesComponent implements OnInit {
   step: any = 1;
 
-  Agriculture = 'Agriculture';
-  Fitness = 'Fitness & Wellness';
-  Retail = 'Retail';
-  Manufacturing = 'Manufacturing';
-  Entertainment = 'Entertainment';
-  Property = 'Property';
-  Marketing = 'Marketing';
-
   errorMessage = '';
 
-  data:any;
   questionsArray: answers[] = [];
 
   currentUser: any;
@@ -43,13 +37,16 @@ export class QuestionnairesComponent implements OnInit {
   });
 
   submitted = false;
+  submitted2 = false;
 
 
   constructor(
     private busService: BusinessService,
     private storageService: StorageService,
     private route: Router,
-    private respService: ResponsesService
+    private respService: ResponsesService,
+    public loaderService: LoaderService,
+    private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +68,7 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   submit2() {
-    this.submitted = true;
+    this.submitted2 = true;
 
     if (this.form2.invalid) {
       return;
@@ -83,87 +80,31 @@ export class QuestionnairesComponent implements OnInit {
     console.log('added to array', this.questionsArray);
   }
 
-  submit3() {
+  submitIndustry(value : string) {
     this.submitted = true;
-    const Tech = 'Tech & Software';
 
-    this.questionsArray.push({ industry: Tech });
+    this.questionsArray.push({ industry: value });
+
     this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
   }
-  submit4() {
+
+  submitPlan(value: string): void {
     this.submitted = true;
 
-    this.questionsArray.push({ industry: this.Agriculture });
+    this.questionsArray.push({ hasBusinessPlan: value });
     this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
   }
-  submit5() {
+  
+  submitReg(value: string): void {
     this.submitted = true;
 
-    this.questionsArray.push({ industry: this.Fitness });
-    this.step = this.step + 1;
+    this.loaderService.show(); // Show the loader
 
-    console.log('added to array', this.questionsArray);
-  }
-  submit6() {
-    this.submitted = true;
-
-    this.questionsArray.push({ industry: this.Retail });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  submit7() {
-    this.submitted = true;
-
-    this.questionsArray.push({ industry: this.Manufacturing });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  submit8() {
-    this.submitted = true;
-
-    this.questionsArray.push({ industry: this.Entertainment });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  submit9() {
-    this.submitted = true;
-
-    this.questionsArray.push({ industry: this.Property });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  submit01() {
-    this.submitted = true;
-
-    this.questionsArray.push({ industry: this.Marketing });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  onSubmit(): void {
-    this.submitted = true;
-
-    const businessPlan = "no";
-
-    this.questionsArray.push({ hasBusinessPlan: businessPlan });
-    this.step = this.step + 1;
-
-    console.log('added to array', this.questionsArray);
-  }
-  onSubmit2(): void {
-    this.submitted = true;
-
-    const registered = "no";
-
-    this.questionsArray.push({ isRegistered: registered });
+    this.questionsArray.push({ isRegistered: value });
 
     this.storageService.saveAnswers(this.questionsArray);
     
@@ -173,19 +114,23 @@ export class QuestionnairesComponent implements OnInit {
    
     this.respService.response(name, industry, description, isRegistered, hasBusinessPlan).subscribe({
       next: data => {
+        this.addBusiness(data.response)
         console.log(data);
-        alert(data.message)
-        this.route.navigate(['/home']);
+        this.toast.success({detail:"SUCCESS",summary: data.message, duration:5000});
+        this.route.navigate(['/steps']);
       },
       error: err => {
         this.errorMessage = err.error.message;
+        
         console.log(this.errorMessage);
-        alert(this.errorMessage)
+
+        this.toast.error({detail:"ERROR",summary: this.errorMessage, sticky:true});
+      },
+      complete: () => {
+        this.loaderService.hide(); // Hide the loader
       }
     })
-    this.step = this.step + 1;
-
-    this.route.navigate(['/home']);
+    // this.step = this.step + 1;
 
     console.log('added to array', this.questionsArray);
   }
@@ -195,7 +140,9 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   previous() {
+    this.questionsArray.pop();
     this.step = this.step - 1;
+    console.log("remaining answers", this.questionsArray)
   }
 
   get f(): { [key: string]: AbstractControl } {
