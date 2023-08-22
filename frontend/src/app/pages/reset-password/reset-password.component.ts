@@ -62,6 +62,12 @@ export class ResetPasswordComponent {
         error: (err) => {
           if (err.error.message) {
             this.errorMessage = err.error.message;
+
+            this.toast.error({
+              detail: 'ERROR',
+              summary: this.errorMessage,
+              sticky: true,
+            });
           }
         },
       });
