@@ -4,7 +4,6 @@
   height: 57px;
   border: 0.2px solid black;
   border-radius: 50%;
-  background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
   margin: auto;
 }
 
@@ -54,9 +53,41 @@ p::first-letter {
   position: relative;
   margin-top: .5rem;
 }
+.circleB{
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.2px solid black;
+}
 .bic{
   position: absolute;
   width: inherit;
   top: 50%;
   transform: translateY(-50%);
+}
+.bic2{
+  position:relative;
+  width: inherit;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.containerEg{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+
+  width: 365px;
+  height: 120px;
+  padding: 1.5rem;
+  flex-shrink: 0;
+
+  border-radius: 5px;
+  background-color: #ECFDF5;
+  box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
