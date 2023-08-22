@@ -15,6 +15,7 @@ export class ResetPasswordComponent {
   errorMessage: string = '';
   password: string = ''
   IsvalidForm = true;
+  successMessage:any
   IsResetFormValid = true;
 
   constructor(private authService: AuthService, private router: Router) {
@@ -49,10 +50,10 @@ export class ResetPasswordComponent {
       this.IsvalidForm = true;
       this.authService.resetPassword(form.value).subscribe({
         next: (data) => {
-          this.resetForm.reset();
+        
           console.log(data)
           setTimeout(() => {
-            // this.successMessage = null;
+            this.successMessage = null;
             this.router.navigate(['/login']);
           }, 3000);
         },
