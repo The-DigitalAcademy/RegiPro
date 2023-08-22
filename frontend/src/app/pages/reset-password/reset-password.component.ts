@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors }
 import { Router } from '@angular/router';
 import { PasswordValidators } from 'src/app/_shared/password-validators';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-reset-password',
@@ -18,7 +20,7 @@ export class ResetPasswordComponent {
   successMessage:any
   IsResetFormValid = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, public loaderService: LoaderService, private toast: NgToastService) {
 
     this.resetForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -52,10 +54,10 @@ export class ResetPasswordComponent {
         next: (data) => {
         
           console.log(data)
-          setTimeout(() => {
             this.successMessage = null;
             this.router.navigate(['/login']);
-          }, 3000);
+            this.toast.success({detail:"SUCCESS",summary:data.message ,duration:5000});
+      
         },
         error: (err) => {
           if (err.error.message) {
