@@ -59,10 +59,10 @@ exports.handler = async (req, res) => {
     
           Object.entries(section.content).forEach(([key, value]) => {
             sectionParagraphs.push(
-              new Paragraph({
-                text: key,
-                heading: HeadingLevel.HEADING_3,
-              }),
+              // new Paragraph({
+              //   text: key,
+              //   heading: HeadingLevel.HEADING_3,
+              // }),
               new Paragraph({
                 text: value,
               }),

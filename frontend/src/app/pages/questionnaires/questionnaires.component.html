@@ -1,467 +1,549 @@
 <div *ngIf="step == 1">
-    <div class="container" id="topcontainer">
+  <div class="container" id="topcontainer">
+    <div class="row">
+      <div class="col text-center my-4" id="text">Start Here</div>
+      <div class="col">
+        <img
+          class="img-responsive py-4 mx-auto d-block"
+          src="../../../assets/images/start illustration.svg"
+        />
+      </div>
+    </div>
+  </div>
 
-        <div class="row">
-            <div class="col text-center my-4" id="text">
-                Start Here
-            </div>
-            <div class="col">
-                <img class="img-responsive py-4  mx-auto d-block"
-                src="../../../assets/images/start illustration.svg">
-            </div>
-        </div>
+  <div class="row row-cols-5 g-1 py-3 mx-4">
+    <div class="col">
+      <div class="border border-dark rounded-circle" id="active">
+        <div class="number text-dark">1</div>
+      </div>
     </div>
-    
-    <div class="row row-cols-5 g-1 py-3 mx-4">
-        <div class="col">
-            <div class="border border-dark rounded-circle" id="active">
-                <div class="number text-dark">
-                    1
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    2
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    3
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    4
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    5
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container py-4" id="bottomcontainer">
-    
-        <div class="container d-flex justify-content-center">
-            <div class="row row-cols-1 py-4">
-                <div class="col text-center">
-                    <p>{{currentUser.firstname}} what is the name of your business?</p>
-                </div>
-            </div>
-        </div>
-        <form [formGroup]="form1" (ngSubmit)="submit()">
 
-            <div class="row position-relative py-4">
-                <div class="col-10 position-absolute top-50 start-50 translate-middle">
-                    <input type="text" class="form-control" placeholder="eg. Regi-Pro" 
-                    formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
-                </div>
-            </div>
-        
-            <div *ngIf="submitted && f['name'].errors" class="name">
-                <div *ngIf="f['name'].errors['required']">Business name is required</div>
-            </div>
-            
-            <div class="containerB">
-                <div class="row row-cols-2 position-relative">
-                    <div class="col-5 position-absolute bottom-0 start-0 m-4">
-                        <button type="submit" class="btn" id="btnB" routerLink="/onboarding">
-                            Previous
-                        </button>
-                    </div>
-            
-                    <div class="col-5 position-absolute bottom-0 end-0 m-4">
-                        <button type="submit" class="btn">
-                            Next
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">2</div>
+      </div>
     </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">3</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">4</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4" id="bottomcontainer">
+    <div class="container d-flex justify-content-center">
+      <div class="row row-cols-1 py-4">
+        <div class="col text-center">
+          <p>{{ currentUser.firstname }} what is the name of your business?</p>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="form1" (ngSubmit)="submit()">
+      <div class="row position-relative py-4">
+        <div class="col-10 position-absolute top-50 start-50 translate-middle">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="eg. Regi-Pro"
+            formControlName="name"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+          />
+        </div>
+      </div>
+
+      <div *ngIf="submitted && f['name'].errors" class="name">
+        <div *ngIf="f['name'].errors['required']">
+          Business name is required
+        </div>
+      </div>
+
+      <div class="containerB">
+        <div class="row row-cols-2 position-relative">
+          <div class="col-5 position-absolute bottom-0 start-0 m-4">
+            <button
+              type="submit"
+              class="btn"
+              id="btnB"
+              routerLink="/onboarding"
+            >
+              Previous
+            </button>
+          </div>
+
+          <div class="col-5 position-absolute bottom-0 end-0 m-4">
+            <button type="submit" class="btn">Next</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-<div *ngIf="step == 2">
-    <div class="container text-center py-4" id="topcontainer">
-        <div class="row justify-content-center py-2">
-    
-            <div class="col-7" id="text">
-                <p> What Industry is your business in? </p> 
-            </div>
-    
+<div *ngIf="step == 2 && isReturned === false">
+  <div class="container text-center py-4" id="topcontainer">
+    <div class="row justify-content-center py-2">
+      <div class="col-7" id="text">
+        <p>What Industry is your business in?</p>
+      </div>
+    </div>
+    <form>
+      <div class="row row-cols-2 g-4">
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Tech & Software')"
+          >
+            Tech & Software
+          </button>
         </div>
-        <form>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Agriculture')"
+          >
+            Agriculture
+          </button>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Fitness & Wellness')"
+          >
+            Fitness & Wellness
+          </button>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Retail')"
+          >
+            Retail
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 
+  <div class="row row-cols-5 g-1 py-3 mx-4">
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">1</div>
+      </div>
+    </div>
 
-            <div class="row row-cols-2 g-4">
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Tech & Software')">Tech & Software</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Agriculture')">Agriculture</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Fitness & Wellness')">Fitness & Wellness</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Retail')">Retail</button>
-                </div>
-            </div>
-        </form>
+    <div class="col">
+      <div class="border border-dark rounded-circle" id="active">
+        <div class="number text-dark">2</div>
+      </div>
     </div>
-    
-    <div class="row row-cols-5 g-1 py-3 mx-4">
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    1
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="border border-dark rounded-circle" id="active">
-                <div class="number text-dark">
-                    2
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white ">
-                    3
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    4
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    5
-                </div>
-            </div>
-        </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">3</div>
+      </div>
     </div>
-    
-    <div class="container" id="bottomcontainer">
-    
-        <div class="container my-4">
-            <div class="row row-cols-2 g-4">
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Manufacturing')">Manufacturing</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Entertainment')">Entertainment</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Property')">Property</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btnL" id="Btext" (click)="submitIndustry('Marketing')">Marketing</button>
-                </div>
-            </div>
-        </div>
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <button class="btn" type="button" id="btnC" (click)="previous()">Previous</button>
-                </div>
-            </div>
-        </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">4</div>
+      </div>
     </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="bottomcontainer">
+    <div class="container my-4">
+      <div class="row row-cols-2 g-4">
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Manufacturing')"
+          >
+            Manufacturing
+          </button>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Entertainment')"
+          >
+            Entertainment
+          </button>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Property')"
+          >
+            Property
+          </button>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btnL"
+            id="Btext"
+            (click)="submitIndustry('Marketing')"
+          >
+            Marketing
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col">
+          <button class="btn" type="button" id="btnC" (click)="previous()">
+            Previous
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div *ngIf="step == 3">
-    <div class="container" id="topcontainer">
+<div *ngIf="step == 3 && isReturned === false">
+  <div class="container" id="topcontainer">
+    <div class="row">
+      <div class="col">
+        <img
+          class="img-responsive py-5 mx-auto d-block"
+          src="../../../assets/images/quize 3 ill.svg"
+        />
+      </div>
+    </div>
+  </div>
 
-        <div class="row">
-            <div class="col">
-                <img class="img-responsive py-5 mx-auto d-block"
-                src="../../../assets/images/quize 3 ill.svg">
-            </div>
-        </div>
+  <div class="row row-cols-5 g-1 py-3 mx-4">
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">1</div>
+      </div>
     </div>
-    
-    <div class="row row-cols-5 g-1 py-3 mx-4">
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    1
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    2
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="border border-dark rounded-circle" id="active">
-                <div class="number text-dark ">
-                    3
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    4
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    5
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container py-4" id="bottomcontainer">
-    
-        <div class="container d-flex justify-content-center">
-            <div class="row row-cols-1 py-4">
-                <div class="col text-center">
-                    <p> So {{currentUser.firstname}} please tell us what is your business about?</p>
-                </div>
-            </div>
-        </div>
-        
-        <form [formGroup]="form2" (ngSubmit)="submit2()">
 
-            <div class="row position-relative py-4">
-                <div class="col-10 position-absolute top-50 start-50 translate-middle">
-                    <input type="text" class="form-control" placeholder="eg. book store"
-                    formControlName="description" [ngClass]="{ 'is-invalid': submitted2 && p['description'].errors }">
-                </div>
-            </div>
-            <div *ngIf="submitted2 && p['description'].errors" class="name">
-                <div *ngIf="p['description'].errors['required']">About Business is required</div>
-            </div>
-            
-            <div class="containerB">
-                <div class="row row-cols-2 position-relative">
-                    <div class="col-5 position-absolute bottom-0 start-0 m-4">
-                        <button type="submit" class="btn" id="btnB" (click)="previous()">
-                            Previous
-                        </button>
-                    </div>
-            
-                    <div class="col-5 position-absolute bottom-0 end-0 m-4">
-                        <button type="submit" class="btn">
-                            Next
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">2</div>
+      </div>
     </div>
-</div>
-<div *ngIf="step == 4">
-    <div class="container" id="topcontainer">
 
-        <div class="row">
-            <div class="col">
-                <img class="img-responsive py-5 mx-auto d-block"
-                src="../../../assets/images/quize 4 ill.svg">
-            </div>
-        </div>
+    <div class="col">
+      <div class="border border-dark rounded-circle" id="active">
+        <div class="number text-dark">3</div>
+      </div>
     </div>
-    
-    <div class="row row-cols-5 g-1 py-3 mx-4">
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    1
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    2
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white ">
-                    3
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="border border-dark rounded-circle" id="active">
-                <div class="number text-dark">
-                    4
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    5
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container py-4" id="bottomcontainer">
-    
-        <div class="container text-center py-5" id="cont">
-        
-            <div class="row row-cols-1 my-4">
-                <div class="col text-center">
-                    <p>{{currentUser.firstname}} do you have a business plan?</p>
-                </div>
-            </div>
-        
-            <div class="row row-cols-2 justify-content-between py-2">
-                 <div class="col">
-                    <button type="submit" class="btn" (click)="submitPlan('Yes')">
-                        Yes
-                    </button>
-                 </div>
-        
-                 <div class="col">
-                    <button type="submit" class="btn" (click)="submitPlan('No')">
-                        No
-                    </button>
-                 </div>
-            </div>
-        </div>
-        
-        <div class="container my-5 mx-2">
-            <div class="row justify-content-center">
-                <div class="col ">
-                    <button class="btn" type="button" id="btnC" (click)="previous()">Previous</button>
-                </div>
-            </div>
-        </div>
-    
-    </div>
-</div>
-<div *ngIf="step == 5">
-    <div class="container" id="topcontainer">
 
-        <div class="row">
-            <div class="col">
-                <img class="img-responsive py-5 mx-auto d-block"
-                src="../../../assets/images/quize 5 ill.svg">
-            </div>
-        </div>
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">4</div>
+      </div>
     </div>
-    
-    <div class="row row-cols-5 g-1 py-3 mx-4">
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    1
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    2
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white ">
-                    3
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="circle">
-                <div class="number text-white">
-                    4
-                </div>
-            </div>
-        </div>
-    
-        <div class="col">
-            <div class="border border-dark rounded-circle" id="active">
-                <div class="number text-dark">
-                    5
-                </div>
-            </div>
-        </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">5</div>
+      </div>
     </div>
-    
-    <div class="container py-4" id="bottomcontainer">
-    
-        <div class="container text-center py-5" id="cont">
-        
-            <div class="row row-cols-1 my-4">
-                <div class="col text-center">
-                    <p>Have you registered your business?</p>
-                </div>
-            </div>
-        
-            <div class="row row-cols-2 justify-content-between py-2">
-                 <div class="col">
-                    <button type="submit" class="btn" (click)="submitReg('Yes')">
-                        Yes
-                    </button>
-                 </div>
-        
-                 <div class="col">
-                    <button type="submit" class="btn" (click)="submitReg('No')">
-                        No
-                    </button>
-                 </div>
-            </div>
+  </div>
+
+  <div class="container py-4" id="bottomcontainer">
+    <div class="container d-flex justify-content-center">
+      <div class="row row-cols-1 py-4">
+        <div class="col text-center">
+          <p>
+            So {{ currentUser.firstname }} please tell us what is your business
+            about?
+          </p>
         </div>
-        
-        <div class="container my-5 mx-2">
-            <div class="row justify-content-center">
-                <div class="col ">
-                    <button class="btn" type="button" id="btnC" (click)="previous()">Previous</button>
-                </div>
-            </div>
-        </div>
-    
+      </div>
     </div>
+
+    <form [formGroup]="form2" (ngSubmit)="submit2()">
+      <div class="row position-relative py-4">
+        <div class="col-10 position-absolute top-50 start-50 translate-middle">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="eg. book store"
+            formControlName="description"
+            [ngClass]="{ 'is-invalid': submitted2 && p['description'].errors }"
+          />
+        </div>
+      </div>
+      <div *ngIf="submitted2 && p['description'].errors" class="name">
+        <div *ngIf="p['description'].errors['required']">
+          About Business is required
+        </div>
+      </div>
+
+      <div class="containerB">
+        <div class="row row-cols-2 position-relative">
+          <div class="col-5 position-absolute bottom-0 start-0 m-4">
+            <button type="submit" class="btn" id="btnB" (click)="previous()">
+              Previous
+            </button>
+          </div>
+
+          <div class="col-5 position-absolute bottom-0 end-0 m-4">
+            <button type="submit" class="btn">Next</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-<div *ngIf="step == 6">
-    <app-cips-num></app-cips-num>
+<div *ngIf="step == 4 && isReturned === false">
+  <div class="container" id="topcontainer">
+    <div class="row">
+      <div class="col">
+        <img
+          class="img-responsive py-5 mx-auto d-block"
+          src="../../../assets/images/quize 4 ill.svg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-5 g-1 py-3 mx-4">
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">1</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">2</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">3</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="border border-dark rounded-circle" id="active">
+        <div class="number text-dark">4</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4" id="bottomcontainer">
+    <div class="container text-center py-5" id="cont">
+      <div class="row row-cols-1 my-4">
+        <div class="col text-center">
+          <p>{{ currentUser.firstname }} do you have a business plan?</p>
+        </div>
+      </div>
+
+      <div class="row row-cols-2 justify-content-between py-2">
+        <div class="col">
+          <button type="submit" class="btn" (click)="submitPlan('Yes')">
+            Yes
+          </button>
+        </div>
+
+        <div class="col">
+          <button type="submit" class="btn" (click)="submitPlan('No')">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5 mx-2">
+      <div class="row justify-content-center">
+        <div class="col">
+          <button class="btn" type="button" id="btnC" (click)="previous()">
+            Previous
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
+<div *ngIf="step == 5 && isReturned === false">
+  <div class="container" id="topcontainer">
+    <div class="row">
+      <div class="col">
+        <img
+          class="img-responsive py-5 mx-auto d-block"
+          src="../../../assets/images/quize 5 ill.svg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-5 g-1 py-3 mx-4">
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">1</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">2</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">3</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="circle">
+        <div class="number text-white">4</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="border border-dark rounded-circle" id="active">
+        <div class="number text-dark">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4" id="bottomcontainer">
+    <div class="container text-center py-5" id="cont">
+      <div class="row row-cols-1 my-4">
+        <div class="col text-center">
+          <p>Have you registered your business?</p>
+        </div>
+      </div>
+
+      <div class="row row-cols-2 justify-content-between py-2">
+        <div class="col">
+          <button type="submit" class="btn" (click)="submitReg('Yes')">
+            Yes
+          </button>
+        </div>
+
+        <div class="col">
+          <button type="submit" class="btn" (click)="submitReg('No')">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5 mx-2">
+      <div class="row justify-content-center">
+        <div class="col">
+          <button class="btn" type="button" id="btnC" (click)="previous()">
+            Previous
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="step == 6 && isReturned === false">
+  <app-cips-num></app-cips-num>
+</div>
+<app-loading-indicator
+  *ngIf="loaderService.loading$ | async"
+></app-loading-indicator>
+
+<div *ngIf="isReturned === true" class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col my-4 column1">
+        <div class="d-flex justify-content-center">
+          <img src="../../../assets/images/businessplan.svg" alt="inbox" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="d-flex justify-content-center column2">
+        <div class="inside-column">
+          <div class="d-flex justify-content-center inside-text">
+            Here is a generated business <br />plan for your business, click
+            <br />the link below to download.
+          </div>
+          <div class="d-flex justify-content-center download-link">
+            <div class="download-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-download"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                />
+                <path
+                  d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                />
+              </svg>
+            </div>
+            <div class="link-content">
+              <a
+                #cloudinaryLink
+                href="{{ cloudinaryLink }}"
+                style="display: none"
+                download="business-plan.docx"
+              ></a>
+              <button (click)="triggerDownload()">
+                Download Business Plan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-3">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <button class="btn-reg" routerLink="/steps">
+          How to register a business
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
