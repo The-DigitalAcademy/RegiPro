@@ -1,146 +1,176 @@
-.circle {
+.circle{
     width: 3.5rem;
     height: 3.5rem;
     background-color: #2B2D33;
     border-radius: 50%;
     position: relative;
-  }
-  
-  .number {
+}
+.number{
     position: absolute;
     width: inherit;
     height: auto;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+
     font-family: Inter;
     font-size: 18px;
+    font-style: normal;
     font-weight: 600;
-  }
-  
-  #active, #btnB, #btnC {
+}
+#active{
     width: 3.5rem;
     height: 3.5rem;
     position: relative;
     background-color: #ffff;
-  }
-  
-  p {
+}
+p{
     font-family: Inter;
     font-size: 18px;
+    font-style: normal;
     font-weight: 700;
     line-height: normal;
-  }
-  
-  .form-control {
+}
+.form-control{
+    // width: 50%;
     padding: 0.5rem;
     border: none;
     border-bottom: 2px solid silver;
     background-color: var(--background);
+
     font-family: Inter;
     font-size: 14px;
+    font-style: normal;
     font-weight: 400;
-  }
-  
-  ::placeholder {
+}
+::placeholder{    
     font-size: 16px;
-  }
-  
-  #btnB, #btnC, .btnL, .btn {
+}
+#btnB{
+    width: 150px;
+    height: 35px;
+    flex-shrink: 0;
+
+    color: #10B981;
+    background-color: #ffffff;
+    border: 1px solid;
+   
+}
+#btnC{
+    width: 100%;
+    height: 35px;
+    flex-shrink: 0;
+
+    color: #10B981;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-radius: 10px;
+   
+}
+.btnL{
+    width: 161px !important;
+    height: 90px !important;
+
+    color: #ffffff;
+    background-color: #10B981;
+    border-radius: 20px;
+}
+.btn{
     width: 150px;
     height: 35px;
     flex-shrink: 0;
     color: #ffffff;
     background-color: #10B981;
-  }
-  
-  .containerB {
+}
+.containerB{
     margin-top: 10rem;
-  }
-  
-  #text {
+}
+#text{
     color: #2B2D33;
     font-family: Inter;
     font-size: 32px;
     font-weight: 900;
     line-height: normal;
-  }
-  
-  #bottomcontainer, #topcontainer {
+}
+#bottomcontainer{
     border-radius: 43px;
-  }
-  
-  #bottomcontainer {
     background: #ECFDF5;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-  }
-  
-  #topcontainer {
+}
+#topcontainer{
+    border-radius: 43px;
     background: rgba(236, 253, 245, 0.78);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.49);
-  }
-  
-  .name {
+}
+.name{
     color: red;
     margin-left: 2.4rem;
-  }
-  
-  .column1, .column2 {
+}
+
+
+// GENERATE BUSINESS PLAN
+.column1 {
     align-items: center;
-    border-radius: 43px;
-  }
-  
-  .column1 {
     width: 393px;
     height: 300px;
-    right: 50px;
+
+    border-radius: 43px;
     background: rgba(236, 253, 245, 0.78);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.49);
-  }
-  
-  .column2 {
+    right: 50px;
+}
+
+.column2 {
+    align-items: center;
     text-align: center;
+
+    border-radius: 43px;
     background: #ECFDF5;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-  }
-  
-  .inside-column {
+}
+
+.inside-column {
     margin-top: 1rem;
     width: 334px;
     padding: 130px 150px;
     justify-content: center;
     height: 280px;
     position: relative;
+ 
     border-radius: 12px;
     background: #ECFDF5;
     box-shadow: 0px 9px 8px 0px rgba(0, 0, 0, 0.25);
-  }
-  
-  .inside-text {
+}
+
+
+.inside-text {
     position: relative;
     bottom: 7rem;
     font-family: Inter;
     font-size: 16px;
+    font-style: normal;
     font-weight: 400;
     white-space: nowrap;
-  }
-  
-  .download-link {
+}
+
+.download-link{
     position: relative;
     text-align: center;
     width: 278px;
     height: 120px;
     margin: 10px;
+
     border-radius: 20px;
     border: 1px solid rgba(43, 45, 51, 0.25);
     padding-top: 50px;
     color: black;
     font-size: 16px;
-    bottom: 112px;
+    bottom:112px;
     right: 8.3rem;
-  }
-  
-  .btn-reg {
+}
+
+
+.btn-reg{
     position: absolute;
     background-color: #10B981;
     border-radius: 11px;
@@ -154,7 +184,4 @@
     cursor: pointer;
     width: 329px;
     height: 35px;
-  }
-  
-
-  
+}
