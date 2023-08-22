@@ -22,9 +22,7 @@ import { DownloadService } from 'src/app/services/download.service';
   styleUrls: ['./questionnaires.component.scss'],
 })
 export class QuestionnairesComponent implements OnInit {
-
-  @ViewChild('cloudinaryLink') cloudinaryLink!: ElementRef;
-
+  cloudinaryLink: any;
   step: any = 1;
 
   errorMessage = '';
@@ -140,10 +138,9 @@ export class QuestionnairesComponent implements OnInit {
             .subscribe((res) => {
               this.cloudinaryLink = res.url;
               this.isReturned = true;
-              
+
               console.log(res.url);
             });
-          
         },
         error: (err) => {
           this.errorMessage = err.error.message;
@@ -182,22 +179,16 @@ export class QuestionnairesComponent implements OnInit {
     return this.form2.controls;
   }
 
-
-  triggerDownload() {
-    if (this.isReturned) {
-      const cloudinaryLink = this.cloudinaryLink.nativeElement.getAttribute('href');
-      const newWindow = window.open('', '_blank');
+  async openPopup(url: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const newWindow = window.open(url, '_blank');
       if (newWindow) {
-        const downloadLink = newWindow.document.createElement('a');
-        downloadLink.href = cloudinaryLink;
-        downloadLink.style.display = 'none';
-        newWindow.document.body.appendChild(downloadLink);
-  
-        downloadLink.click();
-  
-        newWindow.document.body.removeChild(downloadLink);
+        newWindow.onload = () => {
+          resolve();
+        };
+      } else {
+        reject(new Error('Popup blocked.'));
       }
-    }
+    });
   }
-  
 }
