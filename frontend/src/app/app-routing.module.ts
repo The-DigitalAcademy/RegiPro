@@ -41,6 +41,9 @@ const routes: Routes = [
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'resend-link', component: ResendLinkComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
+
+
+
   {path: 'regenerate/:bId', component:RegenerateComponent},
   {path: 'steps', component:StepsComponent},
   {path: 'generate', component: GenerateBusinessPlanComponent}
