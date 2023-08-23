@@ -59,13 +59,40 @@ button{
 
 }
 
- /* section button:hover{
-     cursor: pointer;
-     background-color: #10B981;
-     color: white;
-     box-shadow: 0 0 5px#10B981, 0 0 10px rgb(153, 227, 179), 0 0 15px rgb(113, 208, 140);
-     font-weight: bold;
- } */
+/* Define the animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+/* Apply the animation to the .animated-heading class */
+.animated-heading {
+  animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
+
+/* Define the animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to the .animated-paragraph class */
+.animated-paragraph {
+  animation: fadeUp 1s ease-in-out forwards; /* Animation will run for 1 second */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
 
 
