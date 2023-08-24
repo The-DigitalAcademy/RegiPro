@@ -41,21 +41,51 @@ export class HomeComponent {
     });
   }
 
+  // greeting() {
+  //   const date = new Date();
+
+  //   const currentTime = date.getHours();
+    
+  //   if (currentTime >= 0 && currentTime <= 11) {
+  //     return `Good morning,`;
+  //   } else if (currentTime >= 12 && currentTime <= 16) {
+  //     return `Good afternoon,`;
+  //   } else if (currentTime >= 17 && currentTime <= 23) {
+  //     return `Good evening, `;
+  //   } else {
+  //     return '';
+  //   }
+  // }
+
   greeting() {
     const date = new Date();
-
     const currentTime = date.getHours();
-    
-    if (currentTime >= 0 && currentTime <= 11) {
-      return `Good morning,`;
-    } else if (currentTime >= 12 && currentTime <= 16) {
-      return `Good afternoon,`;
-    } else if (currentTime >= 17 && currentTime <= 23) {
-      return `Good evening, `;
-    } else {
-      return '';
+
+    const greetings = [
+        ["Midnight greetings! Burning the midnight oil?", "Hello, night owl! Anything keeping you up?", "Hey, it's late! Still up and about?"],
+        ["Good morning! Rise and shine!", "Morning! Have a great day ahead.", "Top of the morning to you!"],
+        ["Hello! Productive day?", "Hi there! How's your day?", "Halfway through the day!"],
+        ["Good afternoon! Quick break?", "Hey! Smooth day?", "Hi! Need an afternoon boost?"],
+        ["Good evening! How was your day?", "Hey there! Ready to unwind?", "Hello! Evening plans?"],
+        ["Good night! Rest well.", "Hey! Peaceful night.", "Hello! Sweet dreams."]
+    ];
+
+    const index =
+        currentTime <= 5 ? 0 :
+        currentTime <= 11 ? 1 :
+        currentTime <= 16 ? 2 :
+        currentTime <= 20 ? 3 :
+        currentTime <= 23 ? 4 :
+        -1; // Invalid hour
+
+    if (index !== -1) {
+        return greetings[index][Math.floor(Math.random() * 3)];
     }
-  }
+
+    return '';
+}
+
+  
 
   logout(): void {
     this.authService.logout().subscribe({

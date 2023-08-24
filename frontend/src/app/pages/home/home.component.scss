@@ -8,12 +8,12 @@
 }
 
 .container {
-  background-color: #ECFDF5;
+  background-color: #ecfdf5;
   height: 100vh;
   width: 100wh;
 }
-span{
-  color:black;
+span {
+  color: black;
 }
 .svg-container {
   display: flex;
@@ -23,17 +23,17 @@ span{
   height: 50px;
 }
 
-.svg-about{
+.svg-about {
   position: relative;
   right: 0.5rem;
 }
 
-.svg-logout{
+.svg-logout {
   position: relative;
   right: 0.4rem;
 }
 
-.svg-profile{
+.svg-profile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,19 +41,17 @@ span{
   height: 50px;
 }
 p::first-letter {
-
   text-transform: capitalize;
-  
 }
-.circle{
+.circle {
   width: 45px;
   height: 45px;
   background-color: #ffffff;
   border-radius: 50%;
   position: relative;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
-.circleB{
+.circleB {
   display: flex;
   justify-content: center;
   width: 50px;
@@ -63,19 +61,19 @@ p::first-letter {
   border-radius: 50%;
   border: 0.2px solid black;
 }
-.bic{
+.bic {
   position: absolute;
   width: inherit;
   top: 50%;
   transform: translateY(-50%);
 }
-.bic2{
-  position:relative;
+.bic2 {
+  position: relative;
   width: inherit;
   top: 50%;
   transform: translateY(-50%);
 }
-.containerEg{
+.containerEg {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -87,7 +85,95 @@ p::first-letter {
   flex-shrink: 0;
 
   border-radius: 5px;
-  background-color: #ECFDF5;
+  background-color: #ecfdf5;
   box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+/* Add your CSS styles here */
+
+/* Define the typing animation class */
+.typing {
+  overflow: hidden; /* Hide overflowing text */
+  white-space: nowrap; /* Prevent line breaks */
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0; /* Start with no width */
+  }
+  to {
+    width: 100%; /* Expand to full width */
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent; /* Hide caret */
+  }
+  50% {
+    border-color: #000; /* Show caret */
+  }
+}
+
+// ANIMATIONS
+
+.heading-primary {
+  opacity: 0;
+  font-family: "Work Sans", sans-serif;
+  margin: 0 auto auto auto;
+  background: linear-gradient(to right, #f8b195, #f67280, #c06c84);
+  font-weight: 800;
+  font-size: 90px;
+  width: 380px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+  animation: shring-animation 2.2s steps(40, end) 2s forwards,
+    blink 0.5s step-end infinite alternate;
+}
+
+@keyframes shring-animation {
+  0% {
+    background-position: 0 0;
+    opacity: 0;
+    width: 0;
+  }
+  1% {
+    background-position: 0 0;
+    opacity: 1;
+    border-right: 1px solid orange;
+  }
+  50% {
+    background-position: 150px 0;
+    opacity: 1;
+    border-right: 1px solid orange;
+  }
+  100% {
+    background-position: 400px 0;
+    opacity: 1;
+    border-right: 1px solid orange;
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  1%,
+  99% {
+    border-right: 1px solid orange;
+  }
+  100% {
+    border-right: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+

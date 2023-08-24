@@ -14,7 +14,6 @@ import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
 import { OpenaiService } from 'src/app/services/openai.service';
-import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -49,8 +48,7 @@ export class QuestionnairesComponent implements OnInit {
     private respService: ResponsesService,
     public loaderService: LoaderService,
     private toast: NgToastService,
-    private openaiService: OpenaiService,
-    private downloadService: DownloadService
+    private openaiService: OpenaiService
   ) {}
 
   ngOnInit(): void {
