@@ -1,3 +1,9 @@
+.user-business{
+  margin-bottom: 150px;
+ 
+ 
+}
+
 .img {
   background-color: white;
   width: 57px;
@@ -5,6 +11,16 @@
   border: 0.2px solid black;
   border-radius: 50%;
   margin: auto;
+}
+.aligningRows{
+
+    position: relative;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
 }
 
 .container {
@@ -27,6 +43,13 @@ span{
   position: relative;
   right: 0.5rem;
 }
+.svg-about-logout{
+ background-color:#ECFDF5 ;
+  position: fixed;
+  bottom: 0 !important;
+  width: 100%;
+  padding: 10px;
+}
 
 .svg-logout{
   position: relative;
@@ -46,8 +69,19 @@ p::first-letter {
   
 }
 .circle{
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: relative;
+  margin-top: .5rem;
+}
+.circle-business{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
   background-color: #ffffff;
   border-radius: 50%;
   position: relative;
@@ -90,4 +124,12 @@ p::first-letter {
   background-color: #ECFDF5;
   box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.text-center{
+    font-size: 12px;
+    margin-top: 3.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
