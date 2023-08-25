@@ -35,6 +35,7 @@ db.sequelize = sequelize;
 db.user = require("../models/User.js")(sequelize, Sequelize);
 db.role = require("../models/Role.js")(sequelize, Sequelize);
 db.response = require("../models/Response.js")(sequelize, Sequelize);
+db.business = require("../models/BusinessPlan.js")(sequelize, Sequelize);
 
 // User and Role associations
 db.role.belongsToMany(db.user, {
@@ -57,6 +58,12 @@ db.response.belongsTo(db.user, {
   foreignKey: "userId",
   as: "user"
 })
+
+db.response.hasOne(db.business);
+db.business.belongsTo(db.response, {
+  foreignKey: "responseId",
+  as: "response"
+});
 
 db.ROLES = ["user", "admin", "moderator"];
 

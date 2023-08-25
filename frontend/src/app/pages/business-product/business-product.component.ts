@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BusinessProductComponent {
 
+  allSet(){
+    window.location.replace("/all-set")
+  }
 }

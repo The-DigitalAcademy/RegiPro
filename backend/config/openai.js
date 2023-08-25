@@ -10,6 +10,9 @@ const {
   TextRun,
   UnderlineType,
 } = docx;
+
+let sectionNumber = 1; // Initialize section numbering
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI,
 });
@@ -49,7 +52,8 @@ exports.handler = async (req, res) => {
         parsedArray.forEach((section) => {
           const sectionParagraphs = [
             new Paragraph({
-              text: section.section,
+              text: `${sectionNumber}. ${section.section}`, // Add numbering to section title
+
               heading: HeadingLevel.HEADING_1,
             }),
             new Paragraph({
@@ -59,10 +63,7 @@ exports.handler = async (req, res) => {
     
           Object.entries(section.content).forEach(([key, value]) => {
             sectionParagraphs.push(
-              // new Paragraph({
-              //   text: key,
-              //   heading: HeadingLevel.HEADING_3,
-              // }),
+             
               new Paragraph({
                 text: value,
               }),
@@ -71,7 +72,7 @@ exports.handler = async (req, res) => {
               })
             );
           });
-    
+          sectionNumber++; // Increment section numbering
           allParagraphs = allParagraphs.concat(sectionParagraphs);
         });
 

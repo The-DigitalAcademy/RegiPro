@@ -14,7 +14,7 @@ import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
 import { OpenaiService } from 'src/app/services/openai.service';
-
+import { BusinessPlanService } from 'src/app/services/business.service';
 @Component({
   selector: 'app-questionnaires',
   templateUrl: './questionnaires.component.html',
@@ -40,6 +40,7 @@ export class QuestionnairesComponent implements OnInit {
   submitted = false;
   submitted2 = false;
   isReturned = false;
+  submitted3 = false;
 
   constructor(
     private busService: BusinessService,
@@ -48,12 +49,16 @@ export class QuestionnairesComponent implements OnInit {
     private respService: ResponsesService,
     public loaderService: LoaderService,
     private toast: NgToastService,
-    private openaiService: OpenaiService
+    private openaiService: OpenaiService,
+    private businessPlanService: BusinessPlanService
   ) {}
 
   ngOnInit(): void {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
+
+    // Retrieve the cloudinaryLink from localStorage
+    this.cloudinaryLink = localStorage.getItem('cloudinaryLink');
   }
 
   submit() {
@@ -126,18 +131,25 @@ export class QuestionnairesComponent implements OnInit {
         next: (data) => {
           this.addBusiness(data.response);
           console.log(data);
+          this.submitted3 = true
+          
+
           this.toast.success({
             detail: 'SUCCESS',
             summary: data.message,
             duration: 5000,
+          
           });
+         
           this.openaiService
             .generate(name, industry, description)
             .subscribe((res) => {
               this.cloudinaryLink = res.url;
               this.isReturned = true;
-
               console.log(res.url);
+
+              // Store the cloudinaryLink in localStorage
+              localStorage.setItem('cloudinaryLink', this.cloudinaryLink);
             });
         },
         error: (err) => {
@@ -175,18 +187,5 @@ export class QuestionnairesComponent implements OnInit {
   }
   get p(): { [key: string]: AbstractControl } {
     return this.form2.controls;
-  }
-
-  async openPopup(url: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      const newWindow = window.open(url, '_blank');
-      if (newWindow) {
-        newWindow.onload = () => {
-          resolve();
-        };
-      } else {
-        reject(new Error('Popup blocked.'));
-      }
-    });
   }
 }

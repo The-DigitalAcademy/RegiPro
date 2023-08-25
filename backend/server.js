@@ -39,8 +39,11 @@ require("./routes/authRoutes")(app);
 require("./routes/userRoutes")(app);
 
 require("./routes/resRoutes")(app);
+require("./routes/planRoutes")(app);
 
 require("./routes/openaiRoutes")(app);
+
+
 
 
 app.use("/", express.static(path.join(__dirname, "public")));
