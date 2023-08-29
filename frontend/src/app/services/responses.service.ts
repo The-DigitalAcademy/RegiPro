@@ -31,13 +31,16 @@ export class ResponsesService {
     return this.http.post<answers>(Res_API, {name, industry, description, isRegistered, hasBusinessPlan}, httpOptions);
   }
 
-  getResponses(): Observable<any> {
+  getResponses(): Observable<answers[]> {
     const token = localStorage.getItem('accessToken'); // Get token from local storage
     const headersConfig: any = {
       'Content-Type': 'application/json'
     };
+   
+ 
 
     if (token) {
+
       headersConfig['x-access-token'] = token;
     }
 
@@ -63,6 +66,7 @@ export class ResponsesService {
     };
 
     return this.http.get<answers>(`${Res_API}/${id}`, httpOptions);
+
   }
 
   public businesses = toSignal<answers[]>(this.getResponses());

@@ -13,18 +13,11 @@
 
     <div class="containerEg mt-5">
       <div class="row">
-        <div class="col-4 circleB"><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="36"
-          height="36"
-          fill="currentColor"
-          class="bi bi-person bic2"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
-          />
-        </svg></div>
+        <div class="col-4 circleB"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+            class="bi bi-person bic2" viewBox="0 0 16 16">
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+          </svg></div>
         <div class="col-8"><b>{{ currentUser.firstname | titlecase }} {{ currentUser.lastname | titlecase }}</b><br>
           <p style="color: #ababab;">{{ currentUser.email | lowercase }}</p>
         </div>
@@ -32,118 +25,78 @@
     </div>
     <div class="row">
       <div class="user-business" style="position: relative; top: 2.5rem">
-        <div
-          class="d-flex justify-content-start"
-          style="
+        
+        <div class="d-flex justify-content-start" style="
             font-size: 20px;
             color: #495250;
             position: relative;
             left: 1rem;
-          "
-        >
+          ">
           <b>Your Businesses</b>
         </div>
 
-        <div
-          class="row row-cols-1 ml-4 mt-4 aligningRows"
-          style="position: relative; left: 1rem"
-        >
-          <div
-            class="col d-flex justify-content-center my-1 mx-1"
-            routerLink="/questions"
-            style="
-              width: 94.962px;
+        <div class="row row-cols-1 ml-4 mt-4 aligningRows" style="position: relative; left: 1rem">
+          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/questions" style="
+              width: 30%;
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            "
-          >
+            ">
             <div class="circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                fill="currentColor"
-                class="bi bi-plus bic"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus bic"
+                viewBox="0 0 16 16">
                 <path
-                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                />
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>
-              <p
-                class="col text-center"
-                style="font-size: 12px; margin-top: 3.3rem; font-weight: 600"
-              >
+              <p class="col text-center" style="font-size: 12px; margin-top: 3.3rem; font-weight: 600">
                 Add New Business
               </p>
             </div>
           </div>
           <!-- new card -->
-          <div
-            class="col d-flex justify-content-center my-1 mx-1"
-            routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of responses.businesses(); let i = index"
-            style="
-              width: 94.962px;
+          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
+            *ngFor="let res of businesses; let i = index" style="
+              width: 30%;
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            "
-          >
+            ">
             <div class="circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-person bic"
-                viewBox="0 0 16 16"
-              >
+              <!-- <div *ngIf="res.industry === 'Marketing'">Market</div>
+              <div *ngIf="res.industry === 'Tech & Software'">Soft</div>
+              <div *ngIf="res.industry === 'Manufacturing'">Manu</div>
+              <div *ngIf="res.industry === 'Fitness & Wellness'">Fit</div>
+              <div *ngIf="res.industry === 'Property'">Prop</div>
+              <div *ngIf="res.industry === 'Retail'">Retail</div> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-person bic" viewBox="0 0 16 16">
                 <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
-                />
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
               </svg>
-              <p
-                class="col text-center"
-                style="font-size: 12px; margin-top: 3.5rem; font-weight: 600"
-              >
+              <p class="col text-center" style="font-size: 12px; margin-top: 3.5rem; font-weight: 600">
                 {{ res.name }}
-            </p>
+
+              </p>
             </div>
           </div>
           <!-- new card -->
-          <div
-            class="col d-flex justify-content-center my-1 mx-1"
-            routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of business.businessList(); let i = index"
-            style="
-              width: 94.962px;
+          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
+            *ngFor="let res of business.businessList(); let i = index" style="
+              width: 30%;
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            "
-          >
+            ">
             <div class="circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-person bic"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-person bic" viewBox="0 0 16 16">
                 <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
-                />
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
               </svg>
-              <p
-                class="col text-center"
-                style="font-size: 12px; margin-top: 3.5rem; font-weight: 600"
-              >
+              <p class="col text-center" style="font-size: 12px; margin-top: 3.5rem; font-weight: 600">
                 {{ res.name }}
               </p>
             </div>
@@ -155,50 +108,29 @@
       </div>
     </div>
   </div>
- 
-</div>
 
-  <div
-    class="svg-about-logout"
-  
-  >
-    <div class="d-flex p-2 mb-1 vjustify-content-start" routerLink="/about">
-      <div class="svg-about">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-info-circle-fill"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-          />
-        </svg>
-      </div>
-      About App
+</div>
+<div class="svg-about-logout">
+  <div class="d-flex p-2 mb-1 vjustify-content-start" routerLink="/about">
+    <div class="svg-about">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+      </svg>
     </div>
-    <div class="d-flex p-2 mb-1 justify-content-start" (click)="logout()">
-      <div class="svg-logout">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-box-arrow-right"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
-          />
-          <path
-            fill-rule="evenodd"
-            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-          />
-        </svg>
-      </div>
-      Log Out
-    </div>
+    About App
   </div>
+  <div class="d-flex p-2 mb-1 justify-content-start" (click)="logout()">
+    <div class="svg-logout">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+        <path fill-rule="evenodd"
+          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+      </svg>
+    </div>
+    Log Out
+  </div>
+</div>

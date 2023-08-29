@@ -1,9 +1,9 @@
 section {
   width: 333px;
   height: 632px;
-
   margin: auto;
   background-color: #ECFDF5;
+  // transition: transform 0.3s ease-in-out; /* Add transition property */
 }
 .btn{
   width: 150px;
@@ -23,8 +23,6 @@ section {
   border: 1px solid;
  
 }
-
-
 .img-responsive {
   display: block;
   margin-left: auto;
@@ -92,3 +90,4 @@ section p {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
