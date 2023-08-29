@@ -21,7 +21,7 @@ export class HomeComponent {
   currentUser!: user;
 
   eventBusSub?: Subscription;
-  
+
 
 
   constructor(
@@ -40,6 +40,7 @@ export class HomeComponent {
     this.responses.getResponses().subscribe({
       next: (data: answers[]) => {
        this.businesses = data;
+
 
       }, error: err => {
         console.log(err);
@@ -82,7 +83,14 @@ export class HomeComponent {
   }
 
 
-  addNewBusiness() {
+  disableNewBusiness() {
+    if(this.businesses.length >= 2) {
+      console.log("Reach your limit")
+      alert("You have reached business limit, subscribe to add another business")
+      this.router.navigate(['/home'])
+   } else {
+    this.router.navigate(['/questions'])
+   }
 
   }
 }

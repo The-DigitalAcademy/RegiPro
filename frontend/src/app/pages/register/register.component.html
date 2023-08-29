@@ -1,5 +1,5 @@
 
-<div class="container-sm">
+<div *ngIf="!isSuccessful" class="container-sm">
   <div class="form-container mx-auto mt-5 mb-5">
     <div class="text-center">
       <h2>Sign Up</h2>
@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-sm-12">
         <form
-          *ngIf="!isSuccessful"
+
           name="form"
           (ngSubmit)="f.form.valid && onSubmit()"
           #f="ngForm"
@@ -135,9 +135,7 @@
             Signup failed!<br />{{ errorMessage }}
           </div>
         </form>
-        <div class="alert alert-success" *ngIf="isSuccessful">
-          Your registration is successful!
-        </div>
+
       </div>
     </div>
   </div>
