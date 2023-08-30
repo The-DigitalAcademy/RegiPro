@@ -16,7 +16,8 @@ export class ResponsesService {
   constructor(private http: HttpClient) { }
 
   response(name: string, industry: string, description: string, isRegistered: string, hasBusinessPlan: string) : Observable<any>{
-    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const token = sessionStorage.getItem('accessToken'); // Get token from session storage
+
     const headersConfig: any = {
       'Content-Type': 'application/json'
     };
@@ -32,7 +33,8 @@ export class ResponsesService {
   }
 
   getResponses(): Observable<answers[]> {
-    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const token = sessionStorage.getItem('accessToken'); // Get token from session storage
+
     const headersConfig: any = {
       'Content-Type': 'application/json'
     };

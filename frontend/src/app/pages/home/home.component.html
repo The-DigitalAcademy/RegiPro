@@ -56,7 +56,7 @@
           </div>
           <!-- new card -->
           <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of businesses; let i = index" style="
+            *ngFor="let res of responses.businesses(); let i = index" style="
               width: 30%;
               height: 119px;
               border-radius: 12px;
