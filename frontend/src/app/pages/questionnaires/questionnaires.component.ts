@@ -143,16 +143,6 @@ export class QuestionnairesComponent implements OnInit {
             duration: 5000,
           });
 
-          this.openaiService
-            .generate(name, industry, description)
-            .subscribe((res) => {
-              this.cloudinaryLink = res.url;
-              this.isReturned = true;
-              this.storageService.saveBusinessPlan(res.url);
-              this.reloadPage();
-
-              console.log(res.url);
-            });
         },
         error: (err) => {
           this.errorMessage = err.error.message;

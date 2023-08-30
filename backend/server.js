@@ -7,7 +7,6 @@ const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 
-const rateLimit = require("./middleware/loginLimiter");
 const swaggerDocs = require("./config/swagger");
 
 const PORT = process.env.PORT || 5001;
@@ -24,7 +23,6 @@ app.use(logger);
 
 app.use(cors(corsOptions));
 
-app.use(rateLimit);
 
 app.use(express.json());
 
