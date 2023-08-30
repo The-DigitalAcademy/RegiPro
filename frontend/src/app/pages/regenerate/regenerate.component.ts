@@ -19,7 +19,8 @@ export class RegenerateComponent implements OnInit {
     private response: ResponsesService,
     public loaderService: LoaderService
   ) {}
-
+// Retrieving the name of the business and the industry data based on a parameter (bId) from the route, using the Angular Router, and making an HTTP request using an injected service (response).
+  
   ngOnInit(): void {
     this.bId = this.router.snapshot.paramMap.get('bId');
     
