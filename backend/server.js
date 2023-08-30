@@ -14,10 +14,12 @@ const PORT = process.env.PORT || 5001;
 console.log(process.env.NODE_ENV);
 
 app.listen(PORT, () => {
+
   console.log(`Server is running on port: ${PORT}`);
   swaggerDocs(app, PORT);
-});
 
+});
+swaggerDocs(app);
 
 app.use(logger);
 
@@ -41,9 +43,7 @@ db.sequelize.sync({ force: false, alter: true, logging: true }).then(() => {
 // routes
 require("./routes/authRoutes")(app);
 require("./routes/userRoutes")(app);
-
 require("./routes/resRoutes")(app);
-
 require("./routes/openaiRoutes")(app);
 
 app.use("/", express.static(path.join(__dirname, "public")));
