@@ -54,9 +54,7 @@ export class HomeComponent {
   }
 
   greeting() {
-    const date = new Date();
-
-    const currentTime = date.getHours();
+    const currentTime = new Date().getHours();
 
     if (currentTime >= 0 && currentTime <= 11) {
       return `Good morning,`;
@@ -85,7 +83,6 @@ export class HomeComponent {
 
   disableNewBusiness() {
     if(this.businesses.length >= 2) {
-      console.log("Reach your limit")
       alert("You have reached business limit, subscribe to add another business")
       this.router.navigate(['/home'])
    } else {
