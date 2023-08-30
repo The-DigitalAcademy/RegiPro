@@ -129,6 +129,9 @@ _ABSA Business Products link_
 ![Regenerate Business Plan](./frontend/src/assets/images/Screenshot%202023-07-28%20at%2015.06.30.png)
 _Regenerate Business Plan_
 
+![About Us](./frontend/src/assets/images/About%20us%20.png)
+_About Us_
+
 
 ## Backend
 

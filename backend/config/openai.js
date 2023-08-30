@@ -17,9 +17,9 @@ const openai = new OpenAIApi(configuration);
 
 // Configure Cloudinary
 cloudinary.config({
-  cloud_name: "dfyinxihm",
-  api_key: "118732527716991",
-  api_secret: "8CbQQIxezNSmI4YbjmvPFthyD4I",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 exports.handler = async (req, res) => {
@@ -59,10 +59,6 @@ exports.handler = async (req, res) => {
     
           Object.entries(section.content).forEach(([key, value]) => {
             sectionParagraphs.push(
-              // new Paragraph({
-              //   text: key,
-              //   heading: HeadingLevel.HEADING_3,
-              // }),
               new Paragraph({
                 text: value,
               }),
@@ -102,9 +98,9 @@ exports.handler = async (req, res) => {
           uploadStream.end(buffer);
         });
 
-        const imageUrl = uploadResult.secure_url;
+        const docUrl = uploadResult.secure_url;
 
-        res.status(200).json({ url: imageUrl });
+        res.status(200).json({ url: docUrl });
         console.log("this is an array");
       } else {
         console.error("Parsed content is not an array.");
