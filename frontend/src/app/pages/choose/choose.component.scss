@@ -1,8 +1,15 @@
 section {
-  width: 333px;
-  height: 632px;
   margin: auto;
-  background-color: #ECFDF5;
+  background-color: var(--PRIMARY_BGCOLOR);
+  h2 {
+    font-family: var(--font-stack);
+    margin-top: 1rem ;
+  }
+
+  p {
+    font-family: var(--font-stack);
+  }
+ 
   // transition: transform 0.3s ease-in-out; /* Add transition property */
 }
 .btn{

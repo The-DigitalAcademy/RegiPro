@@ -22,7 +22,6 @@ import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: 'choose', component: ChooseComponent },
   { path: 'about', component: AboutComponent },
   { path: 'onboarding', component: OnboardingComponent },
-
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
@@ -44,8 +42,8 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'resend-link', component: ResendLinkComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-
-
+  { path: 'regenerate/:bId', component: RegenerateComponent },
+  { path: 'steps', component: StepsComponent },
 ];
 
 @NgModule({

@@ -27,7 +27,9 @@ module.exports = (sequelize, Sequelize) => {
         hasBusinessPlan: {
           type: Sequelize.STRING,
           allowNull: false,
-         
+        },
+        businessPlanUrl:{
+          type: Sequelize.STRING
         },
       },
       {

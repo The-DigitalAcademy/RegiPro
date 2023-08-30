@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 const USER_KEY = 'auth-user';
-const USER_TYPE = 'user-type'
+const USER_TYPE = 'user-type';
+const BUSINESS_PLAN = 'business-plan'
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,19 @@ export class StorageService {
 
   public saveUserTypeSession(user: any): void {
     window.sessionStorage.setItem(USER_TYPE, JSON.stringify(user));
+  }
+
+  public saveBusinessPlan(url: any): void {
+    window.sessionStorage.removeItem(BUSINESS_PLAN);
+    window.sessionStorage.setItem(BUSINESS_PLAN, JSON.stringify(url));
+  }
+
+  public getBusinessPlan(): any {
+    const business = window.sessionStorage.getItem(BUSINESS_PLAN);
+    if (business) {
+      return JSON.parse(business);
+    }
+    return {};
   }
 
 
