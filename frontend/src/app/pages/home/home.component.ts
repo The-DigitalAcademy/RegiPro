@@ -33,61 +33,64 @@ export class HomeComponent {
     public business: BusinessService
   ) { }
 
+// Initialize component when it's created
+ngOnInit() {
+  // Get the current user and set the greeting message
+  this.currentUser = this.storageService.getUser();
+  this.greetingUser = this.greeting();
 
-  ngOnInit() {
-    this.currentUser = this.storageService.getUser();
-    this.greetingUser = this.greeting();
-    this.responses.getResponses().subscribe({
-      next: (data: answers[]) => {
-       this.businesses = data;
-
-
-      }, error: err => {
-        console.log(err);
-      }
-    })
-
-
-    this.eventBusSub = this.eventBusService.on('logout', () => {
-      this.logout();
-    });
-  }
-
-  greeting() {
-    const currentTime = new Date().getHours();
-
-    if (currentTime >= 0 && currentTime <= 11) {
-      return `Good morning,`;
-    } else if (currentTime >= 12 && currentTime <= 16) {
-      return `Good afternoon,`;
-    } else if (currentTime >= 17 && currentTime <= 23) {
-      return `Good evening, `;
-    } else {
-      return '';
+  // Fetch list of responses (businesses)
+  this.responses.getResponses().subscribe({
+    next: (data: answers[]) => {
+      this.businesses = data;
+    },
+    error: err => {
+      console.log(err);
     }
+  });
+
+  // Subscribe to 'logout' event from event bus
+  this.eventBusSub = this.eventBusService.on('logout', () => {
+    this.logout();
+  });
+}
+
+// Determine appropriate greeting based on the time of day
+greeting() {
+  const currentTime = new Date().getHours();
+
+  if (currentTime >= 0 && currentTime <= 11) {
+    return `Good morning,`;
+  } else if (currentTime >= 12 && currentTime <= 16) {
+    return `Good afternoon,`;
+  } else if (currentTime >= 17 && currentTime <= 23) {
+    return `Good evening, `;
+  } else {
+    return '';
   }
+}
 
-  logout(): void {
-    this.authService.logout().subscribe({
-      next: (res) => {
-        this.storageService.clean();
-        this.router.navigate(['']);
-        window.location.reload();
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+// Handle user logout
+logout(): void {
+  this.authService.logout().subscribe({
+    next: (res) => {
+      this.storageService.clean();
+      this.router.navigate(['']);
+      window.location.reload();
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
+
+// Disable adding a new business if the limit is reached
+disableNewBusiness() {
+  if (this.businesses.length >= 2) {
+    alert("You have reached the business limit. Subscribe to add another business.");
+    this.router.navigate(['/home']);
+  } else {
+    this.router.navigate(['/questions']);
   }
-
-
-  disableNewBusiness() {
-    if(this.businesses.length >= 2) {
-      alert("You have reached business limit, subscribe to add another business")
-      this.router.navigate(['/home'])
-   } else {
-    this.router.navigate(['/questions'])
-   }
-
-  }
+}
 }

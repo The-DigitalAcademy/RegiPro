@@ -122,8 +122,14 @@ export class QuestionnairesComponent implements OnInit {
       isRegistered = savedAnswers[4].isRegistered;
     console.log('name answer', name);
 
-    this.respService
-      .response(name, industry, description, isRegistered, hasBusinessPlan)
+    this.openaiService
+            .generate(name, industry, description)
+            .subscribe((res) => {
+              let businessPlanUrl = res.url
+              this.isReturned = true;
+
+              this.respService
+      .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
       .subscribe({
         next: (data) => {
           this.addBusiness(data.response);
@@ -133,14 +139,7 @@ export class QuestionnairesComponent implements OnInit {
             summary: data.message,
             duration: 5000,
           });
-          this.openaiService
-            .generate(name, industry, description)
-            .subscribe((res) => {
-              this.cloudinaryLink = res.url;
-              this.isReturned = true;
-
-              console.log(res.url);
-            });
+          
         },
         error: (err) => {
           this.errorMessage = err.error.message;
@@ -157,8 +156,9 @@ export class QuestionnairesComponent implements OnInit {
           this.loaderService.hide(); // Hide the loader
         },
       });
-    // this.step = this.step + 1;
+            });
 
+    
     console.log('added to array', this.questionsArray);
   }
 
