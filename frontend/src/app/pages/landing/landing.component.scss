@@ -59,13 +59,131 @@ button{
 
 }
 
- /* section button:hover{
-     cursor: pointer;
-     background-color: #10B981;
-     color: white;
-     box-shadow: 0 0 5px#10B981, 0 0 10px rgb(153, 227, 179), 0 0 15px rgb(113, 208, 140);
-     font-weight: bold;
- } */
+/* Define the animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+
+/* Define the intermediate infinite typing animation */
+@keyframes intermediateTypewriter {
+  0% { width: 0 }
+  50% { width: 100% }
+  100% { width: 0 }
+}
+
+/* Apply the animation to the .animated-heading class */
+.animated-heading {
+  animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
+
+/* Define the animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to the .animated-paragraph class */
+.animated-paragraph {
+  animation: fadeUp 1s ease-in-out forwards; /* Animation will run for 1 second */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
+
+
+/* Define the infinite slideIn animation */
+@keyframes infiniteSlideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the infinite slideIn animation to the .animated-heading class */
+.animated-heading {
+  animation: infiniteSlideIn 10s linear infinite; /* Animation will run infinitely */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
+
+/* Define the infinite fadeUp animation */
+@keyframes infiniteFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the infinite fadeUp animation to the .animated-paragraph class */
+.animated-paragraph {
+  animation: infiniteFadeUp 10s linear; /* Animation will run infinitely */
+  /* You can customize animation properties here, like timing functions, delay, etc. */
+}
+
+/* Define the slower infinite typing animation */
+@keyframes slowerTypewriter {
+  0% { width: 10% }
+  10% { width: 20% } /* Delay before starting over */
+  50% { width: 60% } /* Halfway point without any typing */
+  100% { width: 100% } /* Fully display the text */
+}
+
+/* Apply the slower infinite typing animation to xthe .animated-heading class */
+.animated-heading {
+  animation: slowerTypewriter 3s  linear infinite, blinkCursor  0.5s  infinite; /* Adjust the duration and keyframes */
+  animation-fill-mode: forwards;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Split the lines */
+.animated-heading span {
+  display: block;
+}
+
+/* Define the blinking cursor animation */
+@keyframes blinkCursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #f9d566;
+  }
+}
+
+/* Apply the animation to the button for a subtle effect */
+button {
+  animation: pulseButton 1.5s infinite;
+}
+
+/* Define the button pulse animation */
+@keyframes pulseButton {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
 
 

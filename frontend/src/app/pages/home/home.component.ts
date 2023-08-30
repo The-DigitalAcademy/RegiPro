@@ -15,27 +15,39 @@ import { answers } from 'src/app/interfaces/questions';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  
+
   greetingUser: string = '';
   businesses: answers[] = [];
   currentUser!: user;
 
   eventBusSub?: Subscription;
 
+
+
   constructor(
     private storageService: StorageService,
     public router: Router,
     private eventBusService: EventBusService,
     private authService: AuthService,
-    public responses : ResponsesService,
+    public responses: ResponsesService,
     public business: BusinessService
-  ) {}
+  ) { }
+
 
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
     this.greetingUser = this.greeting();
+    this.responses.getResponses().subscribe({
+      next: (data: answers[]) => {
+       this.businesses = data;
 
-    
+
+      }, error: err => {
+        console.log(err);
+      }
+    })
+
+
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
@@ -45,7 +57,7 @@ export class HomeComponent {
     const date = new Date();
 
     const currentTime = date.getHours();
-    
+
     if (currentTime >= 0 && currentTime <= 11) {
       return `Good morning,`;
     } else if (currentTime >= 12 && currentTime <= 16) {
@@ -69,12 +81,13 @@ export class HomeComponent {
       },
     });
   }
- 
-  addNewBusiness(event:any){
-    if (this.businesses.length < 3) {
-      this.businesses.push(event.target.files[0]);
-    } else {
-      alert('You have reached the maximum limit of 3 images.');
-    }
+  disableNewBusiness() {
+    if(this.businesses.length >= 2) {
+      console.log("Reach your limit")
+      alert("You have reached business limit, subscribe to add another business")
+      this.router.navigate(['/home'])
+   } else {
+    this.router.navigate(['/questions'])
+   }
   }
 }

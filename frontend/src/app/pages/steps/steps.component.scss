@@ -1,42 +1,58 @@
 h6 {
-    color: black;
-    text-align: center;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 0.96px;
-
+  color: black;
+  text-align: center;
+  font-family: var(--font-stack);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 0.96px;
 }
 
-.text {
-    color: #10B981;
-    text-decoration: underline;
 
+.text {
+  position: relative;
+  color: #10b981;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 4px;
+    border-radius: 20px;
+    background-color: #273549;
+  }
 }
 
 button {
-    width: 186.5px;
-    height: 35px;
-    // flex-shrink: 0;
-    border-radius: 11px;
-    background: #10B981;
-    color: #ffffff;
-    margin-top: 8%;
-
+  width: 186.5px;
+  height: 35px;
+  font-family: var(--font-stack-2);
+  // flex-shrink: 0;
+  border-radius: 10px;
+  background: #10b981;
+  color: #ffffff;
+  margin-top: 8%;
+  border: none;
 }
 
 .modal-footer button {
-    display: flex;
-    width: 112px;
-    height: 44px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
+  display: flex;
+  width: 112px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 a {
-    color: #10B981;
+  color: #10b981;
+}
+
+.img1 {
+    width: 100%;
+    
 }

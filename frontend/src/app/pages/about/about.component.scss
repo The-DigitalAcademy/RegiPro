@@ -10,11 +10,19 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
-    width: 151px;
+    // cursor: pointer;
+    width: 150px;
     height: 35px;
     flex-shrink: 0;
+    
   }
+.back-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
   
   .text-content {
     font-family: Inter;
@@ -24,3 +32,23 @@
     line-height: 24px;
     letter-spacing: 0.5px;
   }
+
+  @keyframes slowerTypewriter {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .btn-back {
+    /* ... your existing styles ... */
+    animation: slowerTypewriter 1.5s ease-in-out forwards;
+    opacity: 0; /* We'll use the animation to fade it in */
+  }
+  
+
+  

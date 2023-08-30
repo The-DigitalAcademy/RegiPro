@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,7 +17,7 @@ export class ForgotPasswordComponent {
   successMessage: any;
   IsvalidForm = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, public loaderService: LoaderService, private toast: NgToastService) {
     this.forgotPasswordform = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     });
@@ -34,18 +36,23 @@ export class ForgotPasswordComponent {
       this.authService.newPassword(this.forgotPasswordform.value).subscribe({
         next:
           (data) => {
-            // this.forgotPasswordform.reset();
             this.successMessage = "Reset password link send to email sucessfully.";
             console.log(data)
-            setTimeout(() => {
-              this.successMessage = null;
-              this.router.navigate(['resend-link']);
-            }, 3000)
+            
+            this.successMessage = null;
+            this.router.navigate(['resend-link']);
+            this.toast.success({detail:"SUCCESS",summary:data.message ,duration:5000});
+  
           }
       }),
        (err:any) => {
           if (err.error.message) {
             this.errorMessage = err.error.message;
+            this.toast.error({
+              detail: 'ERROR',
+              summary: this.errorMessage,
+              sticky: true,
+            });
           }
         }
     } else {

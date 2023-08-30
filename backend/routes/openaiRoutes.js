@@ -9,5 +9,5 @@ module.exports = function(app) {
       next();
     });
   
-    app.post("/ai/generate", controller.handler);
+    app.post("/business-plan/generate", controller.handler);
   };
