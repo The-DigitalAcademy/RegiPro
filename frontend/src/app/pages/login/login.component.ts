@@ -50,8 +50,9 @@ export class LoginComponent implements OnInit {
       
         const token = data.accessToken;
         console.log(token)
-        // Store the token in local storage
-        localStorage.setItem('accessToken', token);
+        
+        // Store the token in session storage
+        sessionStorage.setItem('accessToken', token);
 
         this.reloadPage();
       },

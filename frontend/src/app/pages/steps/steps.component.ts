@@ -6,13 +6,13 @@ import PSPDFKit from 'pspdfkit'
   templateUrl: './steps.component.html',
   styleUrls: ['./steps.component.scss']
 })
+// Configuration of the PSPDFKit library to display PDF
 export class StepsComponent implements AfterViewInit {
   currentStep = 1;
 
   nextStep(): void {
     this.currentStep++;
   }
-
   ngAfterViewInit() {
     PSPDFKit.load({
       baseUrl:
