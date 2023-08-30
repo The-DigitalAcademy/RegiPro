@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { PasswordValidators } from 'src/app/_shared/password-validators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,9 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class ResetPasswordComponent {
   resetForm: FormGroup;
-  forbiddenEmails: any;
   errorMessage: string = '';
-  password: string = ''
   IsvalidForm = true;
   successMessage: any
   IsResetFormValid = true;
@@ -24,6 +22,7 @@ export class ResetPasswordComponent {
   constructor(private authService: AuthService, private router: Router, public loaderService: LoaderService, private toast: NgToastService) {
 
     this.resetForm = new FormGroup({
+
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),

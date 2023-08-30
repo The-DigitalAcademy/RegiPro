@@ -49,6 +49,7 @@ ngOnInit() {
     }
   });
 
+
   // Subscribe to 'logout' event from event bus
   this.eventBusSub = this.eventBusService.on('logout', () => {
     this.logout();
@@ -94,3 +95,4 @@ disableNewBusiness() {
   }
 }
 }
+
