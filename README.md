@@ -123,8 +123,8 @@ _Business Plan download_
 ![CIPC Registration Steps](./frontend/src/assets/images/CIPC%20Steps.png)
 _CIPC Registration Steps_
 
-![CIPC Registration Steps](./frontend/src/assets/images/)
-_CIPC Registration Steps_
+![ABSA Business Products link](./frontend/src/assets/images/ABSA%20business%20products.png)
+_ABSA Business Products link_
 
 ![Regenerate Business Plan](./frontend/src/assets/images/Screenshot%202023-07-28%20at%2015.06.30.png)
 _Regenerate Business Plan_
