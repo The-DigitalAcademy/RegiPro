@@ -3,14 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+
 import { LandingComponent } from './pages/landing/landing.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { CipsNumComponent } from './pages/cips-num/cips-num.component';
 import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
 import { AuthGuard } from './guards/auth.guard';
+
 import { AboutComponent } from './pages/about/about.component';
-import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -20,7 +21,7 @@ import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
 
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
-import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -31,26 +32,24 @@ const routes: Routes = [
   { path: 'choose', component: ChooseComponent },
   { path: 'about', component: AboutComponent },
   { path: 'onboarding', component: OnboardingComponent },
-  { path: 'business-plan', component: BusinessPlanComponent },
+
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
-  {
-    path: 'questions',
-    component: QuestionnairesComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
+  { path: 'regenerate/:bId', component: RegenerateComponent },
   { path: 'all-set', component: AllSetComponent },
+  { path: 'steps', component: StepsComponent },
+
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'resend-link', component: ResendLinkComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'regenerate/:bId', component: RegenerateComponent },
-  { path: 'steps', component: StepsComponent },
-  { path: 'generate', component: GenerateBusinessPlanComponent },
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

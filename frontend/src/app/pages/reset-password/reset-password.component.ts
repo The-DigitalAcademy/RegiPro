@@ -21,7 +21,7 @@ export class ResetPasswordComponent {
   constructor(private authService: AuthService, private router: Router, public loaderService: LoaderService, private toast: NgToastService) {
 
     this.resetForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      // email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),

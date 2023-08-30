@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { timer } from 'rxjs';
-
 
 const USER_KEY = 'auth-user';
 const USER_TYPE = 'user-type'
