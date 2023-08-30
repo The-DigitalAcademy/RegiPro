@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-business-product',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./business-product.component.scss']
 })
 export class BusinessProductComponent {
+
+  constructor(private router: Router) {}
+
+
+navigateTo() {
+  const targetRoute = '/all-set';
+  this.router.navigate([targetRoute]);
+}
+
 
 }
