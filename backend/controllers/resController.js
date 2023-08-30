@@ -11,11 +11,11 @@ exports.createNewResponse = async (req, res) => {
   const userId = req.userId;
   console.log(userId);
 
-  const { name, industry, description, isRegistered, hasBusinessPlan } =
+  const { name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl} =
     req.body;
 
   // Confirm data
-  if (!name || !industry || !description || !isRegistered || !hasBusinessPlan) {
+  if (!name || !industry || !description || !isRegistered || !hasBusinessPlan || !businessPlanUrl) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -46,6 +46,7 @@ exports.createNewResponse = async (req, res) => {
       description,
       isRegistered,
       hasBusinessPlan,
+      businessPlanUrl
     });
     console.log(response);
     if (response) {
