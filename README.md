@@ -105,11 +105,30 @@ To install and run the RegiPro Angular app locally, follow these steps:
 
 ### Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-_Caption for Screenshot 1_
+![Landing Page](./frontend/src/assets/images/Landing%20Page.png)
+_Landing Page_
 
-![Screenshot 2](screenshots/screenshot2.png)
-_Caption for Screenshot 2_
+![Sign In or Sign Up](./frontend/src/assets/images/Sign%20in%20&%20Sign%20up.png)
+_Sign In or Sign Up_
+
+![Homepage](./frontend/src/assets/images/Home%20Page.png)
+_Homepage_
+
+![Questionnaire](./frontend/src/assets/images/Questionnaire.png)
+_Questionnaire_
+
+![Business Plan download](./frontend/src/assets/images/Business%20Plan.png)
+_Business Plan download_
+
+![CIPC Registration Steps](./frontend/src/assets/images/CIPC%20Steps.png)
+_CIPC Registration Steps_
+
+![CIPC Registration Steps](./frontend/src/assets/images/)
+_CIPC Registration Steps_
+
+![Regenerate Business Plan](./frontend/src/assets/images/Screenshot%202023-07-28%20at%2015.06.30.png)
+_Regenerate Business Plan_
+
 
 ## Backend
 
