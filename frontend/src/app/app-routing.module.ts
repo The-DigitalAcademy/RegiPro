@@ -10,7 +10,6 @@ import { CipsNumComponent } from './pages/cips-num/cips-num.component';
 import { QuestionnairesComponent } from './pages/questionnaires/questionnaires.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
-import { BusinessPlanComponent } from './pages/business-plan/business-plan.component';
 import { BusinessProductComponent } from './pages/business-product/business-product.component';
 import { AllSetComponent } from './pages/all-set/all-set.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -20,7 +19,6 @@ import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
 
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
-import { GenerateBusinessPlanComponent } from './pages/generate-business-plan/generate-business-plan.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -31,7 +29,6 @@ const routes: Routes = [
   { path: 'choose', component: ChooseComponent },
   { path: 'about', component: AboutComponent },
   { path: 'onboarding', component: OnboardingComponent },
-  { path: 'business-plan', component: BusinessPlanComponent },
   { path: 'business-pro', component: BusinessProductComponent },
   { path: 'cipcnum', component: CipsNumComponent },
   {
@@ -46,7 +43,6 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'regenerate/:bId', component: RegenerateComponent },
   { path: 'steps', component: StepsComponent },
-  { path: 'generate', component: GenerateBusinessPlanComponent },
 ];
 
 @NgModule({

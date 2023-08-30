@@ -25,7 +25,7 @@
     </div>
     <div class="row">
       <div class="user-business" style="position: relative; top: 2.5rem">
-        
+
         <div class="d-flex justify-content-start" style="
             font-size: 20px;
             color: #495250;
@@ -36,7 +36,7 @@
         </div>
 
         <div class="row row-cols-1 ml-4 mt-4 aligningRows" style="position: relative; left: 1rem">
-          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/questions" style="
+          <div (click)="disableNewBusiness()" class="col d-flex justify-content-center my-1 mx-1" style="
               width: 30%;
               height: 119px;
               border-radius: 12px;
@@ -56,7 +56,7 @@
           </div>
           <!-- new card -->
           <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of businesses; let i = index" style="
+            *ngFor="let res of responses.businesses(); let i = index" style="
               width: 30%;
               height: 119px;
               border-radius: 12px;
@@ -82,7 +82,7 @@
             </div>
           </div>
           <!-- new card -->
-          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
+          <div class="col d-flex justify-content-center my-1 mx-1 business" routerLink="/regenerate/{{ res.id }}"
             *ngFor="let res of business.businessList(); let i = index" style="
               width: 30%;
               height: 119px;
@@ -111,7 +111,7 @@
 
 </div>
 <div class="svg-about-logout">
-  <div class="d-flex p-2 mb-1 vjustify-content-start" routerLink="/about">
+  <div class="d-flex p-2 mb-1 justify-content-start about" routerLink="/about">
     <div class="svg-about">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill"
         viewBox="0 0 16 16">
@@ -121,7 +121,7 @@
     </div>
     About App
   </div>
-  <div class="d-flex p-2 mb-1 justify-content-start" (click)="logout()">
+  <div class="d-flex p-2 mb-1 justify-content-start logout" (click)="logout()">
     <div class="svg-logout">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right"
         viewBox="0 0 16 16">

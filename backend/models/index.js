@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize("sage_cqop", "vutomi", "drOU5lyGCQPL4Y94rZiRRjhsJhT2W70E", {
-    host: "dpg-ci3fns3hp8u1a185jqkg-a.oregon-postgres.render.com",
-    dialect: "postgres",
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
     dialectOptions: {
       ssl: {
         require: true,

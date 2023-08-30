@@ -31,13 +31,14 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Check if user is already logged in
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
       this.router.navigate(['/home']);
-
     }
   }
 
+  // Function to handle form submission (login)
   onSubmit(): void {
     const { email, password } = this.form;
 
@@ -47,11 +48,12 @@ export class LoginComponent implements OnInit {
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-      
+
         const token = data.accessToken;
-        console.log(token)
-        // Store the token in local storage
-        localStorage.setItem('accessToken', token);
+        console.log(token);
+        
+        // Store the token in session storage
+        sessionStorage.setItem('accessToken', token);
 
         this.reloadPage();
       },
@@ -60,10 +62,9 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       },
     });
-    
-    
   }
 
+  // Function to reload the page
   reloadPage(): void {
     window.location.reload();
   }

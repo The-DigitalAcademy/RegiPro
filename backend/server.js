@@ -7,7 +7,6 @@ const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 
-const rateLimit = require("./middleware/loginLimiter");
 const swaggerDocs = require("./config/swagger");
 
 const PORT = process.env.PORT || 5001;
@@ -15,8 +14,10 @@ const PORT = process.env.PORT || 5001;
 console.log(process.env.NODE_ENV);
 
 app.listen(PORT, () => {
-  console.log(`Regi-Pro Server is running on port: ${PORT}`);
-  
+
+  console.log(`Server is running on port: ${PORT}`);
+  swaggerDocs(app, PORT);
+
 });
 swaggerDocs(app);
 
@@ -24,7 +25,6 @@ app.use(logger);
 
 app.use(cors(corsOptions));
 
-app.use(rateLimit);
 
 app.use(express.json());
 
@@ -64,22 +64,6 @@ app.all("*", (req, res) => {
 app.use(errorHandler);
 
 
-// function initial() {
-//     Role.create({
-//       id: 1,
-//       name: "user"
-//     });
-
-//     Role.create({
-//       id: 2,
-//       name: "moderator"
-//     });
-
-//     Role.create({
-//       id: 3,
-//       name: "admin"
-//     });
-//   }
 
 // Check if initialization has been done
 let hasInitialized = false;

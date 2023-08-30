@@ -23,6 +23,8 @@ import { DownloadService } from 'src/app/services/download.service';
 })
 export class QuestionnairesComponent implements OnInit {
   cloudinaryLink: any;
+  businessPlan: any;
+
   step: any = 1;
 
   errorMessage = '';
@@ -56,6 +58,7 @@ export class QuestionnairesComponent implements OnInit {
   ngOnInit(): void {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
+    this.businessPlan = this.storageService.getBusinessPlan();
   }
 
   submit() {
@@ -122,8 +125,14 @@ export class QuestionnairesComponent implements OnInit {
       isRegistered = savedAnswers[4].isRegistered;
     console.log('name answer', name);
 
-    this.respService
-      .response(name, industry, description, isRegistered, hasBusinessPlan)
+    this.openaiService
+            .generate(name, industry, description)
+            .subscribe((res) => {
+              let businessPlanUrl = res.url
+              this.isReturned = true;
+
+              this.respService
+      .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
       .subscribe({
         next: (data) => {
           this.addBusiness(data.response);
@@ -133,14 +142,7 @@ export class QuestionnairesComponent implements OnInit {
             summary: data.message,
             duration: 5000,
           });
-          this.openaiService
-            .generate(name, industry, description)
-            .subscribe((res) => {
-              this.cloudinaryLink = res.url;
-              this.isReturned = true;
 
-              console.log(res.url);
-            });
         },
         error: (err) => {
           this.errorMessage = err.error.message;
@@ -157,8 +159,9 @@ export class QuestionnairesComponent implements OnInit {
           this.loaderService.hide(); // Hide the loader
         },
       });
-    // this.step = this.step + 1;
+            });
 
+    
     console.log('added to array', this.questionsArray);
   }
 
@@ -179,16 +182,7 @@ export class QuestionnairesComponent implements OnInit {
     return this.form2.controls;
   }
 
-  async openPopup(url: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      const newWindow = window.open(url, '_blank');
-      if (newWindow) {
-        newWindow.onload = () => {
-          resolve();
-        };
-      } else {
-        reject(new Error('Popup blocked.'));
-      }
-    });
+  reloadPage(): void {
+    window.location.reload();
   }
 }

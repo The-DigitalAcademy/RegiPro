@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
-const apiUrl =`${environment.apiBaseUrl}/ai/`;
+const apiUrl =`${environment.apiBaseUrl}/business-plan/`;
 
 
 const httpOptions = {
