@@ -8,3 +8,7 @@ export interface user {
   message:string;
   accessToken:string;
 }
+export interface reset{
+  email : string;
+  password: string;
+}

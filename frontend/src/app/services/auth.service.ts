@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { user } from '../interfaces/user';
+import { reset, user } from '../interfaces/user';
 import { environment } from 'src/environments/environment';
 
 const AUTH_API = `${environment.apiBaseUrl}/auth/`
@@ -53,7 +53,7 @@ export class AuthService {
     return this.http.post<user>(`${AUTH_API}forgotPassword`, email);
   }
 
-  resetPassword(body: user): Observable<user> {
+  resetPassword(body: reset): Observable<user> {
     return this.http.put<user>(`${AUTH_API}resetPassword`, body);
   }
 }
