@@ -69,8 +69,12 @@ export class HomeComponent {
       },
     });
   }
-
-  addNewBusiness(){
-    
+ 
+  addNewBusiness(event:any){
+    if (this.businesses.length < 3) {
+      this.businesses.push(event.target.files[0]);
+    } else {
+      alert('You have reached the maximum limit of 3 images.');
+    }
   }
 }
