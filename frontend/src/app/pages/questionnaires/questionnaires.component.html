@@ -1,4 +1,4 @@
-<!-- <div *ngIf="step == 1 && isReturned === false">
+<div *ngIf="step == 1 && isReturned === false">
   <div class="container" id="topcontainer">
     <div class="row">
       <div class="col text-center my-4" id="text">Start Here</div>
@@ -483,9 +483,9 @@
 </div>
 <app-loading-indicator
   *ngIf="loaderService.loading$ | async"
-></app-loading-indicator> -->
+></app-loading-indicator>
 
-<div *ngIf="isReturned === false" class="container">
+<div *ngIf="isReturned === true" class="container">
   <div class="container">
     <div class="row">
       <div class="col my-4 column1">

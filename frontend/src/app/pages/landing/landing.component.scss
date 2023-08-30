@@ -23,7 +23,7 @@ section{
 .img-responsive{
   width: 100%;
   /* // padding: 40px; */
-  color: #10B981;
+  color: var(--SECONDARY__TEXT-COLOR);
 }
 .logo{
   width: 30%;
@@ -41,7 +41,7 @@ section p{
   color:#121815 ;
   font-size: 1.2rem;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  
 }
 
 button{
@@ -63,7 +63,7 @@ button{
 @keyframes slideIn {
   from {
     transform: translateX(-100%);
-    opacity: 0;
+    opacity: 1;
   }
   to {
     transform: translateX(0);
@@ -125,7 +125,7 @@ button{
 /* Define the infinite fadeUp animation */
 @keyframes infiniteFadeUp {
   0% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(20px);
   }
   100% {
