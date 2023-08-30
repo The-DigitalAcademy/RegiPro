@@ -39,17 +39,6 @@ ngOnInit() {
   this.currentUser = this.storageService.getUser();
   this.greetingUser = this.greeting();
 
-  // Fetch list of responses (businesses)
-  this.responses.getResponses().subscribe({
-    next: (data: answers[]) => {
-      this.businesses = data;
-    },
-    error: err => {
-      console.log(err);
-    }
-  });
-
-
   // Subscribe to 'logout' event from event bus
   this.eventBusSub = this.eventBusService.on('logout', () => {
     this.logout();

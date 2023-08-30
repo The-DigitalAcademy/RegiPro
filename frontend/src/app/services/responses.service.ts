@@ -59,7 +59,7 @@ export class ResponsesService {
 
   // Function to get a response by ID
   getResponseById(id: number): Observable<answers> {
-    const token = localStorage.getItem('accessToken'); // Get token from local storage
+    const token = sessionStorage.getItem('accessToken'); // Get token from local storage
 
     // Set headers for the HTTP request
     const headersConfig: any = {
