@@ -23,6 +23,8 @@ import { DownloadService } from 'src/app/services/download.service';
 })
 export class QuestionnairesComponent implements OnInit {
   cloudinaryLink: any;
+  businessPlan: any;
+
   step: any = 1;
 
   errorMessage = '';
@@ -56,6 +58,7 @@ export class QuestionnairesComponent implements OnInit {
   ngOnInit(): void {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
+    this.businessPlan = this.storageService.getBusinessPlan();
   }
 
   submit() {
@@ -138,6 +141,8 @@ export class QuestionnairesComponent implements OnInit {
             .subscribe((res) => {
               this.cloudinaryLink = res.url;
               this.isReturned = true;
+              this.storageService.saveBusinessPlan(res.url);
+              this.reloadPage();
 
               console.log(res.url);
             });
@@ -179,16 +184,7 @@ export class QuestionnairesComponent implements OnInit {
     return this.form2.controls;
   }
 
-  async openPopup(url: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      const newWindow = window.open(url, '_blank');
-      if (newWindow) {
-        newWindow.onload = () => {
-          resolve();
-        };
-      } else {
-        reject(new Error('Popup blocked.'));
-      }
-    });
+  reloadPage(): void {
+    window.location.reload();
   }
 }
