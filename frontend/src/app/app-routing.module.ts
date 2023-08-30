@@ -28,22 +28,21 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'choose', component: ChooseComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'onboarding', component: OnboardingComponent },
-  { path: 'business-pro', component: BusinessProductComponent },
+  { path: 'choose', component: ChooseComponent},
+  { path: 'about', component: AboutComponent,canActivate: [AuthGuard]  },
+  { path: 'onboarding', component: OnboardingComponent,canActivate: [AuthGuard]},
+  { path: 'business-pro', component: BusinessProductComponent,canActivate: [AuthGuard]},
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
-  { path: 'regenerate/:bId', component: RegenerateComponent },
-  { path: 'all-set', component: AllSetComponent },
-  { path: 'steps', component: StepsComponent },
+  { path: 'regenerate/:bId', component: RegenerateComponent,canActivate: [AuthGuard]  },
+  { path: 'all-set', component: AllSetComponent,canActivate: [AuthGuard]  },
+  { path: 'steps', component: StepsComponent,canActivate: [AuthGuard]  },
 
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'resend-link', component: ResendLinkComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'regenerate/:bId', component: RegenerateComponent },
-  { path: 'steps', component: StepsComponent },
+  
 ];
 
 @NgModule({
