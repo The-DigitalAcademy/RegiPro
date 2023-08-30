@@ -187,11 +187,9 @@ exports.forgotPassword = async (req, res) => {
 // reset password
 exports.resetPassword = async (req, res) => {
   try {
-    const { email, password, confirmPassword } = req.body;
+    const { email, password} = req.body;
 
-    if (password !== confirmPassword) {
-      return res.status(400).send({ message: "Passwords do not match" });
-    }
+   
 
     const user = await User.findOne({ where:  {email:email}  });
     if (!user) {

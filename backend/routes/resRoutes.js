@@ -10,8 +10,92 @@ module.exports = function (app) {
       next();
     });
 
+  /**
+ * @openapi
+ '/responses':
+ *  post:
+ *     tags:
+ *     - Response Route
+ *     summary: Responses
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                 type: string
+ *                 default: string
+ *              industry:
+ *                 type: string
+ *                 default: string
+ *              description:
+ *                 type: string
+ *                 default: string
+ *              isRegistered:
+ *                 type: string
+ *                 default: string
+ *              hasBusinessPlan:
+ *                 type: string
+ *                 default: string
+ *     responses:
+ *      200:
+ *        description: Success
+ *      409:
+ *        description: Conflict
+ *      404:
+ *        description: Not Found
+ *      500:
+ *        description: Internal Server Error
+ */
+
   app.post("/responses" , [authJWT.verifyToken], controller.createNewResponse);
   app.get("/responses" , [authJWT.verifyToken], controller.getAllResponses);
+
+
+    /**
+ * @openapi
+ '/responses/:id':
+ *  post:
+ *     tags:
+ *     - Response Route
+ *     summary: Responses
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *            type: object
+ *            properties:
+ *              id:
+ *                 type: string
+ *                 default: string
+ *              name:
+ *                 type: string
+ *                 default: string
+ *              industry:
+ *                 type: string
+ *                 default: string
+ *              description:
+ *                 type: string
+ *                 default: string
+ *              isRegistered:
+ *                 type: string
+ *                 default: string
+ *              hasBusinessPlan:
+ *                 type: string
+ *                 default: string
+ *     responses:
+ *      200:
+ *        description: Success
+ *      409:
+ *        description: Conflict
+ *      404:
+ *        description: Not Found
+ *      500:
+ *        description: Internal Server Error
+ */
 
   app.get("/responses/:id", [authJWT.verifyToken], controller.getResponseById);
 

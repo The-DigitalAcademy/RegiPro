@@ -11,6 +11,36 @@ module.exports = function (app) {
   });
 
   app.get("/users/all", controller.allAccess);
+    /**
+ * @openapi
+ '/users/user':
+ *  post:
+ *     tags:
+ *     - User Route
+ *     summary: Sign in user
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *            type: object
+ *            properties:
+ *              email:
+ *                 type: string
+ *                 default: string
+ *              password:
+ *                 type: string
+ *                 default: string
+ *     responses:
+ *      200:
+ *        description: Success
+ *      409:
+ *        description: Conflict
+ *      404:
+ *        description: Not Found
+ *      500:
+ *        description: Internal Server Error
+ */
 
   app.get("/users/user", [authJWT.verifyToken], controller.userBoard);
 
