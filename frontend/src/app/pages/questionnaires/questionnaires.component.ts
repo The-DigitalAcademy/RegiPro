@@ -137,11 +137,6 @@ export class QuestionnairesComponent implements OnInit {
         next: (data) => {
           this.addBusiness(data.response);
           console.log(data);
-          this.toast.success({
-            detail: 'SUCCESS',
-            summary: data.message,
-            duration: 5000,
-          });
 
         },
         error: (err) => {
@@ -159,7 +154,7 @@ export class QuestionnairesComponent implements OnInit {
           this.loaderService.hide(); // Hide the loader
         },
       });
-            });
+    });
 
     
     console.log('added to array', this.questionsArray);

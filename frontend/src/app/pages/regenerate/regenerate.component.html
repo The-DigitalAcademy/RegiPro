@@ -1,4 +1,62 @@
-<app-loading-indicator *ngIf="loading$"></app-loading-indicator>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Business Plan</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="row" style="margin-bottom: .9rem;">
+            <div class="col column1">
+              <div class="d-flex justify-content-center">
+                <img src="../../../assets/images/businessplan.svg" alt="inbox" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div class="d-flex justify-content-center column2">
+              <div class="inside-column">
+                <div class="d-flex justify-content-center inside-text">
+                  Here is a generated business <br />plan for your business, click
+                  <br />the link below to download.
+                </div>
+                <div class="d-flex justify-content-center download-link">
+                  <div class="download-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="bi bi-download"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                      />
+                      <path
+                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                      />
+                    </svg>
+                  </div>&nbsp;
+                  <div class="link-content">
+                    <a href="{{ bus.businessPlanUrl }}" download="business-plan.docx" target="_blank">Click to download</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <a [routerLink]="['/home']">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +65,7 @@
     fill="currentColor"
     class="bi bi-arrow-left-circle"
     viewBox="0 0 16 16"
+    style="margin-top: 40px; margin-bottom: -50px;"
   >
     <path
       fill-rule="evenodd"
@@ -14,8 +73,10 @@
     />
   </svg>
 </a>
+<app-loading-indicator *ngIf="loading$"></app-loading-indicator>
 
 <div class="l-form">
+  
   <form action="" class="form">
 
     <h1 class="form__title"><b>{{ bus.name }}</b></h1>
@@ -43,7 +104,8 @@
       <label for="" class="form__label">Industry</label>
     </div>
     <div class="button">
-      <button><b>Regenerate</b> 
+      <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <b>Regenerate</b> 
     </button>
     </div>
 
