@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { answers } from 'src/app/interfaces/questions';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent {
 
   eventBusSub?: Subscription;
 
-
+  loading$: boolean = false; // Initialize as false
 
   constructor(
     private storageService: StorageService,
@@ -30,14 +31,30 @@ export class HomeComponent {
     private eventBusService: EventBusService,
     private authService: AuthService,
     public responses: ResponsesService,
-    public business: BusinessService
+    public business: BusinessService,
+    private loaderService: LoaderService
   ) { }
 
 // Initialize component when it's created
 ngOnInit() {
+  this.loading$ = true; // Show loader while waiting for API response
+
   // Get the current user and set the greeting message
   this.currentUser = this.storageService.getUser();
   this.greetingUser = this.greeting();
+
+  // Fetch list of responses (businesses)
+  this.responses.getResponses().subscribe({
+    next: (data: answers[]) => {
+      this.businesses = data;
+      this.loading$ = false; // Hide loader after API response
+    },
+    error: err => {
+      console.log(err);
+      this.loading$ = false; // Hide loader on error
+    }
+  });
+
 
   // Subscribe to 'logout' event from event bus
   this.eventBusSub = this.eventBusService.on('logout', () => {

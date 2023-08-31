@@ -10,33 +10,35 @@ import { LoaderService } from 'src/app/services/loader.service';
   styleUrls: ['./regenerate.component.scss'],
 })
 export class RegenerateComponent implements OnInit {
+
   bId!: any;
   business: any[] = [];
   bus:any;
 
+  loading$: boolean = false; // Initialize as false
+
   constructor(
     private router: ActivatedRoute,
     private response: ResponsesService,
-    public loaderService: LoaderService
+    private loaderService: LoaderService
   ) {}
 // Retrieving the name of the business and the industry data based on a parameter (bId) from the route, using the Angular Router, and making an HTTP request using an injected service (response).
   
   ngOnInit(): void {
+
+    this.loading$ = true; // Show loader while waiting for API response
+
     this.bId = this.router.snapshot.paramMap.get('bId');
     
-    this.loaderService.show(); // Show the loader
     
     this.response.getResponseById(this.bId).subscribe((data) => {
-      
-      
-      this.bus = data;
 
-      console.log(this.bus, 'this the business')
+    this.loading$ = false; // Hide loader after API response
 
-    },
-    (error) => {},
-    () => {
-      this.loaderService.hide();; // Hide the loader after request completion
+    this.bus = data;
+
+    console.log(this.bus, 'this the business')
+
     }
     
     );
