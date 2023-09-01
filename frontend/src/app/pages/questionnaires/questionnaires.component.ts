@@ -51,8 +51,8 @@ export class QuestionnairesComponent implements OnInit {
     private respService: ResponsesService,
     public loaderService: LoaderService,
     private toast: NgToastService,
-    private openaiService: OpenaiService,
-    private downloadService: DownloadService
+    private openaiService: OpenaiService
+   
   ) {}
 
   ngOnInit(): void {
@@ -129,14 +129,13 @@ export class QuestionnairesComponent implements OnInit {
             .generate(name, industry, description)
             .subscribe((res) => {
               let businessPlanUrl = res.url
-              this.isReturned = true;
-
               this.respService
       .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
       .subscribe({
         next: (data) => {
           this.addBusiness(data.response);
           console.log(data);
+          this.isReturned = true;
 
         },
         error: (err) => {

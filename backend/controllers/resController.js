@@ -53,7 +53,7 @@ exports.createNewResponse = async (req, res) => {
       // Created
       return res
         .status(201)
-        .json({ message: "New response created", response });
+        .json({ message: "New business created", response });
     } else {
       return res
         .status(400)
