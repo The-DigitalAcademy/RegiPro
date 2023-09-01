@@ -1,20 +1,16 @@
 section {
   margin: auto;
-  background-color: #ECFDF5;
+  background-color: #ecfdf5;
 
   h2 {
-   color: #47bb85;
-   text-align: center;
-   
-  
-   color: #2B283A;
-   text-align: center;
-  
-   font-size: 30px;
-   font-style: normal;
-   font-weight: 900;
-   line-height: normal;
-  
+    color: #47bb85;
+    text-align: center;
+    color: #2b283a;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
   }
 }
 
@@ -29,7 +25,7 @@ section {
 
 .logo {
   width: 30%;
-  color: #10B981;
+  color: #10b981;
 }
 
 p {
@@ -40,10 +36,9 @@ p {
   font-size: 18px;
 }
 
-.btn{
+.btn {
   margin-left: 11px;
   font-family: var(--font-stack-2);
-  
   width: 150px;
   height: 35px;
   flex-shrink: 0;
