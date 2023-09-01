@@ -47,7 +47,7 @@
     <div class="container d-flex justify-content-center">
       <div class="row row-cols-1 py-4">
         <div class="col text-center">
-          <p>{{ currentUser.firstname }} what is the name of your business?</p>
+          <p>{{ currentUser.firstname | titlecase }} what is the name of your business?</p>
         </div>
       </div>
     </div>
@@ -281,7 +281,7 @@
       <div class="row row-cols-1 py-4">
         <div class="col text-center">
           <p>
-            So {{ currentUser.firstname }} please tell us what is your business
+            So {{ currentUser.firstname | titlecase }} please tell us what is your business
             about?
           </p>
         </div>
@@ -370,7 +370,7 @@
     <div class="container text-center py-5" id="cont">
       <div class="row row-cols-1 my-4">
         <div class="col text-center">
-          <p>{{ currentUser.firstname }} do you have a business plan?</p>
+          <p>{{ currentUser.firstname | titlecase }} do you have a business plan?</p>
         </div>
       </div>
 
