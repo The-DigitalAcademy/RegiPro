@@ -25,8 +25,7 @@
 
   
   .text-content {
-    font-family: Inter;
-    font-size: 16px;
+    font-size: var(--font-size-small);
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
@@ -49,6 +48,40 @@
     animation: slowerTypewriter 1.5s ease-in-out forwards;
     opacity: 0; /* We'll use the animation to fade it in */
   }
+
+  .heading {
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+  }
+
+  .bi {
+    font-size: var(--font-size-normal);
+    transform-origin: 50% 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  // BACK BUTTON ANIMATIONS
+
+  $ani-speed: 2s;
+$ani-delay: 1s;
+
+.bi-arrow-left {
+  animation: arrow-movement $ani-speed ease-in-out infinite;
+}
+
+// Animation
+@keyframes arrow-movement {
+  0% { 
+      opacity: 1;
+      top: 45%;
+  }
+  70% {
+      opacity: 0;
+  }
+  100% { 
+      opacity: 1;
+  }
+}
   
 
   
