@@ -253,3 +253,34 @@ h6 {
 .download-icon {
   margin-right: -1rem;
 }
+
+
+.bi {
+  font-size: var(--font-size-normal);
+  margin-left: 0.5em;
+  transform-origin: 50% 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+// BACK BUTTON ANIMATIONS
+
+$ani-speed: 2s;
+$ani-delay: 1s;
+
+.bi-arrow-left {
+animation: arrow-movement $ani-speed ease-in-out infinite;
+}
+
+// Animation
+@keyframes arrow-movement {
+0% { 
+    opacity: 1;
+    top: 45%;
+}
+70% {
+    opacity: 0;
+}
+100% { 
+    opacity: 1;
+}
+}
