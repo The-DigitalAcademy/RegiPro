@@ -16,12 +16,12 @@
     flex-shrink: 0;
     
   }
-.back-btn {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-}
+
+  .name {
+   font-weight: 600;
+   font-family: var(--font-stack-2);
+
+  }
 
   
   .text-content {
