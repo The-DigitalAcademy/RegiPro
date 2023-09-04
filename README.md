@@ -87,7 +87,7 @@ To install and run the RegiPro Angular app locally, follow these steps:
 
    - Create an account or log in to your existing account.
 
-3. **Business Plan Generation:**
+2. **Business Plan Generation:**
 
    - Access the business plan generator.
    - Answer a qustionnaire to give information about your business.
@@ -97,7 +97,6 @@ To install and run the RegiPro Angular app locally, follow these steps:
 
    - Navigate to the CIPC registration section.
    - Follow the provided steps to submit your business or idea for registration.
-
 
 4. **ABSA Business Product Recommendations:**
    - Explore the ABSA business product recommendations section.
@@ -132,7 +131,6 @@ _Regenerate Business Plan_
 ![About Us](./frontend/src/assets/images/About%20us%20.png)
 _About Us_
 
-
 ## Backend
 
 ### Architecture
@@ -152,16 +150,12 @@ The API provides endpoints for various functionalities:
 2. **Business Registration:**
 
    - `POST /responses` - Submit business or idea for business plan generation.
-   - `GET  /responses` - Retrieve businesses or idea listed by a user.
+   - `GET  /responses` - Retrieve businesses or idea listed by a user including the business plan.
    - `GET  /responses/:id` - Retrieve specific business or idea by its unique ID listed by a user.
 
 3. **Business Plan Generation:**
 
    - `POST /business-plan/generate` - Generate a business plan using OpenAI.
-
-4. **ABSA Business Product Recommendations:**
-   - `POST /business-plan` - Submit business plan link for storage to the database.
-   - `GET  /business-plan` - Retrieve business plan for a specific business.
 
 ### Database Schema
 
@@ -173,7 +167,6 @@ The PostgreSQL database consists of the following tables:
    - `user`
    - `moderator`
    - `admin`
-  
 
 2. `users` - Stores user information.
 
@@ -188,25 +181,17 @@ The PostgreSQL database consists of the following tables:
    - `id`
    - `user_id` (foreign key referencing `users`)
    - `business_name`
-   - `industry` 
-   - `description` 
-   - `hasBusinessPlan` 
+   - `industry`
+   - `description`
+   - `hasBusinessPlan`
    - `isRegistered`
+   - `businessPlanUrl` (link stored to cloudinary)
 
-4. `business_plans` - Holds generated business plans.
-
-   - `id`
-   - `user_id` (foreign key referencing `users`)
-   - `response_id`
-   - `content` (link stored to cloudinary)
-  
-
-5. `token` - Contains token for reset password.
+4. `token` - Contains token for reset password.
 
    - `id`
    - `user_id`
    - `token`
- 
 
 ### Installation and Setup
 
