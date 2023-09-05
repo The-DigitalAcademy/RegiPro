@@ -15,126 +15,215 @@
 
     <div class="containerEg mt-5">
       <div class="row">
-        <div class="col-4 circleB"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
-            class="bi bi-person bic2" viewBox="0 0 16 16">
+        <div class="col-4 circleB">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-person bic2"
+            viewBox="0 0 16 16"
+          >
             <path
-              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-          </svg></div>
-        <div class="col-8"><b>{{ currentUser.firstname | titlecase }} {{ currentUser.lastname | titlecase }}</b><br>
-          <p style="color: #ababab;">{{ currentUser.email | lowercase }}</p>
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+            />
+          </svg>
+        </div>
+        <div class="col-8">
+          <b
+            >{{ currentUser.firstname | titlecase }}
+            {{ currentUser.lastname | titlecase }}</b
+          ><br />
+          <p style="color: #ababab">{{ currentUser.email | lowercase }}</p>
         </div>
       </div>
     </div>
     <div class="row">
-
       <div class="user-business" style="position: relative; top: 2.5rem">
-
-        <div class="d-flex justify-content-start" style="
+        <div
+          class="d-flex justify-content-start"
+          style="
             font-size: 20px;
             color: #495250;
             position: relative;
             left: 1rem;
-          ">
+          "
+        >
           <b>Your Businesses</b>
         </div>
 
-
-        <div class="row row-cols-1 ml-4 mt-4 aligningRows" style="position: relative; left: 1rem">
-          <div (click)="disableNewBusiness()" class="col d-flex justify-content-center my-1 mx-1" style="
+        <div
+          class="row row-cols-1 ml-4 mt-4 aligningRows"
+          style="position: relative; left: 1rem"
+        >
+          <div
+            (click)="disableNewBusiness()"
+            class="col d-flex justify-content-center my-1 mx-1"
+            style="
               width: 30%;
 
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            ">
-            <div class="circle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus bic"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-              <p class="col text-center" style="font-size: 12px; margin-top: 3.3rem; font-weight: 600">
-                Add New Business
-              </p>
+            "
+          >
+            <div class="circle_business">
+              <div class="circle_inside_add">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                  class="bi bi-plus bic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+              </div>
+              <div class="name">
+                <p
+                  class="col text-center"
+            
+                >
+                  Add New Business
+                </p>
+              </div>
+
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+              class="bi bi-person bic" viewBox="0 0 16 16">
+              <path
+                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+            </svg> -->
             </div>
           </div>
           <!-- new card -->
-        
-          <div class="col d-flex justify-content-center my-1 mx-1" routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of responses.businesses(); let i = index" style="
+
+          <div
+            class="col d-flex justify-content-center my-1 mx-1"
+            routerLink="/regenerate/{{ res.id }}"
+            *ngFor="let res of responses.businesses(); let i = index"
+            style="
               width: 30%;
 
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            ">
-            <div class="circle">
-              <!-- <div *ngIf="res.industry === 'Marketing'">Market</div>
-              <div *ngIf="res.industry === 'Tech & Software'">Soft</div>
-              <div *ngIf="res.industry === 'Manufacturing'">Manu</div>
-              <div *ngIf="res.industry === 'Fitness & Wellness'">Fit</div>
-              <div *ngIf="res.industry === 'Property'">Prop</div>
-              <div *ngIf="res.industry === 'Retail'">Retail</div> -->
+            "
+          >
+            <div class="circle_business">
+              <div class="circle_inside">
+                <div *ngIf="res.industry === 'Marketing'">Market</div>
+                <div *ngIf="res.industry === 'Tech & Software'">
+                  <img width="40" height="40" src="https://img.icons8.com/office/40/software-box.png" alt="software-box"/>
+                </div>
+                <div *ngIf="res.industry === 'Manufacturing'"><img width="40" height="40" src="https://img.icons8.com/bubbles/50/manufacturing.png" alt="manufacturing"/></div>
+                <div *ngIf="res.industry === 'Fitness & Wellness'"><img width="40" height="40" src="https://img.icons8.com/officel/40/bench-press-with-dumbbells.png" alt="bench-press-with-dumbbells"/></div>
+                <div *ngIf="res.industry === 'Property'"><img width="40" height="40" src="https://img.icons8.com/fluency/48/caretaker.png" alt="caretaker"/></div>
+                <div *ngIf="res.industry === 'Retail'"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+                  <path fill="#212121" fill-rule="evenodd" d="M10.904,6h26.191C39.804,6,42,8.196,42,10.904v26.191 C42,39.804,39.804,42,37.096,42H10.904C8.196,42,6,39.804,6,37.096V10.904C6,8.196,8.196,6,10.904,6z" clip-rule="evenodd"></path><path fill="#ec407a" fill-rule="evenodd" d="M29.208,20.607c1.576,1.126,3.507,1.788,5.592,1.788v-4.011 c-0.395,0-0.788-0.041-1.174-0.123v3.157c-2.085,0-4.015-0.663-5.592-1.788v8.184c0,4.094-3.321,7.413-7.417,7.413 c-1.528,0-2.949-0.462-4.129-1.254c1.347,1.376,3.225,2.23,5.303,2.23c4.096,0,7.417-3.319,7.417-7.413L29.208,20.607L29.208,20.607 z M30.657,16.561c-0.805-0.879-1.334-2.016-1.449-3.273v-0.516h-1.113C28.375,14.369,29.331,15.734,30.657,16.561L30.657,16.561z M19.079,30.832c-0.45-0.59-0.693-1.311-0.692-2.053c0-1.873,1.519-3.391,3.393-3.391c0.349,0,0.696,0.053,1.029,0.159v-4.1 c-0.389-0.053-0.781-0.076-1.174-0.068v3.191c-0.333-0.106-0.68-0.159-1.03-0.159c-1.874,0-3.393,1.518-3.393,3.391 C17.213,29.127,17.972,30.274,19.079,30.832z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M28.034,19.63c1.576,1.126,3.507,1.788,5.592,1.788v-3.157 c-1.164-0.248-2.194-0.856-2.969-1.701c-1.326-0.827-2.281-2.191-2.561-3.788h-2.923v16.018c-0.007,1.867-1.523,3.379-3.393,3.379 c-1.102,0-2.081-0.525-2.701-1.338c-1.107-0.558-1.866-1.705-1.866-3.029c0-1.873,1.519-3.391,3.393-3.391 c0.359,0,0.705,0.056,1.03,0.159V21.38c-4.024,0.083-7.26,3.369-7.26,7.411c0,2.018,0.806,3.847,2.114,5.183 c1.18,0.792,2.601,1.254,4.129,1.254c4.096,0,7.417-3.319,7.417-7.413L28.034,19.63L28.034,19.63z" clip-rule="evenodd"></path><path fill="#81d4fa" fill-rule="evenodd" d="M33.626,18.262v-0.854c-1.05,0.002-2.078-0.292-2.969-0.848 C31.445,17.423,32.483,18.018,33.626,18.262z M28.095,12.772c-0.027-0.153-0.047-0.306-0.061-0.461v-0.516h-4.036v16.019 c-0.006,1.867-1.523,3.379-3.393,3.379c-0.549,0-1.067-0.13-1.526-0.362c0.62,0.813,1.599,1.338,2.701,1.338 c1.87,0,3.386-1.512,3.393-3.379V12.772H28.095z M21.635,21.38v-0.909c-0.337-0.046-0.677-0.069-1.018-0.069 c-4.097,0-7.417,3.319-7.417,7.413c0,2.567,1.305,4.829,3.288,6.159c-1.308-1.336-2.114-3.165-2.114-5.183 C14.374,24.749,17.611,21.463,21.635,21.38z" clip-rule="evenodd"></path>
+                  </svg></div>
+              </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+              <div class="name">
+                <p class="col text-center">
+                  {{ res.name }}
+                </p>
+              </div>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                 class="bi bi-person bic" viewBox="0 0 16 16">
                 <path
                   d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-              </svg>
-              <p class="col text-center" style="font-size: 12px; margin-top: 3.5rem; font-weight: 600">
-                {{ res.name }}
-              </p>
+              </svg> -->
             </div>
-          </div> 
-
+          </div>
 
           <!-- new card -->
-          <div class="col d-flex justify-content-center my-1 mx-1 business" routerLink="/regenerate/{{ res.id }}"
-            *ngFor="let res of business.businessList(); let i = index" style="
+          <div
+            class="col d-flex justify-content-center my-1 mx-1 business"
+            routerLink="/regenerate/{{ res.id }}"
+            *ngFor="let res of business.businessList(); let i = index"
+            style="
               width: 94.962px;
               height: 119px;
               border-radius: 12px;
               border: 2px solid rgba(116, 137, 132, 0.64);
               background: rgba(217, 217, 217, 0.5);
-            ">
+            "
+          >
             <div class="circle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-person bic" viewBox="0 0 16 16">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-person bic"
+                viewBox="0 0 16 16"
+              >
                 <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                />
               </svg>
-              <p class="col text-center" style="font-size: 12px; margin-top: 3.5rem; font-weight: 600">
+              <p
+                class="col text-center"
+                style="font-size: 12px; margin-top: 3.5rem; font-weight: 600"
+              >
                 {{ res.name }}
               </p>
             </div>
           </div>
-  </div>
-  </div>
-
-</div>
-<div class="svg-about-logout">
-  <div class="d-flex p-2 mb-1 justify-content-start about" routerLink="/about">
-    <div class="svg-about">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill"
-        viewBox="0 0 16 16">
-        <path
-          d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-      </svg>
+        </div>
+      </div>
     </div>
-    About App
-  </div>
-  <div class="d-flex p-2 mb-1 justify-content-start logout" (click)="logout()">
-    <div class="svg-logout">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right"
-        viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
-        <path fill-rule="evenodd"
-          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-      </svg>
+    <div class="svg-about-logout">
+      <div
+        class="d-flex p-2 mb-1 justify-content-start about"
+        routerLink="/about"
+      >
+        <div class="svg-about">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-info-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+            />
+          </svg>
+        </div>
+        About App
+      </div>
+      <div
+        class="d-flex p-2 mb-1 justify-content-start logout"
+        (click)="logout()"
+      >
+        <div class="svg-logout">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-box-arrow-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+            />
+          </svg>
+        </div>
+        Log Out
+      </div>
     </div>
-    Log Out
   </div>
 </div>
