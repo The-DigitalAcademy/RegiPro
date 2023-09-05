@@ -9,4 +9,13 @@ header {
     width: 200px;
     border-radius: 10px;
   }
+
+  .btn__secondary {
+    color: var(--SECONDARY__TEXT-COLOR);
+    background: var(--PRIMARY__BTN__TEXT-COLOR);
+    width: 200px;
+    border-radius: 10px;
+    border: solid 1px var(--SECONDARY__TEXT-COLOR);
+  }
 }
+
