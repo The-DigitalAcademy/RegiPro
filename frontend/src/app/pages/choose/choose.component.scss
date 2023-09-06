@@ -1,25 +1,18 @@
-section {
-  margin: auto;
-  background-color: var(--PRIMARY_BGCOLOR);
+
   h2 {
     font-family: var(--font-stack);
-    margin-top: 1rem;
     color: var(--SECONDARY__TEXT-COLOR);
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 900;
   }
 
   p {
     font-family: var(--font-stack);
-    margin: auto;
-    max-width: 22em;
-    color: #121815;
-    font-size: 1.2rem;
-    text-align: center;
+    color: var(--PRIMARY__TEXT-COLOR);
+  
+
   }
 
-}
+
 .btn {
   width: 150px;
   border-radius: 30px;
@@ -37,54 +30,14 @@ section {
   background-color: #ffffff;
   border: 1px solid;
 }
-.img-responsive {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
+
+
+@media (max-width: 768px) {
+  h2 {
+    text-align: center;
+  }
 }
 
-.logo {
-  width: 30%;
-  color: var(--SECONDARY__BTN__TEXT-COLOR);
-}
 
-.btn1 {
-  width: 10em;
-  height: 2.94em;
-  margin-left: 25%;
-  margin-right: 25%;
-  background-color: var(--SECONDARY__BTN__TEXT-COLOR);
-  border: 1px solid var(--SECONDARY__BTN__TEXT-COLOR);
-  color: white;
-  outline: none;
-  transition: 0.6s ease;
-  border-radius: 25px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.btn2 {
-  width: 10em;
-  height: 2.94em;
-  border: 1px solid #10b981;
-  background-color: white;
-  color: black;
-  outline: none;
-  transition: 0.6s ease;
-  border-radius: 25px;
-  text-decoration: #121815;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.buttons {
-  margin: 0;
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  font-family: var(--font-stack-2);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
