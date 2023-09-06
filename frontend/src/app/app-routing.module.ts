@@ -35,9 +35,8 @@ const routes: Routes = [
   { path: 'cipcnum', component: CipsNumComponent },
   { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
   { path: 'regenerate/:bId', component: RegenerateComponent,canActivate: [AuthGuard]  },
-  { path: 'all-set', component: AllSetComponent,canActivate: [AuthGuard]  },
-  { path: 'steps', component: StepsComponent,canActivate: [AuthGuard]  },
-
+  { path: 'all-set', component: AllSetComponent,canActivate: [AuthGuard] },
+  { path: 'steps', component: StepsComponent,canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'resend-link', component: ResendLinkComponent },
