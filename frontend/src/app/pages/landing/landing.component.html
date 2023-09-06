@@ -25,13 +25,14 @@
     </div>
     <div class="col-sm justify-content-center">
       <div class="p-2">
-        <h3 class="mb-2 heading">Unlock Your Entrepreneurial Dream</h3>
+        <h3 class="mb-1 heading">Unlock Your Entrepreneurial Dream</h3>
       </div>
       <div>
-        <ul class="list-unstyled p-2">
-          <li>📊 Craft Winning Business Plans ✅</li>
-          <li>📈 Register with CIPC ✅</li>
-          <li>💼 Discover ABSA Funding Solutions ✅</li>
+        <ul class="list-group list-unstyled p-2">
+          <li *ngFor="let item of items; let i = index" [class.completed]="i === currentIndex"
+          [class.rippling]="i === currentIndex"
+          ><i class="bi bi-check2-square"></i> {{ item }}</li>
+        
         </ul>
       </div>
       <div class="d-flex justify-content-start gap-3 mx-4">

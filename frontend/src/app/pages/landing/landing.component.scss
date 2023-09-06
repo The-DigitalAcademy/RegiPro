@@ -1,6 +1,11 @@
 header {
   .heading {
     color: var(--SECONDARY__TEXT-COLOR);
+    font-weight: 900;
+  }
+
+  i {
+    color: var(--SECONDARY__TEXT-COLOR);
   }
 
   .btn__primary {
@@ -19,9 +24,52 @@ header {
   }
 }
 
+
 @media (max-width: 768px) {
   .heading {
     text-align: center;
+  }
+}
+
+
+
+
+// Define the bounce and shake animations
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+// Apply the animations to completed items
+.completed {
+  animation: typing 4s ease infinite alternate, shake 2s linear infinite;
+}
+
+
+.list-group li {
+  transition: background-color 0.9s ease-in-out;
+
+  &.rippling {
+    background-color: white; // Change to the desired ripple color
   }
 }
 
