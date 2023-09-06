@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'choose', component: ChooseComponent},
-  { path: 'about', component: AboutComponent,canActivate: [AuthGuard]  },
+  { path: 'about', component: AboutComponent  },
   { path: 'onboarding', component: OnboardingComponent,canActivate: [AuthGuard]},
   { path: 'business-pro', component: BusinessProductComponent,canActivate: [AuthGuard]},
   { path: 'cipcnum', component: CipsNumComponent },
