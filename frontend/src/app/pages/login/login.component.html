@@ -5,7 +5,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="mb-3">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel"
@@ -45,13 +45,8 @@
             </div>
           </div>
         </form>
-
       </div>
-
+    </div>
   </div>
+  <app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
 </div>
-<app-loading-indicator *ngIf="(loaderService.loading$ | async)"></app-loading-indicator>
-
-</div>
-
-
