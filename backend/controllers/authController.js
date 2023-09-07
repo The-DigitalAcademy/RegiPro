@@ -162,16 +162,28 @@ exports.forgotPassword = async (req, res) => {
     let resetLink = "http://localhost:4200/reset-password";
     // Define the email options
     const mailOptions = {
-      from: "chalatsethabo@gmail.com",
+      from: "regiprotech@gmail.com",
       to: user.email,
       subject: "Password Reset Request",
-      // text: `To reset your password, click the following link: ${x}`,
+      // text: `To reset your password, click the following link: ${resetLink}`,
       html: `
-      <p>Hello,</p>
-      <p>To reset your password, click the following link:</p>
-      <a href="${resetLink}">${resetLink}</a>
-      <p>If you didn't request this, please ignore this email.</p>
+      <p>Hi From RegiPro Team,</p>
+      <p>We hope this message finds you well. 
+
+      We have received this email because a password reset was requested for your RegiPro TECH account. If you did not initiate this request, please disregard this email.</p>
+
+      <p>If you encounter any issues or require further assistance, please do not hesitate to contact our support team.</p>
+
+      <p>Thank you for choosing RegiPro TECH.</p>
+
+
+      <p>To reset your password, please click on the following link: </p>
+      <a href="${resetLink}"</a>
+
+      <p>RegiPro TECH....</p>
+     
     `,
+
     };
 
     // Send the email

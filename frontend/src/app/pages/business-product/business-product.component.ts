@@ -17,6 +17,10 @@ navigateTo() {
   const targetRoute = '/all-set';
   this.router.navigate([targetRoute]);
 }
+navigateBack() {
+  const targetRoute = '/steps';
+  this.router.navigate([targetRoute]);
+}
 
 
 }
