@@ -31,7 +31,7 @@
         </h4>
       </div>
       <div class="px-3">
-        <ul class="list-group list-unstyled p-2">
+        <ul class="list-group list-unstyled px-2 pb-3">
           <li *ngFor="let item of items; let i = index" [class.completed]="i === currentIndex"
           [class.rippling]="i === currentIndex"
           ><i class="bi bi-check2-square"></i> {{ item }}</li>
@@ -39,10 +39,10 @@
         </ul>
       </div>
       <div class="d-flex justify-content-start gap-3 px-4">
-        <button type="button" class="btn btn__primary" routerLink="/choose">
+        <button type="button" class="completed btn btn__primary" routerLink="/choose">
           Get Started <i class="bi bi-arrow-right"></i>
         </button>
-        <button type="button" class="btn btn__secondary" routerLink="/about">
+        <button type="button" class=" completed btn btn__secondary" routerLink="/about">
           Learn More <i class="bi bi-arrow-up-right"></i>
         </button>
       </div>
