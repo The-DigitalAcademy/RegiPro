@@ -123,7 +123,6 @@ export class QuestionnairesComponent implements OnInit {
       description = savedAnswers[2].description,
       hasBusinessPlan = savedAnswers[3].hasBusinessPlan,
       isRegistered = savedAnswers[4].isRegistered;
-    console.log('name answer', name);
 
     this.openaiService
             .generate(name, industry, description)
