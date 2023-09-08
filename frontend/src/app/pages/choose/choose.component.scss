@@ -3,12 +3,13 @@
     font-family: var(--font-stack);
     color: var(--SECONDARY__TEXT-COLOR);
     font-weight: 900;
+    
   }
 
   p {
     font-family: var(--font-stack);
     color: var(--PRIMARY__TEXT-COLOR);
-  
+    text-align: center;
 
   }
 
@@ -31,7 +32,14 @@
   border: 1px solid;
 }
 
+.makeDreamContainer{
+ 
+   
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
 
+}
 @media (max-width: 768px) {
   h2 {
     text-align: center;
