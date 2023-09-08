@@ -1,7 +1,11 @@
 <div class="container">
-  <a [routerLink]="['/business-plan']">
-    <i class="bi bi-arrow-left"></i>
-  </a>
+    <div
+    (click)="back()"
+    >
+        <i class="bi bi-arrow-left" ></i>
+
+    </div>
+
   <h6>
     Register Your <br />
     <span class="text">Business with CIPC</span>

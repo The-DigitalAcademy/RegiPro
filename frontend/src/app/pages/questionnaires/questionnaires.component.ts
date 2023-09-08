@@ -22,6 +22,7 @@ import { OpenaiService } from 'src/app/services/openai.service';
 export class QuestionnairesComponent implements OnInit {
   cloudinaryLink: any;
   businessPlan: any;
+  businessPlanUrl = ''
 
   step: any = 1;
 
@@ -57,6 +58,8 @@ export class QuestionnairesComponent implements OnInit {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
     this.businessPlan = this.storageService.getBusinessPlan();
+    this.businessPlanUrl = this.storageService.getBusinessPlan()
+    
   }
 
   submit() {
@@ -126,6 +129,7 @@ export class QuestionnairesComponent implements OnInit {
             .generate(name, industry, description)
             .subscribe((res) => {
               let businessPlanUrl = res.url
+              this.storageService.saveBusinessPlan(businessPlanUrl)
               this.respService
       .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
       .subscribe({
