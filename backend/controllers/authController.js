@@ -167,7 +167,7 @@ exports.forgotPassword = async (req, res) => {
       subject: "Password Reset Request",
       // text: `To reset your password, click the following link: ${resetLink}`,
       html: `
-      <p>Hi From RegiPro Team,</p>
+      <p>Hi ,${user.firstname}}</p>
       <p>We hope this message finds you well. 
 
       We have received this email because a password reset was requested for your RegiPro TECH account. If you did not initiate this request, please disregard this email.</p>
@@ -180,7 +180,7 @@ exports.forgotPassword = async (req, res) => {
       <p>To reset your password, please click on the following link: </p>
       <a href="${resetLink}"</a>
 
-      <p>RegiPro TECH....</p>
+      <p>Reset Password</p>
      
     `,
 
