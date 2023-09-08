@@ -24,22 +24,26 @@ export class ForgotPasswordComponent {
   }
 
   onSubmit() {
+        // This function doesn't seem to have any implementation, and the return statement does nothing
     if (this.forgotPasswordform.valid) {
       return this.forgotPasswordform?.value
     }
   }
-
+  // Function to request a password reset
   RequestResetUser(form: any) {
     console.log(form)
     if (form.valid) {
       this.IsvalidForm = true;
+            // Call the AuthService to request a password reset
       this.authService.newPassword(this.forgotPasswordform.value).subscribe({
         next:
           (data) => {
+                      // Set a success message and store the form data in local storage
             this.successMessage = "Reset password link send to email sucessfully.";
             console.log(data)
             localStorage.setItem('user_reset', JSON.stringify(this.forgotPasswordform.value));
             this.successMessage = null;
+                      // Navigate to the 'resend-link' route and display a success toast message
             this.router.navigate(['resend-link']);
             this.toast.success({detail:"SUCCESS",summary:data.message ,duration:5000});
   
@@ -47,6 +51,7 @@ export class ForgotPasswordComponent {
       }),
        (err:any) => {
           if (err.error.message) {
+                      // Handle errors by setting an error message and displaying it as a sticky toast
             localStorage.setItem('user_reset', JSON.stringify(null));
             this.errorMessage = err.error.message;
             this.toast.error({
@@ -57,6 +62,7 @@ export class ForgotPasswordComponent {
           }
         }
     } else {
+            // Set the IsvalidForm flag to false if the form is invalid
       this.IsvalidForm = false;
     }
   }
