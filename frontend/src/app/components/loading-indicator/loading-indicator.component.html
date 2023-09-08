@@ -1,3 +1,8 @@
-<div class="loading-indicator" *ngIf="(loading$ | async)">
-    <div class="spinner"></div>
+<div *ngIf="(loading$ | async)">
+    <div class="loading-indicator">
+        <div class="spinner"></div><br>
+    </div>
+    <div class="loader-text">
+        <h5><b>please wait...</b></h5>
+    </div>
 </div>
