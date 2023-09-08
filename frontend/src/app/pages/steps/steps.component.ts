@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import PSPDFKit from 'pspdfkit'
 
 @Component({
@@ -9,10 +10,18 @@ import PSPDFKit from 'pspdfkit'
 // Configuration of the PSPDFKit library to display PDF
 export class StepsComponent implements AfterViewInit {
   currentStep = 1;
+  
+
+  constructor(public route: Router) {}
 
   nextStep(): void {
     this.currentStep++;
+
   }
+
+  back(){
+   this.route.navigate(['/questions']) 
+   }
   ngAfterViewInit() {
     PSPDFKit.load({
       baseUrl:
