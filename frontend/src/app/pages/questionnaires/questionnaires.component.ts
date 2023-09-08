@@ -2,7 +2,6 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  FormBuilder,
   Validators,
   AbstractControl,
 } from '@angular/forms';
@@ -14,7 +13,6 @@ import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
 import { OpenaiService } from 'src/app/services/openai.service';
-import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-questionnaires',
