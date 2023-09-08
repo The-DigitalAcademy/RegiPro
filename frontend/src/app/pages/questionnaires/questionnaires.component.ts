@@ -22,7 +22,7 @@ import { OpenaiService } from 'src/app/services/openai.service';
 export class QuestionnairesComponent implements OnInit {
   cloudinaryLink: any;
   businessPlan: any;
-  businessPlanUrl = ''
+  businessPlanUrl = '';
 
   step: any = 1;
 
@@ -51,15 +51,13 @@ export class QuestionnairesComponent implements OnInit {
     public loaderService: LoaderService,
     private toast: NgToastService,
     private openaiService: OpenaiService
-   
   ) {}
 
   ngOnInit(): void {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
     this.businessPlan = this.storageService.getBusinessPlan();
-    this.businessPlanUrl = this.storageService.getBusinessPlan()
-    
+    this.businessPlanUrl = this.storageService.getBusinessPlan();
   }
 
   submit() {
@@ -126,37 +124,42 @@ export class QuestionnairesComponent implements OnInit {
       isRegistered = savedAnswers[4].isRegistered;
 
     this.openaiService
-            .generate(name, industry, description)
-            .subscribe((res) => {
-              let businessPlanUrl = res.url
-              this.storageService.saveBusinessPlan(businessPlanUrl)
-              this.respService
-      .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
-      .subscribe({
-        next: (data) => {
-          this.addBusiness(data.response);
-          console.log(data);
-          this.isReturned = true;
+      .generate(name, industry, description)
+      .subscribe((res) => {
+        let businessPlanUrl = res.url;
+        this.storageService.saveBusinessPlan(businessPlanUrl);
+        this.respService
+          .response(
+            name,
+            industry,
+            description,
+            isRegistered,
+            hasBusinessPlan,
+            businessPlanUrl
+          )
+          .subscribe({
+            next: (data) => {
+              this.addBusiness(data.response);
+              console.log(data);
+              this.isReturned = true;
+            },
+            error: (err) => {
+              this.errorMessage = err.error.message;
 
-        },
-        error: (err) => {
-          this.errorMessage = err.error.message;
+              console.log(this.errorMessage);
 
-          console.log(this.errorMessage);
-
-          this.toast.error({
-            detail: 'ERROR',
-            summary: this.errorMessage,
-            sticky: true,
+              this.toast.error({
+                detail: 'ERROR',
+                summary: this.errorMessage,
+                sticky: true,
+              });
+            },
+            complete: () => {
+              this.loaderService.hide(); // Hide the loader
+            },
           });
-        },
-        complete: () => {
-          this.loaderService.hide(); // Hide the loader
-        },
       });
-    });
 
-    
     console.log('added to array', this.questionsArray);
   }
 
