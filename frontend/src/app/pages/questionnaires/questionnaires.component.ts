@@ -31,7 +31,7 @@ export class QuestionnairesComponent implements OnInit {
   questionsArray: answers[] = [];
 
   currentUser: any;
-
+  // Define form controls and validators
   form1: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
   });
@@ -59,7 +59,7 @@ export class QuestionnairesComponent implements OnInit {
     this.businessPlan = this.storageService.getBusinessPlan();
     this.businessPlanUrl = this.storageService.getBusinessPlan();
   }
-
+  // Handle form submission for step 1
   submit() {
     this.submitted = true;
 
@@ -73,7 +73,7 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-
+  // Handle form submission for step 2
   submit2() {
     this.submitted2 = true;
 
@@ -86,7 +86,7 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-
+  // Handle industry submission
   submitIndustry(value: string) {
     this.submitted = true;
 
@@ -96,7 +96,7 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-
+  // Handle business plan submission
   submitPlan(value: string): void {
     this.submitted = true;
 
@@ -105,7 +105,7 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-
+  // Handle registration submission
   submitReg(value: string): void {
     this.submitted = true;
 
@@ -116,18 +116,19 @@ export class QuestionnairesComponent implements OnInit {
     this.storageService.saveAnswers(this.questionsArray);
 
     const savedAnswers = this.storageService.getAnswers();
-
+    // Extract saved answers
     let name = savedAnswers[0].name,
       industry = savedAnswers[1].industry,
       description = savedAnswers[2].description,
       hasBusinessPlan = savedAnswers[3].hasBusinessPlan,
       isRegistered = savedAnswers[4].isRegistered;
-
+    // Generate business plan using OpenAI service
     this.openaiService
       .generate(name, industry, description)
       .subscribe((res) => {
         let businessPlanUrl = res.url;
         this.storageService.saveBusinessPlan(businessPlanUrl);
+                // Send response data to the server
         this.respService
           .response(
             name,
@@ -162,24 +163,25 @@ export class QuestionnairesComponent implements OnInit {
 
     console.log('added to array', this.questionsArray);
   }
-
+  // Add business data to the service
   addBusiness(business: answers) {
     this.busService.addBusinessSignal(business);
   }
-
+  // Handle going back to the previous step
   previous() {
     this.questionsArray.pop();
     this.step = this.step - 1;
     console.log('remaining answers', this.questionsArray);
   }
-
+  // Getter for form controls in step 1
   get f(): { [key: string]: AbstractControl } {
     return this.form1.controls;
   }
+    // Getter for form controls in step 2
   get p(): { [key: string]: AbstractControl } {
     return this.form2.controls;
   }
-
+  // Reload the page
   reloadPage(): void {
     window.location.reload();
   }

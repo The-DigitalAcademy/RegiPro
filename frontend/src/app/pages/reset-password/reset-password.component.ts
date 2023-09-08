@@ -20,7 +20,7 @@ export class ResetPasswordComponent {
   user_email: any;
 
   constructor(private authService: AuthService, private router: Router, public loaderService: LoaderService, private toast: NgToastService) {
-
+    // Initialize the resetForm FormGroup with form controls and validation rules
     this.resetForm = new FormGroup({
 
       password: new FormControl('', [
@@ -36,16 +36,17 @@ export class ResetPasswordComponent {
       ])
     },
       {
-        validators: PasswordValidators.MatchValidator
+        validators: PasswordValidators.MatchValidator // Custom validator to match passwords
       }
     );
   }
   onSubmit() {
     if (this.resetForm.valid) {
-      return this.resetForm?.value
+      return this.resetForm?.value // Return form value if valid
     }
   }
   ngOnInit() {
+        // Retrieve user data from localStorage
     let userData = localStorage.getItem('user_reset');
     if (userData != null) {
       this.user_email = JSON.parse(userData);
@@ -60,6 +61,7 @@ export class ResetPasswordComponent {
 
   resetPassword() {
 
+    // Prepare reset object with email and password
     let resetObject = {
       "email": this.user_email.email,
       "password": this.resetForm.get("password")?.value
@@ -68,6 +70,8 @@ export class ResetPasswordComponent {
     
     if (this.resetForm.valid) {
       this.IsvalidForm = true;
+
+            // Call the AuthService to reset the password
       this.authService.resetPassword(resetObject).subscribe({
         next: (data) => {
 
@@ -90,10 +94,10 @@ export class ResetPasswordComponent {
         },
       });
     } else {
-      this.IsvalidForm = false
+      this.IsvalidForm = false // Set the form as invalid
     }
   }
-
+  // Getter functions to check form control validity and specific validation rules
   get f() {
     return this.resetForm.controls;
   }
@@ -126,4 +130,3 @@ export class ResetPasswordComponent {
     return !this.resetForm.controls["password"].hasError("requiresSpecialChars");
   }
 }
-
