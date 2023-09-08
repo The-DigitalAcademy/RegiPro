@@ -56,8 +56,18 @@ export class LoginComponent implements OnInit {
         
         // Store the token in session storage
         sessionStorage.setItem('accessToken', token);
-
+        // Display a success alert
+      Swal.fire({
+        title: 'Success!',
+        text: 'You have successfully logged in.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#10b981;',
+      }).then(() => {
         this.reloadPage();
+      });
+
+        // this.reloadPage();
       },
       error: (err) => {
         // this.errorMessage = err.error.message;
@@ -66,7 +76,8 @@ export class LoginComponent implements OnInit {
           title: 'Error!',
           text: 'login credentialsincorrect, please enter correct credentials',
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#10b981;'
         })
       },
     });
