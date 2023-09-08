@@ -1,10 +1,10 @@
 <div *ngIf="step == 1 && isReturned === false">
   <div class="container" id="topcontainer">
-    <div class="row">
+    <div class="row row-cols-1">
       <div class="col text-center my-4" id="text">Start Here</div>
       <div class="col">
         <img
-          class="img-responsive py-4 mx-auto d-block"
+          class="col-lg-6 py-4 mx-auto d-block"
           src="../../../assets/images/start illustration.svg"
         />
       </div>
@@ -45,8 +45,8 @@
 
   <div class="container py-4" id="bottomcontainer">
     <div class="container d-flex justify-content-center">
-      <div class="row row-cols-1 py-4">
-        <div class="col text-center">
+      <div class="row row-cols-1 py-4 text-center">
+        <div class="col col-lg-12 ">
           <p>{{ currentUser.firstname | titlecase }} what is the name of your business?</p>
         </div>
       </div>
@@ -72,7 +72,7 @@
 
       <div class="containerB">
         <div class="row row-cols-2 position-relative">
-          <div class="col-5 position-absolute bottom-0 start-0 m-4">
+          <div class="col-5 position-absolute bottom-0 start-0 col-lg-3 offset-lg-1">
             <button
               type="submit"
               class="btn"
@@ -83,7 +83,7 @@
             </button>
           </div>
 
-          <div class="col-5 position-absolute bottom-0 end-0 m-4">
+          <div class="col-5 pl-2 position-absolute bottom-0 end-0 col-lg-3 offset-lg-1 me-2">
             <button type="submit" class="btn">Next</button>
           </div>
         </div>
@@ -176,10 +176,10 @@
     </div>
   </div>
 
-  <div class="container" id="bottomcontainer">
-    <div class="container my-4">
+  <div class="container justify-content-center py-3" id="bottomcontainer">
+    <form class="my-4">
       <div class="row row-cols-2 g-4">
-        <div class="col">
+        <div class="col col-lg-6">
           <button
             type="button"
             class="btn btnL"
@@ -189,7 +189,7 @@
             Manufacturing
           </button>
         </div>
-        <div class="col">
+        <div class="col col-lg-6">
           <button
             type="button"
             class="btn btnL"
@@ -199,7 +199,7 @@
             Entertainment
           </button>
         </div>
-        <div class="col">
+        <div class="col col-lg-6">
           <button
             type="button"
             class="btn btnL"
@@ -209,7 +209,7 @@
             Property
           </button>
         </div>
-        <div class="col">
+        <div class="col col-lg-6">
           <button
             type="button"
             class="btn btnL"
@@ -220,6 +220,7 @@
           </button>
         </div>
       </div>
+    </form>
     </div>
     <div class="container my-5">
       <div class="row justify-content-center">
@@ -231,7 +232,6 @@
       </div>
     </div>
   </div>
-</div>
 <div *ngIf="step == 3 && isReturned === false">
   <div class="container" id="topcontainer">
     <div class="row">

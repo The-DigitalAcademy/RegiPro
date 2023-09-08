@@ -2,7 +2,6 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  FormBuilder,
   Validators,
   AbstractControl,
 } from '@angular/forms';
@@ -14,7 +13,6 @@ import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
 import { OpenaiService } from 'src/app/services/openai.service';
-import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -24,6 +22,7 @@ import { DownloadService } from 'src/app/services/download.service';
 export class QuestionnairesComponent implements OnInit {
   cloudinaryLink: any;
   businessPlan: any;
+  businessPlanUrl = ''
 
   step: any = 1;
 
@@ -59,6 +58,8 @@ export class QuestionnairesComponent implements OnInit {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
     this.businessPlan = this.storageService.getBusinessPlan();
+    this.businessPlanUrl = this.storageService.getBusinessPlan()
+    
   }
 
   submit() {
@@ -123,12 +124,12 @@ export class QuestionnairesComponent implements OnInit {
       description = savedAnswers[2].description,
       hasBusinessPlan = savedAnswers[3].hasBusinessPlan,
       isRegistered = savedAnswers[4].isRegistered;
-    console.log('name answer', name);
 
     this.openaiService
             .generate(name, industry, description)
             .subscribe((res) => {
               let businessPlanUrl = res.url
+              this.storageService.saveBusinessPlan(businessPlanUrl)
               this.respService
       .response(name, industry, description, isRegistered, hasBusinessPlan, businessPlanUrl)
       .subscribe({

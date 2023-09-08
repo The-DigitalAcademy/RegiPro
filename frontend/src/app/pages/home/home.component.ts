@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { answers } from 'src/app/interfaces/questions';
-import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +32,7 @@ export class HomeComponent {
     private authService: AuthService,
     public responses: ResponsesService,
     public business: BusinessService,
-    private loaderService: LoaderService
+    private toast: NgToastService
   ) { }
 
 // Initialize component when it's created
@@ -94,7 +94,11 @@ logout(): void {
 // Disable adding a new business if the limit is reached
 disableNewBusiness() {
   if (this.businesses.length >= 2) {
-    alert("You have reached the business limit. Subscribe to add another business.");
+    this.toast.info({
+      detail: 'Info Message',
+      summary: "You have reached the business limit. Subscribe to add another business.",
+      sticky: true,
+    });
     this.router.navigate(['/home']);
   } else {
     this.router.navigate(['/questions']);

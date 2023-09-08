@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         // Store the token in session storage
         sessionStorage.setItem('accessToken', token);
 
-        this.toast.success({detail:"SUCCESS",summary:'Your registration is successful!',duration:5000});
+        // this.toast.success({detail:"SUCCESS",summary:'Your registration is successful!',duration:5000});
         this.isSignUpFailed = false;
         this.storageService.getUser()
         this.router.navigate(['/onboarding'])

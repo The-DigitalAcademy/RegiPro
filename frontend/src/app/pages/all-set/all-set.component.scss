@@ -1,10 +1,13 @@
+span {
+  font-weight: 900;
+}
+
 .btn{
     width: 150px;
     height: 35px;
     flex-shrink: 0;
     color: #ffffff;
     background-color: #10B981;
-
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -16,10 +19,8 @@
     color:#121815 ;
     font-size: 1.2rem;
     text-align: center;
-    font-family: "Times New Roman", Times, serif;
     width: 292px;
     height: 70px;
-
     font-size: 24px;
     font-style: normal;
 }
@@ -32,7 +33,7 @@
     right: 50%;
     height: 2.94em;
     background-color: #10B981;
-    border: 1px solid #10B981 ;
+    border: 1px solid #10B981;
     color: white;
     outline: none;
     transition: .6s ease;

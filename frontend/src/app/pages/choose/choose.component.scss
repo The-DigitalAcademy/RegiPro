@@ -1,51 +1,28 @@
-
-  h2 {
-    font-family: var(--font-stack);
-    color: var(--SECONDARY__TEXT-COLOR);
-    font-weight: 900;
-    
-  }
-
-  p {
-    font-family: var(--font-stack);
-    color: var(--PRIMARY__TEXT-COLOR);
-    text-align: center;
-
-  }
-
+h2 {
+  font-family: var(--font-stack);
+  color: var(--SECONDARY__TEXT-COLOR);
+  font-weight: 900;
+}
+p {
+  font-family: var(--font-stack);
+  color: var(--PRIMARY__TEXT-COLOR);
+}
 
 .btn {
   width: 150px;
   border-radius: 30px;
   height: 35px;
-  flex-shrink: 0;
   color: #ffffff;
   background-color: var(--SECONDARY__BTN__TEXT-COLOR);
 }
-#btnB {
-  width: 150px;
-  height: 35px;
-  flex-shrink: 0;
-
+#btn {
   color: var(--SECONDARY__BTN__TEXT-COLOR);
   background-color: #ffffff;
   border: 1px solid;
 }
 
-.makeDreamContainer{
- 
-   
-    display: flex;
-    align-items: center !important;
-    justify-content: center !important;
-
-}
 @media (max-width: 768px) {
-  h2 {
+  .heading {
     text-align: center;
   }
 }
-
-
-
-
