@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private router: Router,
     public loaderService: LoaderService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -48,37 +48,31 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         this.loggedUser = data;
         this.storageService.saveUser(data);
-        // this.isLoginFailed = false;
-        // this.isLoggedIn = true;
-
         const token = data.accessToken;
-        // console.log(token);
-        
         // Store the token in session storage
         sessionStorage.setItem('accessToken', token);
         // Display a success alert
-      Swal.fire({
-        title: 'Success!',
-        text: 'You have successfully logged in.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#10b981;',
-      }).then(() => {
-        this.reloadPage();
-      });
-
-        // this.reloadPage();
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully logged in.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#10b981',
+        }).then(() => {
+          this.reloadPage();
+        });
       },
-      error: (err) => {
-        // this.errorMessage = err.error.message;
-        // this.isLoginFailed = true;
+       // Display a fail to login alert
+      error: () => {
         Swal.fire({
           title: 'Error!',
-          text: 'login credentialsincorrect, please enter correct credentials',
+          text: 'login credentials incorrect, please enter correct credentials',
           icon: 'error',
           confirmButtonText: 'OK',
-          confirmButtonColor: '#10b981;'
-        })
+          confirmButtonColor: '#10b981'
+        }).then(() => {
+          this.reloadPage();
+        });
       },
     });
   }
