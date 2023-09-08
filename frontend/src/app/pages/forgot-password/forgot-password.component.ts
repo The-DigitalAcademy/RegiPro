@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NgToastService } from 'ng-angular-popup';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgot-password',
@@ -39,10 +40,15 @@ export class ForgotPasswordComponent {
             this.successMessage = "Reset password link send to email sucessfully.";
             console.log(data)
             localStorage.setItem('user_reset', JSON.stringify(this.forgotPasswordform.value));
-            this.successMessage = null;
-            this.router.navigate(['resend-link']);
-            this.toast.success({detail:"SUCCESS",summary:data.message ,duration:5000});
-  
+            Swal.fire({
+              title: 'Success!',
+              text: 'Reset link sent sucessfully.',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#10b981',
+            }).then(() => {
+              this.router.navigate(['resend-link']);
+            });
           }
       }),
        (err:any) => {
