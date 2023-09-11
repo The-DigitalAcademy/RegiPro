@@ -17,6 +17,7 @@ header {
     color: var(--PRIMARY__BTN__TEXT-COLOR);
     width: 200px;
     border-radius: 10px;
+    animation: pulse 2s infinite 1s;
   }
 
   .btn__secondary {
@@ -25,6 +26,7 @@ header {
     width: 200px;
     border-radius: 10px;
     border: solid 1px var(--SECONDARY__TEXT-COLOR);
+    animation: pulse 2s infinite 2s;
   }
 }
 

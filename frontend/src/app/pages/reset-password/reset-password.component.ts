@@ -128,8 +128,4 @@ export class ResetPasswordComponent {
     return !this.resetForm.controls["password"].hasError("requiresSpecialChars");
   }
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d8a123d03c6515a95c432a2a703fe4536c09e26c
