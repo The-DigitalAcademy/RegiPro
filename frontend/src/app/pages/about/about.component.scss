@@ -1,69 +1,65 @@
 .btn-back {
-    position: absolute;
-    top: 40rem;
-    background-color: #10B981;
-    border-radius: 11px;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    // cursor: pointer;
-    width: 150px;
-    height: 35px;
-    flex-shrink: 0;
-    
+  position: absolute;
+  top: 40rem;
+  background-color: #10b981;
+  border-radius: 11px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  padding: 4px 2px;
+  width: 150px;
+  height: 35px;
+  flex-shrink: 0;
+}
+
+span {
+  font-weight: 600;
+  font-family: var(--font-stack-2);
+}
+
+.text-content {
+  font-size: var(--font-size-small);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slowerTypewriter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-
-  .name {
-   font-weight: 600;
-   font-family: var(--font-stack-2);
-
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  
-  .text-content {
-    font-size: var(--font-size-small);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-  }
+.btn-back {
+  /* ... your existing styles ... */
+  animation: slowerTypewriter 1.5s ease-in-out forwards;
+  opacity: 0; /* We'll use the animation to fade it in */
+}
 
-  @keyframes slowerTypewriter {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.heading {
+  font-size: var(--font-size-medium);
+  font-weight: bold;
+}
 
-  .btn-back {
-    /* ... your existing styles ... */
-    animation: slowerTypewriter 1.5s ease-in-out forwards;
-    opacity: 0; /* We'll use the animation to fade it in */
-  }
+.bi {
+  font-size: var(--font-size-normal);
+  padding-left: 0.5em;
+  transform-origin: 50% 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
 
-  .heading {
-    font-size: var(--font-size-medium);
-    font-weight: bold;
-  }
+// BACK BUTTON ANIMATIONS
 
-  .bi {
-    font-size: var(--font-size-normal);
-    margin-left: 0.5em;
-    transform-origin: 50% 50%;
-    transform: translate3d(-50%, -50%, 0);
-  }
-
-  // BACK BUTTON ANIMATIONS
-
-  $ani-speed: 2s;
+$ani-speed: 2s;
 $ani-delay: 1s;
 
 .bi-arrow-left {
@@ -72,17 +68,14 @@ $ani-delay: 1s;
 
 // Animation
 @keyframes arrow-movement {
-  0% { 
-      opacity: 1;
-      top: 45%;
+  0% {
+    opacity: 1;
+    top: 45%;
   }
   70% {
-      opacity: 0;
+    opacity: 0;
   }
-  100% { 
-      opacity: 1;
+  100% {
+    opacity: 1;
   }
 }
-  
-
-  

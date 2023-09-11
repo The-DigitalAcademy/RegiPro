@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { answers } from 'src/app/interfaces/questions';
-import { LoaderService } from 'src/app/services/loader.service';
+import { NgToastService } from 'ng-angular-popup';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -32,73 +33,85 @@ export class HomeComponent {
     private authService: AuthService,
     public responses: ResponsesService,
     public business: BusinessService,
-    private loaderService: LoaderService
+    private toast: NgToastService
   ) { }
 
-// Initialize component when it's created
-ngOnInit() {
-  this.loading$ = true; // Show loader while waiting for API response
+  // Initialize component when it's created
+  ngOnInit() {
+    this.loading$ = true; // Show loader while waiting for API response
 
-  // Get the current user and set the greeting message
-  this.currentUser = this.storageService.getUser();
-  this.greetingUser = this.greeting();
+    // Get the current user and set the greeting message
+    this.currentUser = this.storageService.getUser();
+    this.greetingUser = this.greeting();
 
-  // Fetch list of responses (businesses)
-  this.responses.getResponses().subscribe({
-    next: (data: answers[]) => {
-      this.businesses = data;
-      this.loading$ = false; // Hide loader after API response
-    },
-    error: err => {
-      console.log(err);
-      this.loading$ = false; // Hide loader on error
+    // Fetch list of responses (businesses)
+    this.responses.getResponses().subscribe({
+      next: (data: answers[]) => {
+        this.businesses = data;
+        this.loading$ = false; // Hide loader after API response
+      },
+      error: err => {
+        console.log(err);
+        this.loading$ = false; // Hide loader on error
+      }
+    });
+
+
+    // Subscribe to 'logout' event from event bus
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
+  }
+
+  // Determine appropriate greeting based on the time of day
+  greeting() {
+    const currentTime = new Date().getHours();
+
+    if (currentTime >= 0 && currentTime <= 11) {
+      return `Good morning,`;
+    } else if (currentTime >= 12 && currentTime <= 16) {
+      return `Good afternoon,`;
+    } else if (currentTime >= 17 && currentTime <= 23) {
+      return `Good evening, `;
+    } else {
+      return '';
     }
-  });
-
-
-  // Subscribe to 'logout' event from event bus
-  this.eventBusSub = this.eventBusService.on('logout', () => {
-    this.logout();
-  });
-}
-
-// Determine appropriate greeting based on the time of day
-greeting() {
-  const currentTime = new Date().getHours();
-
-  if (currentTime >= 0 && currentTime <= 11) {
-    return `Good morning,`;
-  } else if (currentTime >= 12 && currentTime <= 16) {
-    return `Good afternoon,`;
-  } else if (currentTime >= 17 && currentTime <= 23) {
-    return `Good evening, `;
-  } else {
-    return '';
   }
-}
 
-// Handle user logout
-logout(): void {
-  this.authService.logout().subscribe({
-    next: (res) => {
-      this.storageService.clean();
-      this.router.navigate(['']);
-      window.location.reload();
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
-}
-
-// Disable adding a new business if the limit is reached
-disableNewBusiness() {
-  if (this.businesses.length >= 2) {
-    alert("You have reached the business limit. Subscribe to add another business.");
-    this.router.navigate(['/home']);
-  } else {
-    this.router.navigate(['/questions']);
+  // Handle user logout
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: (res) => {
+        this.storageService.clean();
+        this.router.navigate(['']);
+        window.location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-}
+
+  // Disable adding a new business if the limit is reached
+  disableNewBusiness() {
+    if (this.businesses.length >= 2) {
+      // this.toast.info({
+      //   detail: 'Info Message',
+      //   summary: "You have reached the business limit. Subscribe to add another business.",
+      //   sticky: true,
+      // });
+      Swal.fire({
+        title: 'Warning!',
+        text: 'You have reached the business limit, subcribe to add another business.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#10b981',
+      }).then(() => {
+        this.router.navigate(['/home'])
+      });
+    } else {
+      this.router.navigate(['/questions']);
+    }
+  }
 }
 

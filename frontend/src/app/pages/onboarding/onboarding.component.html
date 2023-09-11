@@ -1,26 +1,45 @@
-<div class="container-sm">
-  <img
-    class="logo"
-    src="https://cdn.discordapp.com/attachments/1093144894886924368/1132954106386980985/Regi-Pro_logo.jpg"
-    alt="logo"
-    srcset=""
-  />
-
-  <img
-    class="img-responsive"
-    src="../../../assets/images/onboarding.svg"
-  />
-  </div>
-  <section class="container px-2">
-    <div class="row justify-content-center">
-      <h2 class="my-3">Fulfill your business future.</h2>
-      <p class=" mb-3">
-        This analysis is designed to help you generate a business plan for your
-        business and also recommend possible funding opportunities available at
-        ABSA. The analysis includes a feature that helps you register your
-        business with CIPC.
-      </p>
-      <button routerLink="/questions" class="btn">Start</button>
-      <button routerLink="/home" class="btn btn-sec"><i class="bi bi-house-door"></i>&nbsp;Home</button>
+<header>
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img
+          src="https://cdn.discordapp.com/attachments/1093144894886924368/1132954106386980985/Regi-Pro_logo.jpg"
+          height="120"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>
     </div>
-  </section>
+  </nav>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-sm px-4 pb-2">
+      <img
+        src="../../../assets/images/onboarding.svg"
+        height="200"
+        class="img-fluid"
+        width="520"
+        alt="Landing-SVG"
+        loading="lazy"
+      />
+    </div>
+    <div class="col-sm justify-content-center">
+      <div class="d-flex justify-content-start p-2">
+        <h2 class="pb-2">Fulfill your business future.</h2>
+      </div>
+      <div>
+        <p class="pb-3">
+          This analysis is designed to help you generate a business plan for
+          your business and also recommend possible funding opportunities
+          available at ABSA. The analysis includes a feature that helps you
+          register your business with CIPC.
+        </p>
+      </div>
+      <div class="d-flex justify-content-start gap-5 mb-3">
+        <button routerLink="/questions" class="btn">Start</button>
+        <button routerLink="/home" class="btn btn-sec">
+          <i class="bi bi-house-door"></i>&nbsp;Home
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

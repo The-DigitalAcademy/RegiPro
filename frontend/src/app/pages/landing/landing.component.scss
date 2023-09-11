@@ -1,68 +1,74 @@
+header {
+  .heading {
+    color: var(--SECONDARY__TEXT-COLOR);
+    font-weight: 900;
+  }
 
-.form-container{
-  border-radius: 20px;
-  background: rgba(236, 253, 245, 0.35);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  max-width: 300px;
+  .bi-arrow-up-right {
+    color: var(--SECONDARY__TEXT-COLOR);
+  }
 
-  display: flex;
-  padding: 29px 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 42px;
-}
-section{
-  background: rgba(236, 253, 245, 0.35);
-  max-width: 300px;
-  margin:auto;
-  background-color: #ECFDF5;
-}
+  .bi-check2-square {
+    color: var(--SECONDARY__TEXT-COLOR);
+  }
 
+  .btn__primary {
+    background: var(--BTN__BGCLOLOR);
+    color: var(--PRIMARY__BTN__TEXT-COLOR);
+    width: 200px;
+    border-radius: 10px;
+    animation: pulse 2s infinite 1s;
+  }
 
-.img-responsive{
-  width: 100%;
-  /* // padding: 40px; */
-  color: var(--SECONDARY__TEXT-COLOR);
-}
-.logo{
-  width: 30%;
-  color: #10B981;
-}
-
-section h4{
-  color:#47bb85 ;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-section p{
-  margin: auto;
-  color:#121815 ;
-  font-size: 1.2rem;
-  text-align: center;
-  
+  .btn__secondary {
+    color: var(--SECONDARY__TEXT-COLOR);
+    background: var(--PRIMARY__BTN__TEXT-COLOR);
+    width: 200px;
+    border-radius: 10px;
+    border: solid 1px var(--SECONDARY__TEXT-COLOR);
+    animation: pulse 2s infinite 2s;
+  }
 }
 
-button{
-  width: 15.94em;
-
-  left: 50%;
-  right: 50%;
-  height: 2.94em;
-  background-color: #10B981;
-  border: 1px solid #10B981 ;
-  color: white;
-  outline: none;
-  transition: .6s ease;
-  border-radius: 25px;
-
+@media (max-width: 768px) {
+  .animated-heading {
+    text-align: center;
+  }
 }
+
+
+
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+}
+
+
+// Apply the animations to completed items
+.completed {
+  // animation: typing 4s ease infinite alternate, shake 2s linear infinite;
+  animation: pulse 2s infinite;
+}
+
+.list-group li {
+  transition: background-color 0.9s ease-in-out;
+
+  &.rippling {
+    background-color: white; // Change to the desired ripple color
+  }
+}
+
+
+
 
 /* Define the animation */
 @keyframes slideIn {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     opacity: 1;
   }
   to {
@@ -79,11 +85,11 @@ button{
   100% { width: 0 }
 }
 
-/* Apply the animation to the .animated-heading class */
-.animated-heading {
-  animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+// /* Apply the animation to the .animated-heading class */
+// .animated-heading {
+//   animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
+//   /* You can customize animation properties here, like timing functions, delay, etc. */
+// }
 
 /* Define the animation */
 @keyframes fadeUp {
@@ -116,11 +122,11 @@ button{
   }
 }
 
-/* Apply the infinite slideIn animation to the .animated-heading class */
-.animated-heading {
-  animation: infiniteSlideIn 10s linear infinite; /* Animation will run infinitely */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+// /* Apply the infinite slideIn animation to the .animated-heading class */
+// .animated-heading {
+//   animation: infiniteSlideIn 10s linear infinite; /* Animation will run infinitely */
+//   /* You can customize animation properties here, like timing functions, delay, etc. */
+// }
 
 /* Define the infinite fadeUp animation */
 @keyframes infiniteFadeUp {
@@ -134,11 +140,7 @@ button{
   }
 }
 
-/* Apply the infinite fadeUp animation to the .animated-paragraph class */
-.animated-paragraph {
-  animation: infiniteFadeUp 10s linear; /* Animation will run infinitely */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+
 
 /* Define the slower infinite typing animation */
 @keyframes slowerTypewriter {

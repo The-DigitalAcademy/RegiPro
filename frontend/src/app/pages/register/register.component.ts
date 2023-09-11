@@ -5,6 +5,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { user } from 'src/app/interfaces/user';
 import { NgToastService } from 'ng-angular-popup';
 import { LoaderService } from 'src/app/services/loader.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -32,10 +33,10 @@ export class RegisterComponent implements OnInit {
     private storageService: StorageService,
     private toast: NgToastService,
     public loaderService: LoaderService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-      this.storageService.getUser()
+    this.storageService.getUser()
 
   }
 
@@ -45,7 +46,6 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(firstname, lastname, email, password).subscribe({
       next: data => {
-        // this.isSuccessful = true;
         this.storageService.saveUser(data)
 
         this.loggedUser = data;
@@ -55,19 +55,36 @@ export class RegisterComponent implements OnInit {
 
         // Store the token in session storage
         sessionStorage.setItem('accessToken', token);
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully logged in.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#10b981',
+        }).then(() => {
+          this.storageService.getUser()
+          this.router.navigate(['/onboarding'])
+        });
 
-        this.toast.success({detail:"SUCCESS",summary:'Your registration is successful!',duration:5000});
-        this.isSignUpFailed = false;
-        this.storageService.getUser()
-        this.router.navigate(['/onboarding'])
       },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+      error: () => {
+
+        Swal.fire({
+          title: 'Error!',
+          text: 'User Already Exist!, Please use a different email',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#10b981'
+        }).then(() => {
+          this.reloadPage();
+        });
       },
       complete: () => {
         this.loaderService.hide(); // Hide the loader
       }
     });
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
 }
