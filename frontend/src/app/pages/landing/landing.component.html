@@ -25,17 +25,20 @@
     </div>
     <div class="col-sm justify-content-center">
       <div class="p-2">
-        <h4 class = "animated-heading">
+        <h4 class="animated-heading">
           <span>Turn your vision into a </span>
-        <span>Prospering reality</span>
+          <span>Prospering reality</span>
         </h4>
       </div>
       <div class="px-3">
         <ul class="list-group list-unstyled px-2 pb-3">
-          <li *ngFor="let item of items; let i = index" [class.completed]="i === currentIndex"
-          [class.rippling]="i === currentIndex"
-          ><i class="bi bi-check2-square"></i> {{ item }}</li>
-        
+          <li
+            *ngFor="let item of items; let i = index"
+            [class.completed]="i === currentIndex"
+            [class.rippling]="i === currentIndex"
+          >
+            <i class="bi bi-check2-square"></i> {{ item }}
+          </li>
         </ul>
       </div>
       <div class="d-flex justify-content-start gap-3 px-4">

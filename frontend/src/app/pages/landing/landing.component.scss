@@ -31,7 +31,7 @@ header {
 }
 
 @media (max-width: 768px) {
-  .heading {
+  .animated-heading {
     text-align: center;
   }
 }
@@ -80,7 +80,7 @@ section p{
 /* Define the animation */
 @keyframes slideIn {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     opacity: 1;
   }
   to {
@@ -97,11 +97,11 @@ section p{
   100% { width: 0 }
 }
 
-/* Apply the animation to the .animated-heading class */
-.animated-heading {
-  animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+// /* Apply the animation to the .animated-heading class */
+// .animated-heading {
+//   animation: slideIn 1s ease-in-out forwards; /* Animation will run for 1 second */
+//   /* You can customize animation properties here, like timing functions, delay, etc. */
+// }
 
 /* Define the animation */
 @keyframes fadeUp {
@@ -134,11 +134,11 @@ section p{
   }
 }
 
-/* Apply the infinite slideIn animation to the .animated-heading class */
-.animated-heading {
-  animation: infiniteSlideIn 10s linear infinite; /* Animation will run infinitely */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+// /* Apply the infinite slideIn animation to the .animated-heading class */
+// .animated-heading {
+//   animation: infiniteSlideIn 10s linear infinite; /* Animation will run infinitely */
+//   /* You can customize animation properties here, like timing functions, delay, etc. */
+// }
 
 /* Define the infinite fadeUp animation */
 @keyframes infiniteFadeUp {
@@ -152,11 +152,7 @@ section p{
   }
 }
 
-/* Apply the infinite fadeUp animation to the .animated-paragraph class */
-.animated-paragraph {
-  animation: infiniteFadeUp 10s linear; /* Animation will run infinitely */
-  /* You can customize animation properties here, like timing functions, delay, etc. */
-}
+
 
 /* Define the slower infinite typing animation */
 @keyframes slowerTypewriter {
