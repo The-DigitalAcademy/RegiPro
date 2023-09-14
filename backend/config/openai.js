@@ -107,6 +107,8 @@ exports.handler = async (req, res) => {
       }
     } catch (error) {
       console.error("Error parsing the content as JSON:", error);
+      res.status(400).json({ message: 'Bad Request: Invalid JSON' });
+
     }
   } catch (error) {
     console.error("Error:", error);
