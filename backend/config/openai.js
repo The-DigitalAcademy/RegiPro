@@ -56,6 +56,7 @@ exports.handler = async (req, res) => {
         content: item.content.replace(/"/g, ""),
       }));
       console.log(parsedArray);
+      let sectionNumber = 1;
       let allParagraphs = [];
 
       if (Array.isArray(parsedArray)) {
@@ -74,7 +75,7 @@ exports.handler = async (req, res) => {
         parsedArray.forEach((section) => {
           const sectionParagraphs = [
             new Paragraph({
-              text: section.section,
+              text: `${sectionNumber}. ${section.section}`,
               heading: HeadingLevel.HEADING_1,
             }),
             new Paragraph({
@@ -93,6 +94,7 @@ exports.handler = async (req, res) => {
                 },
               });
             });
+            sectionNumber++;
 
           sectionParagraphs.push(...contentParagraphs); // Add content paragraphs to the section
 
