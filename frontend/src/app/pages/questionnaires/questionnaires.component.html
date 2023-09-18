@@ -486,7 +486,7 @@
 >
 </app-loading-indicator>
 
-<div *ngIf="isReturned === true" class="container">
+<div *ngIf="isReturned === true && cloudinaryLink" class="container">
   <div class="container">
     <div class="row">
       <div class="col my-4 column1">
@@ -525,7 +525,7 @@
               </svg>
             </div>&nbsp;
             <div class="link-content">
-              <a href="{{ businessPlanUrl }}" download="business-plan.docx"  target="_blank">Click to download</a>
+              <a href="{{ cloudinaryLink }}" download="business-plan.docx"  target="_blank">Click to download</a>
             </div>
           </div>
         </div>

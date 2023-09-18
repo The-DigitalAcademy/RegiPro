@@ -57,7 +57,8 @@ export class QuestionnairesComponent implements OnInit {
     this.loaderService.hide();
     this.currentUser = this.storageService.getUser();
     this.businessPlan = this.storageService.getBusinessPlan();
-    this.businessPlanUrl = this.storageService.getBusinessPlan();
+    this.cloudinaryLink = this.storageService.getBusinessPlan();
+    
   }
   // Handle form submission for step 1
   submit() {
@@ -126,6 +127,7 @@ export class QuestionnairesComponent implements OnInit {
     this.openaiService
       .generate(name, industry, description)
       .subscribe((res) => {
+        this.cloudinaryLink = res.url
         let businessPlanUrl = res.url;
         this.storageService.saveBusinessPlan(businessPlanUrl);
                 // Send response data to the server
@@ -166,6 +168,7 @@ export class QuestionnairesComponent implements OnInit {
   // Add business data to the service
   addBusiness(business: answers) {
     this.busService.addBusinessSignal(business);
+    
   }
   // Handle going back to the previous step
   previous() {
