@@ -29,9 +29,11 @@ exports.handler = async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
   try {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Generate 3000-word business plan for ${name} in ${industry}, outlining ${description}. Return JavaScript array with section and content JSON properties, keeping consistent format for all plans.
+      prompt: `Generate 3000-word business plan for ${name} in ${industry}, outlining ${description}. Return JavaScript array with section and content JSON properties, make sure the contents are covered with double qoutes , with no slashes keeping consistent format for all plans.
      `,
       temperature: 0,
       max_tokens: 4000,
@@ -40,46 +42,57 @@ exports.handler = async (req, res) => {
     let arr = response.data.choices[0].text;
     arr = arr.replace(/^"|\s*"$/g, ""); // Remove surrounding quotes
     console.log(typeof arr);
+    console.log(arr)
 
-    try {
-      const parsedArray = JSON.parse(arr);
-      let allParagraphs = [];
+    try { 
+      const cleanedJson = JSON.parse(arr);
+      const cleanedJson_2 = cleanedJson.map(item => ({
+        ...item,
+        content: item.content.replace(/\\"/g, ' ')
+    }));
 
-      if (Array.isArray(parsedArray)) {
-        parsedArray.forEach((section) => {
-          const sectionParagraphs = [
-            new Paragraph({
-              text: section.section,
-              heading: HeadingLevel.HEADING_1,
-            }),
-            new Paragraph({
-              text: '',  // Add an empty line between each content
-            })
-          ];
+    const parsedArray = cleanedJson_2.map(item => ({
+      ...item,
+      content: item.content.replace(/"/g, '')
+    }));
+    console.log(parsedArray);
+    let allParagraphs = [];
+
+    if (Array.isArray(parsedArray)) {
+      parsedArray.forEach((section) => {
+        const sectionParagraphs = [
+          new Paragraph({
+            text: section.section,
+            heading: HeadingLevel.HEADING_1,
+          }),
+          new Paragraph({
+            text: '',  // Add an empty line between each content
+          }),
+        ];
     
-          Object.entries(section.content).forEach(([key, value]) => {
-            sectionParagraphs.push(
-              new Paragraph({
-                text: value,
-              }),
-              new Paragraph({
-                text: '',  // Add an empty line between each content
-              })
-            );
-          });
-    
-          allParagraphs = allParagraphs.concat(sectionParagraphs);
-        });
-
-        const doc = new Document({
-          // ... (document settings and styles)
-          sections: [
-            {
-              children: allParagraphs,
+        // Split the content into paragraphs based on line breaks
+        const contentParagraphs = section.content.split('\n').map((contentItem) => {
+          return new Paragraph({
+            text: contentItem,
+            spacing: {
+              after: 200, // Adjust the spacing as needed (in twips, 200 = 1/4 inch)
             },
-          ],
+          });
         });
-
+    
+        sectionParagraphs.push(...contentParagraphs); // Add content paragraphs to the section
+    
+        allParagraphs = allParagraphs.concat(sectionParagraphs);
+      });
+    
+      const doc = new Document({
+        // ... (document settings and styles)
+        sections: [
+          {
+            children: allParagraphs,
+          },
+        ],
+      });
         const buffer = await Packer.toBuffer(doc);
 
         // Upload to Cloudinary
