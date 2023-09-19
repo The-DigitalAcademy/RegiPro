@@ -184,6 +184,11 @@ export class QuestionnairesComponent implements OnInit {
   get p(): { [key: string]: AbstractControl } {
     return this.form2.controls;
   }
+// Download the business plan word document
+   public download(): void {
+    saveAs(this.cloudinaryLink, 'business-plan.docx');
+  }
+
   // Reload the page
   reloadPage(): void {
     window.location.reload();
