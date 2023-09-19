@@ -8,6 +8,7 @@ import {
 import { StorageService } from 'src/app/services/storage.service';
 import { answers } from 'src/app/interfaces/questions';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { BusinessService } from 'src/app/services/store/business.service';
 import { LoaderService } from 'src/app/services/loader.service';
