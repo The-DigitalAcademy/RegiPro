@@ -26,6 +26,7 @@ import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { StepsComponent } from './pages/steps/steps.component';
     LoadingIndicatorComponent,
     RegenerateComponent,
     StepsComponent,
+    PageNotFoundComponent,
    
 
   ],

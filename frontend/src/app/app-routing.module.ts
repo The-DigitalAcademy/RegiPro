@@ -21,6 +21,7 @@ import { ResendLinkComponent } from './pages/resend-link/resend-link.component';
 
 import { RegenerateComponent } from './pages/regenerate/regenerate.component';
 import { StepsComponent } from './pages/steps/steps.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -28,24 +29,40 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'choose', component: ChooseComponent},
-  { path: 'about', component: AboutComponent  },
-  { path: 'onboarding', component: OnboardingComponent,canActivate: [AuthGuard]},
-  { path: 'business-pro', component: BusinessProductComponent,canActivate: [AuthGuard]},
+  { path: 'choose', component: ChooseComponent },
+  { path: 'about', component: AboutComponent },
+  {
+    path: 'onboarding',
+    component: OnboardingComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'business-pro',
+    component: BusinessProductComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'cipcnum', component: CipsNumComponent },
-  { path: 'questions', component: QuestionnairesComponent, canActivate: [AuthGuard] },
-  { path: 'regenerate/:bId', component: RegenerateComponent,canActivate: [AuthGuard]  },
-  { path: 'all-set', component: AllSetComponent,canActivate: [AuthGuard] },
-  { path: 'steps', component: StepsComponent,canActivate: [AuthGuard] },
+  {
+    path: 'questions',
+    component: QuestionnairesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'regenerate/:bId',
+    component: RegenerateComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'all-set', component: AllSetComponent, canActivate: [AuthGuard] },
+  { path: 'steps', component: StepsComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'resend-link', component: ResendLinkComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
