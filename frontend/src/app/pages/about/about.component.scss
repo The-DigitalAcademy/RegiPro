@@ -18,6 +18,7 @@
 span {
   font-weight: 600;
   font-family: var(--font-stack-2);
+  color: var(--SECONDARY__BTN__TEXT-COLOR);
 }
 
 .text-content {
@@ -55,6 +56,12 @@ span {
   padding-left: 0.5em;
   transform-origin: 50% 50%;
   transform: translate3d(-50%, -50%, 0);
+}
+
+.bottom__heading {
+  color: var(--SECONDARY__BTN__TEXT-COLOR);
+  font-weight: 600;
+  font-family: var(--font-stack-2);
 }
 
 // BACK BUTTON ANIMATIONS
