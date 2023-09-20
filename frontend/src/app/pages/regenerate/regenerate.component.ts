@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { saveAs } from 'file-saver';
 import { ResponsesService } from 'src/app/services/responses.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
@@ -24,6 +25,11 @@ export class RegenerateComponent implements OnInit {
   ) {}
 // Retrieving the name of the business and the industry data based on a parameter (bId) from the route, using the Angular Router, and making an HTTP request using an injected service (response).
   
+// Download the business plan word document
+public download(): void {
+  saveAs(this.bus.businessPlanUrl, 'business-plan.docx');
+}
+
 ngOnInit(): void {
   this.loading$ = true; // Show loader while waiting for API response
 
