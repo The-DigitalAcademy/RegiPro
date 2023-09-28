@@ -108,7 +108,7 @@ To install and run the RegiPro Angular app locally, follow these steps:
 _Landing Page_
 
 ![Sign In or Sign Up](./frontend/src/assets/images/Sign%20in%20&%20Sign%20up.png)
-_Sign In or Sign Up_
+_Sign In OR Sign Up_
 
 ![Homepage](./frontend/src/assets/images/Home%20Page.png)
 _Homepage_
